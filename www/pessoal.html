@@ -958,9 +958,12 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 <a href="pessoal.html"><img src="fotos/pessoa_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
 	-->
 	
+
 	<script> 
-		document.getElementById("menu_pessoal").src="fotos/pessoa_selecionada.png";
-	</script> 
+		$(function(){
+		  $("#menu").getElementById("menu_pessoal").src="fotos/pessoa_selecionada.png";
+		});
+   </script>
 	
 </body>
 </html>
