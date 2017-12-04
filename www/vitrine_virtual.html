@@ -3,6 +3,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
 	
+<script>
+var id_loja = '87';
+</script>
 
 <style>
 .telefone{
@@ -226,7 +229,9 @@ function desaparecer_detalhes(e){
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
+			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
+			
 			
 			}
 
@@ -410,6 +415,17 @@ function desaparecer_detalhes(e){
 			});
 		</script>
 
+		
+	<div id="menu">
+
+	</div>	
+			
+	<script> 
+		$(function(){
+		  $("#menu").load("menu_fixo.html"); 
+		});
+	</script> 		
+			
 
 </body>
 </html>
