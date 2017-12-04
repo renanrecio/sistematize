@@ -128,7 +128,7 @@ function abrir_info(){
 
 	
 <!-- Validação do forumlário -->
-<!--
+
 <script type="text/javascript">
 			var xmlHttp;
 			var top_ultimo_prod;
@@ -145,7 +145,7 @@ function abrir_info(){
 			}
 			}
 
-			function startRequest_vitrine_virtual() {
+			function startRequest_chat() {
 			createXMLHttpRequest();
 			xmlHttp.onreadystatechange = handleStateChange;
 			
@@ -155,7 +155,7 @@ function abrir_info(){
 			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrine_app.php", true);
 			
 			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_vitrine_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_chat_app.php", true);
 			
 			
 			
@@ -179,9 +179,8 @@ function abrir_info(){
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
 				
-				$('.cabecalho').fadeOut();
 				
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
@@ -191,12 +190,12 @@ function abrir_info(){
 			
 		
 			
-		startRequest_vitrine_virtual();
+		startRequest_chat();
 			
 </script>   
--->
 
-<div id="div_vitrine"></div>
+
+<div id="div_chat"></div>
 	
 	<div id="menu">
 
@@ -209,10 +208,12 @@ function abrir_info(){
 	</script> 		
 			
 	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
+	
+	
 
-	<script> 
-		document.getElementById("menu_chat").src="fotos/chat_selecionada.png";
-	</script> 
+	<!--
+	<a href="chat.html"><img src="fotos/chat.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:48%; width:2.8em; height:2.8em;" /> </a>
+	-->
 	
 </body>
 </html>
