@@ -1,6 +1,21 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
+	
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+
+<meta name="google-site-verification" content="Wiq9h-MVFjBO3hYHciruU4k0Wk08XVFGfFgvRQi_YPM" />
+
+<meta name="Keywords" content="publicar, publicar do brasil, listaonline, lista online, guia, guia de lojas, empresa, acheloja.com, lojas, loja, lista, busca de lojas, busca de produtos, guia local, busca local, consulta serviços produtos, lista telefonica, telefones, endereços." />
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+
+<meta name="description" content="Você escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais próximo de você!">
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 <link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
 	
 <script>
@@ -8,6 +23,68 @@ var id_loja = '87';
 </script>
 
 
+
+<style>
+.telefone{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 9em;
+    height: 2em;
+
+    position: relative;
+	top:0em;
+	
+	left:1em;
+}
+
+.telefone:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e6e6e6;
+
+    top: -20px;
+    right: 5%;
+}
+</style>
+
+<style>
+.info{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 96%;
+    height: 4em;
+
+    position: absolute;
+	top:0em;
+	
+	left:2%;
+}
+
+.info:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e6e6e6;
+
+    top: -20px;
+    right: 8%;
+}
+</style>
 
 
 
@@ -111,7 +188,10 @@ var id_loja = '87';
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				//document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				
+				document.getElementById("div_vitrine").innerHTML =  str;
+				
 				
 				$('.cabecalho').fadeOut();
 				
