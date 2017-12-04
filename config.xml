@@ -1,0 +1,71 @@
+﻿<?xml version='1.2' encoding='utf-8'?>
+<widget id="com.acheloja" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>AcheLoja</name>
+    <description> Os produtos das melhores Lojas perto de você.</description>
+    <author email="atendimento@acheloja.com" href="http://acheloja.com">
+        Grupo AcheLoja
+    </author>
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+	 <preference name="orientation" value="portrait"/>
+    <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
+    <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
+    <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
+    <plugin name="cordova-plugin-file" source="npm" spec="~4.1.1" />
+    <plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.5.0" />
+    <plugin name="cordova-plugin-media" source="npm" spec="~2.2.0" />
+    <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
+	<plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+	<plugin name="phonegap-plugin-push" spec="1.6.0">
+		<param name="SENDER_ID" value="121897226764" />
+	</plugin>
+    <platform name="android">
+		<icon src="icone.png"/>
+	    <icon src="www/icone.png"/>
+	    <icon src="www/icone.png" gap:platform="android" />
+        <icon density="ldpi" src="www/res/icon/android/mipmap-ldpi/ic_launcher.png" />
+        <icon density="mdpi" src="www/res/icon/android/mipmap-mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="www/res/icon/android/mipmap-hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="www/res/icon/android/mipmap-xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="www/res/icon/android/mipmap-xxhdpi/ic_launcher.png" />
+        <icon density="xxxhdpi" src="www/res/icon/android/mipmap-xxxhdpi/ic_launcher.png" />
+        <splash density="land-ldpi" src="www/res/screen/android/mipmap-ldpi/ic_launcher.png" />
+        <splash density="land-mdpi" src="www/res/screen/android/mipmap-mdpi/ic_launcher.png" />
+        <splash density="land-hdpi" src="www/res/screen/android/mipmap-hdpi/ic_launcher.png" />
+        <splash density="land-xhdpi" src="www/res/screen/android/mipmap-xhdpi/ic_launcher.png" />
+        <splash density="land-xxhdpi" src="www/res/screen/android/mipmap-xxhdpi/ic_launcher.png" />
+    </platform>
+    <platform name="ios">
+        <splash height="1136" platform="ios" src="www/res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" platform="ios" src="www/res/screen/ios/Default-667h.png" width="750" />
+        <splash height="2208" platform="ios" src="www/res/screen/ios/Default-736h.png" width="1242" />
+        <splash height="1242" platform="ios" src="www/res/screen/ios/Default-Landscape-736h.png" width="2208" />
+        <splash height="1536" platform="ios" src="www/res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="768" platform="ios" src="www/res/screen/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="2048" platform="ios" src="www/res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="1024" platform="ios" src="www/res/screen/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />
+        <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
+    </platform>
+    <platform name="wp8">
+       <splash height="1280" platform="wp8" src="www/res/screen/wp8/screen-portrait.jpg" width="768" />
+    </platform>
+    <platform name="windows">
+        <splash height="1920" platform="windows" src="www/res/screen/windows/SplashScreenPhone.scale-240.png" width="1152" />
+    </platform>
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>

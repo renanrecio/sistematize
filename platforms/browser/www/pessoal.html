@@ -1,0 +1,958 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+
+<!-- 
+<link href='font_montserrat.css' rel='stylesheet' type='text/css'>
+ -->
+
+		
+
+<script>
+
+function verificar_vazio(){
+	var conteudo;
+	
+	conteudo = document.getElementById("nome").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Nome");
+		document.getElementById("nome").focus();
+		return false;
+		
+	}
+	
+	conteudo = document.getElementById("email").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo E-mail");
+		document.getElementById("email").focus();
+		return false;
+		
+	}
+	
+	conteudo = document.getElementById("senha").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Senha");
+		document.getElementById("senha").focus();
+		return false;
+		
+	}
+	
+	
+	/*
+	conteudo = document.getElementById("telefone_comercial").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Telefone");
+		document.getElementById("telefone_comercial").focus();
+		return false;
+		
+	}
+	
+	
+	conteudo = document.getElementById("cep").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo CEP");
+		document.getElementById("cep").focus();
+		return false;
+		
+	}
+	
+	conteudo = document.getElementById("endereco").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Endereço");
+		document.getElementById("endereco").focus();
+		return false;
+		
+	}
+	
+	conteudo = document.getElementById("bairro").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Bairro");
+		document.getElementById("bairro").focus();
+		return false;
+		
+	}
+	
+	conteudo = document.getElementById("cidade").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Cidade");
+		document.getElementById("cidade").focus();
+		return false;
+		
+	}
+	
+	conteudo = document.getElementById("estado").value;
+	if(conteudo == ""){
+		
+		alert("Preencha o campo Estado");
+		document.getElementById("estado").focus();
+		return false;
+		
+	}
+	*/
+	
+	conteudo = document.getElementById("email").value;
+	conteudo2 = document.getElementById("confirmar_email").value;
+	if(conteudo != conteudo2){
+		
+		alert("Os emails no campo email e no confirmar email não conferem!");
+		return false;
+		
+	}
+}
+
+
+</script>
+
+
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+
+
+<script>
+
+function submeter(){
+	
+	if (verificar_vazio() == false) return false;
+	
+	var resp = confirm("Tem certeza que deseja salvar as alterações?")
+		if (resp){
+			document.getElementById("img_carregando").style.visibility = "visible";
+			document.getElementById("atualizar").value= "1";
+			
+			startRequest_update();
+		}
+}
+</script>
+
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" ></script> 
+		<!-- Inclusão do Jquery Validate -->
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.js" ></script>
+		 
+
+<script type="text/javascript">
+			var xmlHttp;
+			var url;
+			var obj;
+
+			function createXMLHttpRequest_cep() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_cep() {
+			createXMLHttpRequest_cep();
+			xmlHttp.onreadystatechange = handleStateChange_cep;
+			
+			
+			xmlHttp.open("GET", "http://cep.republicavirtual.com.br/web_cep.php?formato=json&cep="+document.getElementById("cep").value, true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send();
+			
+			
+			
+			}
+
+			
+			function handleStateChange_cep() {
+					if(xmlHttp.readyState == 4) {
+								if(xmlHttp.status == 200) {
+									
+									obj = JSON.parse(xmlHttp.responseText);
+									
+									if(obj.resultado == 1){
+										
+											document.getElementById("estado").value = obj.uf;
+											
+											document.getElementById("cidade").value = obj.cidade;
+											
+											document.getElementById("bairro").value = obj.bairro;
+											
+											//document.getElementById("cep_aviso").innerHTML = "";
+									
+									}else{
+										
+										//document.getElementById("cep_aviso").innerHTML = obj.message;
+										document.getElementById("estado").value = "";
+										document.getElementById("cidade").value = "";
+										document.getElementById("bairro").value = "";
+										
+										
+									}
+									
+									
+								}else{
+									
+										startRequest_cep2();
+										//alert("deu problema no status");
+								}
+					}
+			}
+			
+			//
+			
+			function startRequest_cep2() {
+			createXMLHttpRequest_cep();
+			xmlHttp.onreadystatechange = handleStateChangeV2;
+			
+			
+			xmlHttp.open("GET", "http://apps.widenet.com.br/busca-cep/api/cep.json?code="+document.getElementById("cep").value, true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send();
+			
+			
+			}
+
+			
+			function handleStateChangeV2() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				obj = JSON.parse(xmlHttp.responseText.trim());
+				
+				if(obj.status == 1){
+					
+						document.getElementById("estado").value = obj.state;
+						
+						document.getElementById("cidade").value = obj.city;
+						
+						document.getElementById("bairro").value = obj.district;
+						
+						//document.getElementById("cep_aviso").innerHTML = "";
+				
+				}else{
+					
+					//document.getElementById("cep_aviso").innerHTML = obj.message;
+					document.getElementById("estado").value = "";
+					document.getElementById("cidade").value = "";
+					document.getElementById("bairro").value = "";
+					
+					
+				}
+				
+				
+			}
+			}
+			}
+			
+			
+		//Aceitar somente numeros
+			
+			function Apenas_Numeros(caracter)
+			{
+			  var nTecla = 0;
+			  if (document.all) {
+				  nTecla = caracter.keyCode;
+			  } else {
+				  nTecla = caracter.which;
+			  }
+			  if ((nTecla> 47 && nTecla <58)
+			  || nTecla == 8 || nTecla == 127
+			  || nTecla == 0 || nTecla == 9  // 0 == Tab
+			  || nTecla == 13) { // 13 == Enter
+				  return true;
+			  } else {
+				  return false;
+			  }
+			}
+			
+			
+			////CPF
+		
+				
+
+			///Valida CPF
+			var cpf_valido = 0;			
+						
+			function validaCPF(cpf) 
+			 {
+			   erro = new String;
+			 
+				if ( (cpf.value.length == 11) || (cpf.value.length == 14) )
+				{	
+						cpf.value = cpf.value.replace('.', '');
+						cpf.value = cpf.value.replace('.', '');
+						cpf.value = cpf.value.replace('-', '');
+			 
+						var nonNumbers = /\D/;
+				
+						if (nonNumbers.test(cpf.value)) 
+						{
+								erro = "A verificacao de CPF suporta apenas números!"; 
+						}
+						else
+						{
+								if (cpf.value == "00000000000" || 
+										cpf.value == "11111111111" || 
+										cpf.value == "22222222222" || 
+										cpf.value == "33333333333" || 
+										cpf.value == "44444444444" || 
+										cpf.value == "55555555555" || 
+										cpf.value == "66666666666" || 
+										cpf.value == "77777777777" || 
+										cpf.value == "88888888888" || 
+										cpf.value == "99999999999") {
+										
+										erro = "CPF inválido";
+								}
+				
+								var a = [];
+								var b = new Number;
+								var c = 11;
+			 
+								for (i=0; i<11; i++){
+										a[i] = cpf.value.charAt(i);
+										if (i < 9) b += (a[i] * --c);
+								}
+				
+								if ((x = b % 11) < 2) { a[9] = 0 } else { a[9] = 11-x }
+								b = 0;
+								c = 11;
+				
+								for (y=0; y<10; y++) b += (a[y] * c--); 
+				
+								if ((x = b % 11) < 2) { a[10] = 0; } else { a[10] = 11-x; }
+				
+								if ((cpf.value.charAt(9) != a[9]) || (cpf.value.charAt(10) != a[10])) {
+									erro = "CPF inválido";
+									
+								}
+						}
+				}
+				else
+				{
+					if(cpf.value.length == 0)
+						return false
+					else
+						erro = "CPF inválido";
+				}
+				if (erro.length > 0) {
+						//alert(erro);
+						
+						//document.getElementById("cpf_aviso").innerHTML = erro;
+						alert(erro + ". Digite Novamente!");
+						cpf.focus();
+						cpf_valido = 0;
+						return false;
+				}else{
+					
+							cpf_valido = 1;
+
+				} 	
+				return true;	
+			 }
+			 
+			  function maskCPF(CPF) {
+				var evt = window.event;
+				kcode=evt.keyCode;
+				if (kcode == 8) return;
+				if (CPF.value.length == 3) { CPF.value = CPF.value + '.'; }
+				if (CPF.value.length == 7) { CPF.value = CPF.value + '.'; }
+				if (CPF.value.length == 11) { CPF.value = CPF.value + '-'; }
+				
+				//document.getElementById("cpf_aviso").innerHTML = "";
+			 }
+			 
+			 
+			//Verifica se o CPF já existe no BD 
+			 
+			function createXMLHttpRequest3() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_cpf() {
+			createXMLHttpRequest3();
+			xmlHttp.onreadystatechange = handleStateChange3;
+			
+			xmlHttp.open("GET", "https://acheloja.com/validar/cpf.php?cpf="+document.getElementById("cpf").value, true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send();
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange3() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				if(xmlHttp.responseText.trim() == "1"){
+					
+					//document.getElementById("cpf_aviso").innerHTML = "<?php echo $traducao['CPF_ja_cadastrado'];?>";
+					alert("CPF já cadastrado, verifique se já tem conta no AcheLoja!")
+					document.getElementById("cpf").focus();
+					return false;
+					
+				}else{
+					
+					if(cpf_valido == 1){
+						//document.getElementById("cpf_aviso").innerHTML = "";
+					}
+				}
+				
+						
+				
+				
+			}
+			}
+			}
+			
+			
+
+			function txtBoxFormat(strField, sMask, evtKeyPress) {
+				var i, nCount, sValue, fldLen, mskLen,bolMask, sCod, nTecla;
+			   
+				if(document.all) { // Internet Explorer
+					nTecla = evtKeyPress.keyCode;
+				}
+				else if(document.layers) { // Nestcape
+					nTecla = evtKeyPress.which;
+				}
+				else if(document.getElementById) { // FireFox
+					nTecla = evtKeyPress.which;
+				}
+			   
+				if (nTecla != 8) {
+			   
+				sValue = document.getElementById(strField).value;
+			   
+				// Limpa todos os caracteres de formatação que
+				// já estiverem no campo.
+				sValue = sValue.toString().replace( "-", "" );
+				sValue = sValue.toString().replace( "-", "" );
+				sValue = sValue.toString().replace( ".", "" );
+				sValue = sValue.toString().replace( ".", "" );
+				sValue = sValue.toString().replace( "/", "" );
+				sValue = sValue.toString().replace( "/", "" );
+				sValue = sValue.toString().replace( "(", "" );
+				sValue = sValue.toString().replace( "(", "" );
+				sValue = sValue.toString().replace( ")", "" );
+				sValue = sValue.toString().replace( ")", "" );
+				sValue = sValue.toString().replace( " ", "" );
+				sValue = sValue.toString().replace( " ", "" );
+				sValue = sValue.toString().replace( ":", "" );
+				fldLen = sValue.length;
+				mskLen = sMask.length;
+			   
+				i = 0;
+				nCount = 0;
+				sCod = "";
+				mskLen = fldLen;
+			   
+				while (i <= mskLen) {
+				bolMask = ((sMask.charAt(i) == "-") || (sMask.charAt(i) == ".") || (sMask.charAt(i) == "/"))
+				bolMask = bolMask || ((sMask.charAt(i) == "(") || (sMask.charAt(i) == ")") || (sMask.charAt(i) == " "))
+				bolMask = bolMask || (sMask.charAt(i) == ":")
+			   
+				if (bolMask) {
+				sCod += sMask.charAt(i);
+				mskLen++; }
+				else {
+				sCod += sValue.charAt(nCount);
+				nCount++;
+				}
+			   
+				i++;
+				}
+			   
+				//objForm[strField].value = sCod;
+				document.getElementById(strField).value = sCod;
+			   
+				if (nTecla != 8) { // backspace
+					if (sMask.charAt(i-1) == "9") { // apenas números...
+						return ((nTecla > 47) && (nTecla < 58)); } // números de 0 a 9
+					else { // qualquer caracter...
+						return true;
+					}
+				}
+				else {
+					return true;
+				}
+				}
+			}
+		
+			
+			
+		//Valida E-mail
+			
+			var email_valido = 0;
+			
+			function ValidarEmail(){
+				var obj = eval("document.getElementById(\"email\")");
+				
+				var txt = obj.value;
+				
+				var filtro = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+				if(filtro.test(txt) || txt.length == 0) {
+					
+					//document.getElementById("email_aviso").innerHTML = "";
+					email_valido = 1;
+					
+				} 
+				else {
+					
+					alert('Email com formato incorreto, verificar se não houve erro na escrita!');
+					//document.getElementById("email_aviso").innerHTML = "<?php echo $traducao['email_incorreto']; ?>";
+					email_valido = 0;
+					obj.focus();
+					
+				}
+				if(txt.length == 0 ){
+				  return false;
+				}
+				
+			}
+		 
+		 	
+			//Valida email e confirmação (para ver se conferem)
+			
+			function ValidarEmails()
+			{
+			  var obj = eval("document.forms[0].email");
+			  var obj2 = eval("document.forms[0].confirmar_email");
+			  var txt = obj.value;
+			  var txt2 = obj2.value;
+			  if(txt.length == 0 || txt2.length == 0){
+				  
+				  return false;
+			  }else{
+				  if(txt != txt2){
+					  alert('Confirmação de email não confere, verificar se não houve erro na escrita!');
+					  //document.getElementById("senha_aviso").innerHTML = "<?php echo $traducao['senha_nao_conferem']; ?>";
+					  obj2.focus();
+					  return false;
+				  }else{
+					  
+					  //document.getElementById("senha_aviso").innerHTML = "";
+				  }
+			  }
+			  
+			}
+			
+			//Carregar foto de perfil
+			 
+			function createXMLHttpRequest_carregar_foto_perfil() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_carregar_foto_perfil() {
+			createXMLHttpRequest_carregar_foto_perfil();
+			xmlHttp.onreadystatechange = handleStateChange_carregar_foto_perfil;
+			
+			var file = document.getElementById("foto_perfil");
+			
+			
+			/* Create a FormData instance */
+			var formData = new FormData();
+			/* Add the file */ 
+			formData.append("foto_perfil", file.files[0]);
+			formData.append('id_usuario', localStorage.id_usuario);
+
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/ajax_foto_perfil.php", true);
+			
+			xmlHttp.send(formData);
+			
+			//document.getElementById("foto_do_perfil").src = "https://acheloja.com/fotos/carregando.gif";
+			
+			document.getElementById("foto_do_perfil").src = "http://acheloja.com/fotos/carregandoQuad.gif";
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_carregar_foto_perfil() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				//alert("voltou");
+				document.getElementById("foto_do_perfil").src = xmlHttp.responseText.trim();
+				localStorage.foto_usuario = xmlHttp.responseText.trim();
+				document.getElementById("foto_perfil_menu").src = localStorage.foto_usuario;
+				
+			}
+			}
+			}
+
+			
+			
+//Carregar foto da CAPA
+
+			 
+			function createXMLHttpRequest_carregar_foto_capa() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_carregar_foto_capa() {
+			createXMLHttpRequest_carregar_foto_capa();
+			xmlHttp.onreadystatechange = handleStateChange_carregar_foto_capa;
+			
+			var file = document.getElementById("foto_capa");
+			
+			
+			/* Create a FormData instance */
+			var formData = new FormData();
+			/* Add the file */ 
+			formData.append("foto_capa", file.files[0]);
+			formData.append('id_usuario', localStorage.id_usuario);
+
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/ajax_capa_usuario.php", true);
+			
+			xmlHttp.send(formData);
+			
+			//document.getElementById("foto_da_capa").style.backgroundImage = "url('https://acheloja.com/fotos/carregando.gif')";
+			
+			document.getElementById("foto_da_capa").src = "http://acheloja.com/fotos/carregandoCapa.gif";
+			
+			
+		
+			}
+
+			
+			function handleStateChange_carregar_foto_capa() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				//alert("voltou");
+				document.getElementById("foto_da_capa").style.backgroundImage = "url('" + xmlHttp.responseText.trim() + "')";
+				
+			}
+			}
+			}		
+</script>
+
+	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_pessoal() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_pessoal_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_usuario="+localStorage.id_usuario+"&atualizar=0");
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("div_pessoal").innerHTML = document.getElementById("div_pessoal").innerHTML + str;
+				
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_pessoal();
+		
+		
+		
+			
+	//Verifica se o email já existe no BD 
+			
+			function createXMLHttpRequest4() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_email() {
+			createXMLHttpRequest4();
+			xmlHttp.onreadystatechange = handleStateChange4;
+			
+			xmlHttp.open("GET", "https://acheloja.com/validar/editar_email.php?email="+document.getElementById("email").value+"&email_antigo="+localStorage.email_usuario, true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send();
+			
+			
+		
+			}
+
+			
+			function handleStateChange4() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			
+				if(xmlHttp.responseText.trim() == "1"){
+					
+					//document.getElementById("email_aviso").innerHTML = "<?php echo $traducao['email_ja_cadastrado']; ?>";
+					alert("Email já cadastrado, verifique se já possui cadastro no AcheLoja!")
+					document.getElementById("email").focus();
+					return false;
+					
+				}else{
+					
+					//alert("não achou nada!")
+					
+				}
+				
+						
+				
+				
+			}
+			}
+			}
+			
+	
+	//Atualizar informações pessoais no BD 
+			
+			function createXMLHttpRequest_update() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_update() {
+			createXMLHttpRequest_update();
+			xmlHttp.onreadystatechange = handleStateChange_update;
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_pessoal_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			
+			xmlHttp.send("id_usuario="+localStorage.id_usuario+"&email="+document.getElementById("email").value+"&nome="+document.getElementById("nome").value+"&senha="+document.getElementById("senha").value+"&telefone_comercial="+document.getElementById("telefone_comercial").value+"&cep="+document.getElementById("cep").value+"&endereco="+document.getElementById("endereco").value+"&cidade="+document.getElementById("cidade").value+"&bairro="+document.getElementById("bairro").value+"&estado="+document.getElementById("estado").value+"&atualizar=1");
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_update() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			
+			var str = xmlHttp.responseText.trim();
+			
+				if(xmlHttp.responseText.trim() != ""){
+				
+						var pos_nome = str.indexOf("#nome");
+						var pos_email = str.indexOf("#email"); 
+						var pos_fim = str.indexOf("#fim");
+						
+						
+						
+						localStorage.nome_usuario = str.substring((pos_nome+5), pos_email);
+						localStorage.email_usuario = str.substring((pos_email+6), pos_fim);
+						
+						window.location.href="pessoal.html";
+		
+					
+				}else{
+					
+					alert("Houve algum erro ao atualizar os dados! Tente novamente!");
+					
+					window.location.href="pessoal.html";
+					
+					
+				}
+				
+						
+				
+				
+			}
+			}
+			}
+			
+	
+</script>   
+
+
+
+<script>
+
+function alterar_email(){
+	document.getElementById("email").style.visibility = "visible";
+	document.getElementById("confirmar_email").style.visibility = "visible";
+	document.getElementById("p_email").style.visibility = "hidden";
+	
+}
+
+function alterar_senha(){
+	document.getElementById("senha").style.visibility = "visible";
+	document.getElementById("p_senha").style.visibility = "hidden";
+	
+}
+
+</script>
+	
+
+</head>
+
+<body>
+
+<div id="div_pessoal" style="position:absolute; width:100%; top:3em; left:0%;">
+
+
+</div>
+
+<!--Inicio MENU alterado -->
+	
+<div id="menu">
+
+</div>	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+<script> 
+    $(function(){
+      $("#menu").load("menu_fixo.html"); 
+    });
+</script> 
+
+<script>
+	function sair(){
+
+		if(!confirm("Tem certeza que deseja SAIR?")){
+			return false;
+		}
+		localStorage.nome_usuario = "";
+		localStorage.id_usuario = "";
+		localStorage.foto_usuario = "";
+		localStorage.email_usuario = "";
+
+		window.location.href="index.html"
+			
+
+	}
+
+</script>
+	
+<img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em;" /> 
+
+ 
+ <a href="pessoal.html" style="text-decoration: none;"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar_.png" style="position: fixed; left: 3%; top:0.1em; width:2.8em; height:2.8em;"/> <span id="nome_usuario" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; "></span></div></a>
+
+ <div onclick="sair()" style="position: fixed;  top:0.1em; right:30%;"><img src="fotos/sair.png" style="position: absolute; top:0.45em; left:0%; width:2em; height:2em; "/> <span style="font-family: Montserrat;  position: absolute; top:0.6em; left:1.8em; font-size: 1.3em; font-weight:bold; color: white;">SAIR</span></div>
+	
+ 
+ <!--
+<div onclick="sair()" style="position: fixed;  top:0.1em; right:30%;"><img src="fotos/sair.png" style="position: absolute; top:0.1em; left:0%; width:2.8em; height:2.8em; "/> <span style="position: absolute; top:0.6em; left:1.5em; font-size: 1.3em; font-weight:bold; color: white;">SAIR</span></div>
+	-->
+<script>
+
+//if( (localStorage.foto_usuario) != '') 
+if( ( (localStorage.foto_usuario) != '') && (typeof (localStorage.foto_usuario) !== "undefined") ) document.getElementById("foto_perfil_menu").src = localStorage.foto_usuario;
+
+
+var nome_menu = localStorage.nome_usuario;
+
+var pos_espaco = nome_menu.indexOf(" ");
+
+//definir tamanho do nome
+if(nome_menu.length > 12){
+	nome_menu = nome_menu.substring(0,pos_espaco);
+}
+
+document.getElementById("nome_usuario").innerHTML = nome_menu;
+
+
+</script>	
+	
+<!--FIM MENU alterado -->	
+	
+
+<a href="pessoal.html"><img src="fotos/pessoa_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
+	
+	
+</body>
+</html>

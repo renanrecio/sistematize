@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+
+<meta name="google-site-verification" content="Wiq9h-MVFjBO3hYHciruU4k0Wk08XVFGfFgvRQi_YPM" />
+
+<meta name="Keywords" content="publicar, publicar do brasil, listaonline, lista online, guia, guia de lojas, empresa, acheloja.com, lojas, loja, lista, busca de lojas, busca de produtos, guia local, busca local, consulta serviços produtos, lista telefonica, telefones, endereços." />
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+
+<meta name="description" content="Você escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais próximo de você!">
+
+
+<link rel="stylesheet" type="text/css" href="FolhaEstilo.css" media="screen" />
+
+
+
+
+
+<style>
+
+::-webkit-input-placeholder {
+   color: gray;
+   font: 1em verdana, arial, sans-serif;
+}
+
+:-moz-placeholder {
+   color: gray;
+   font: 1em verdana, arial, sans-serif;
+}
+
+::-moz-placeholder {
+   color: gray;  
+   font: 1em verdana, arial, sans-serif;
+}
+
+:-ms-input-placeholder {  
+   color: gray;  
+   font: 1em verdana, arial, sans-serif;
+}
+
+</style>
+
+<style type="text/css">
+   .labels {
+     color: black;
+     background-color: white;
+     font-family: "Lucida Grande", "Arial", sans-serif;
+     font-size: 2em;
+     font-weight: bold;
+     text-align: center;
+     width: 20%;
+     border: 2px solid black;
+     white-space: nowrap;
+   }
+ </style>
+ 
+ <script>
+ 
+ var esta_aumentado = 0;
+ 
+ function aumentar_mapa(e){
+	 
+	 if (esta_aumentado == 0){
+		e.style.height = "70%";
+		esta_aumentado = 1;
+		google.maps.event.trigger(map, "resize");
+		//initialize();
+	 }
+
+ }
+ 
+  function diminuir_mapa(){
+	
+   	if (esta_aumentado == 1){
+		document.getElementById("map-canvas").style.height = "10em";
+		esta_aumentado = 0;
+		google.maps.event.trigger(map, "resize");
+		//map.setCenter(results[0].geometry.location);
+		//initialize();
+		
+	}
+
+ }
+ 
+ </script>
+ 
+ <script>
+
+<?php 
+ ///Essa função foi feita caso o usuario escolher uma Vitrine Virtual e resolver voltar dai temos que resetar a variaves JavaScript para chamar o ajax e colocar os produtos na posição cert
+ //antes ele mantinha as posições até onde foi aberto os produtos e quando voltava ficava um pedaço em branco no meio da tele entre os produtos
+?>
+function setDefault(){
+	  
+	 if( (document.getElementById("top_caso_voltar").value) != ''){
+		document.getElementById("contador_geral").value =  document.getElementById("contador_geral_caso_voltar").value;
+		document.getElementById("contador_geral_prod1").value =  document.getElementById("contador_geral_prod1_caso_voltar").value;
+		document.getElementById("contador_geral_prod2").value =  document.getElementById("contador_geral_prod2_caso_voltar").value;
+		document.getElementById("contador").value = document.getElementById("contador_caso_voltar").value;
+		document.getElementById("top").value = document.getElementById("top_caso_voltar").value;
+		document.getElementById("left").value = document.getElementById("left_caso_voltar").value;
+		  
+	 }//fim do iff
+	  
+}
+  
+</script>
+
+
+<title>AcheLoja</title>
+</br></br>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59921000-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script>
+
+function aparecer_localizacao(e){
+		
+	e.getElementsByTagName('div')[0].style.visibility= "visible";
+	
+}
+
+function desaparecer_localizacao(e){
+		
+	e.getElementsByTagName('div')[0].style.visibility= "hidden";
+}
+
+
+</script>
+
+<script language="javascript" type="text/javascript">
+function chamar_vitrine(nick_site){
+		
+	localStorage.nick_site = nick_site;
+	
+	window.location.href="vitrine_virtual.html";
+	
+
+}
+
+</script>
+
+
+</head>
+     <body onload="setDefault()"  >
+	 
+		
+
+<script>
+
+function abrir_filtro(){
+	
+	document.getElementById("div_filtro").style.visibility = "visible";
+	document.getElementById("div_fundo_filtro").style.visibility = "visible";
+	
+}
+
+
+function fechar(){
+	
+	document.getElementById("div_filtro").style.visibility = "hidden";
+	document.getElementById("div_fundo_filtro").style.visibility = "hidden";
+	
+}
+
+</script>
+
+
+
+	
+<div id="div_produtos"  onmouseover="diminuir_mapa();" style="position: absolute; top:0em; width:100%; left: 0%;"></div>	
+	
+<!--	
+<div id="map-canvas" onclick="aumentar_mapa(this); "  style=" position:absolute; top: 1em; left:0%; width: 100%; height: 10em;" ></div>
+		
+-->		
+		
+
+ <form name="formulario" action="#" method="post">
+       <input type="hidden" value="0" id="contador_geral" name="contador_geral" />
+       <input type="hidden" value="0" id="contador_geral_prod1" name="contador_geral_prod1" />
+       <input type="hidden" value="0" id="contador_geral_prod2" name="contador_geral_prod2" />
+       <input type="hidden" value="1" id="contador" name="contador" />
+       <input type="hidden" value="5" id="top" name="top" />
+       <input type="hidden" value="2" id="left" name="left" />
+	   <input type="hidden" value="1" id="tem_loja_na_cidade" name="tem_loja_na_cidade" />
+ </form>
+
+ 
+<form name="formulario_caso_voltar" action="#" method="post">
+       <input type="hidden" value="8" id="contador_geral_caso_voltar" name="contador_geral_caso_voltar" />
+       <input type="hidden" value="0" id="contador_geral_prod1_caso_voltar" name="contador_geral_prod1" />
+       <input type="hidden" value="8" id="contador_geral_prod2_caso_voltar" name="contador_geral_prod2_caso_voltar" />
+       <input type="hidden" value="1" id="contador_caso_voltar" name="contador_caso_voltar" />
+       <input type="hidden" value="5" id="top_caso_voltar" name="top_caso_voltar" />
+       <input type="hidden" value="2" id="left_caso_voltar" name="left_caso_voltar" />
+	   <input type="hidden" value="1" id="tem_loja_na_cidade_caso_voltar" name="tem_loja_na_cidade_caso_voltar" />
+ </form>
+
+ 
+ 
+
+
+	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest_mais_produtos() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_mais_produtos() {
+			createXMLHttpRequest_mais_produtos();
+			xmlHttp.onreadystatechange = handleStateChange_mais_produtos;
+			
+			cep_bairro = localStorage.cep_bairro;
+			cidade = localStorage.cidade;
+			
+			//alert("cep:"+cep_bairro+" - cidade:"+ localStorage.cidade + "");
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_lojas_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias= and ( 0 or categoria like 'Roupas'  or categoria like 'Calçados'  or categoria like 'Acessórios'  or categoria like 'Info e Eletro'  or categoria like 'Estética e Saúde'  or categoria like 'Outros'  )&cep_bairro=" + localStorage.cep_bairro + "&cidade=" + localStorage.cidade + "&tem_loja_na_cidade=1");
+			//xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias= and ( 0 or categoria like 'Roupas'  or categoria like 'Calçados'  or categoria like 'Acessórios'  or categoria like 'Info e Eletro'  or categoria like 'Estética e Saúde'  or categoria like 'Outros'  )&cep_bairro=04297000&cidade=São Paulo&tem_loja_na_cidade=1");
+			
+			
+			
+			//alert("contador_geral=" + document.getElementById("contador_geral").value + "&top=" + document.getElementById("top").value+ "&left=" + document.getElementById("left").value +"");
+			top_ultimo_prod = document.getElementById("top").value;
+			
+			top_ultimo_prod = parseInt(top_ultimo_prod) + 8;
+			
+			document.getElementById("img_carregando_produtos").style.top = top_ultimo_prod.toString()+"em";
+			document.getElementById("img_carregando_produtos").style.visibility = "visible";
+			
+			//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_mais_produtos() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				var pos_cg = str.indexOf("#cg");
+				var pos_cg_p1 = str.indexOf("#cgp1");
+				var pos_cg_p2 = str.indexOf("#cgp2");
+				
+				var pos_ct = str.indexOf("#ct");
+				var pos_t = str.indexOf("#t");
+				var pos_l = str.indexOf("#l");
+				
+				//alert(str);
+				
+				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+				document.getElementById("div_produtos").innerHTML = document.getElementById("div_produtos").innerHTML + str.substring(0, pos_cg);
+				
+				
+				document.getElementById("contador_geral").value =  str.substring((pos_cg+3), pos_cg_p1);
+				document.getElementById("contador_geral_prod1").value =  str.substring((pos_cg_p1+5), pos_cg_p2);
+				document.getElementById("contador_geral_prod2").value =  str.substring((pos_cg_p2+5), pos_ct);
+				document.getElementById("contador").value = str.substring((pos_ct+3), pos_t);
+				document.getElementById("top").value = str.substring((pos_t+2), pos_l);
+				document.getElementById("left").value = str.substring((pos_l+2), str.length);
+				
+				
+			}
+			}
+			}
+			
+		
+			
+			
+			
+</script>   
+<script>
+
+function checar(categoria){
+	
+	 var x = document.getElementById("categoria"+categoria).checked;
+	 
+	 if(x == true){
+		 
+		document.getElementById("categoria"+categoria).checked = false;
+		document.getElementById("categoria_escrito"+categoria).style.color = "gray";
+		
+	 }else{
+		 
+		 document.getElementById("categoria"+categoria).checked = true;
+		 
+		document.getElementById("categoria_escrito"+categoria).style.color = "green";
+		 
+	 }
+	 
+	
+}
+
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+$(function () {
+		
+       $(window).scroll(function () {
+			if($(window).scrollTop() + $(window).height() > $(document).height()-1500) {
+					  //alert("foi");
+					  startRequest_mais_produtos();
+						// add your custom function here. i.e what you want to do.
+			 }
+			 desaparecer_busca_produto(); 
+			 desaparecer_busca_loja();
+		});
+});
+</script>
+
+
+<script>
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		//setTimeout(function(){ diminuir_mapa(); map.setCenter(posicao_inicial); }, 1777;
+</script> 
+ 
+ 
+
+ 
+ 
+<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; border: 0.5px dashed; visibility: hidden; width:20%; position: absolute; left:40%;" />
+  
+<!--	   
+<a href="#div_filtro"><img onclick="abrir_filtro()"  src="fotos/filtro.png" style="position: fixed; top:0%; left:43%; width:1em;" /><span  onclick="abrir_filtro()" style="position: fixed; top:0%; left:48%; width:10%; cursor: pointer; font-size: 1em; color: white;" > Filtro </span></a>
+	-->
+ 
+<script>
+startRequest_mais_produtos();
+</script> 
+ 
+
+ 
+ <!-- Filtros -->
+<script>
+ 
+ var busca_loja = 0;
+ 
+function aparecer_busca_loja(){
+	if(busca_loja == 0){
+		document.getElementById("busca_loja").style.visibility = "visible";
+		busca_loja = 1;
+	}else{
+		document.getElementById("busca_loja").style.visibility = "hidden";
+		busca_loja = 0;
+	}
+
+} 
+
+
+function desaparecer_busca_loja(){
+	
+	document.getElementById("busca_loja").style.visibility = "hidden";
+	busca_loja = 0;
+} 
+
+var busca_produto = 0;
+ 
+function aparecer_busca_produto(){
+	if(busca_produto == 0){
+		document.getElementById("busca_produto").style.visibility = "visible";
+		busca_produto = 1;
+	}else{
+		document.getElementById("busca_produto").style.visibility = "hidden";
+		busca_produto = 0;
+	}
+
+} 
+
+function desaparecer_busca_produto(){
+	
+	document.getElementById("busca_produto").style.visibility = "hidden";
+	busca_produto = 0;
+
+} 
+ 
+ 
+ function filtrar(){
+ 
+	 localStorage.cep_bairro = document.getElementById("cep_bairro").value;
+	 localStorage.cidade = document.getElementById("cidade").value;
+	 
+	 window.location.href="busca.html";
+ 
+ }
+ 
+ 
+ </script>
+ <script>
+ 
+ function buscar_loja(){
+ 
+	localStorage.nome_loja = document.getElementById("nome_da_loja_buscar").value;
+	 
+	window.location.href="buscar_lojas.html";
+ 
+ }
+ 
+ </script>
+ 
+ 
+<script type="text/javascript">
+
+			function createXMLHttpRequest_categorias() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_categorias() {
+			createXMLHttpRequest_categorias();
+			xmlHttp.onreadystatechange = handleStateChange_categorias;
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_categorias_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send();
+			
+			}
+
+			
+			function handleStateChange_categorias() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("categorias_produtos").innerHTML = document.getElementById("categorias_produtos").innerHTML + str;
+				
+				
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_categorias();
+			
+</script>   
+
+ 
+<div onclick="desaparecer_busca_loja(); aparecer_busca_produto()">
+
+	<img  src="" width="55%" style=" position:fixed; background-color: #0054a6; top:1.7em; left:0%; height: 1.7em; opacity:0.90; filter:alpha(opacity=90);" /> 
+	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:1.8em; left:1%;  width:1.5em; height:1.5em; " /><span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:2em; left:1.2em; width:50%; color: white;"> Achar Produto </span> 
+</div>
+
+	
+<div onclick="aparecer_busca_loja(); desaparecer_busca_produto()" >
+	<img  src="" width="45%" style=" position:fixed; background-color: #0054a6; top:1.7em; left:55%; height: 1.7em; opacity:0.90; filter:alpha(opacity=90);" /> 
+ 
+	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:1.8em; left:55%; width:1.5em; height:1.5em;" /><span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 1em; font-weight:bold; top:2em; right:0%; width:45%; color: white;"> Achar Loja </span> 
+</div>
+ 
+ 
+<div id="busca_loja" style="visibility: hidden;">
+
+
+<img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3.4em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" /> 
+ 
+<input type="text" id="nome_da_loja_buscar" name="nome_da_loja_buscar" value="" placeholder="Escreva o Nome da Loja"  style=" position:fixed; font-size:1em; top:5em; left:10%; height: 1em; width: 80%; "/> 
+<input type="button" onclick="buscar_loja()" value="Achar" style=" position:fixed; background-color: #0054a6; top:9em; left:40%; height: 1.5em; width: 20%; color:white;" />
+ 
+</div>
+
+
+<div id="busca_produto" style="visibility: hidden;">
+
+
+<img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3.4em; left:0%; height: 13em; opacity:0.90; filter:alpha(opacity=90);" /> 
+				
+		<p style="position: fixed; top:3.7em; left: 10%; color:white; font-weight: bold; font-size:0.9em;" >Ache perto do:</p>
+		<input id="cep_bairro" name="cep_bairro" type="text" style="position: fixed; top:5.5em; height:1.2em; width:50%; left: 10%; font-weight: bold;font-size:16px; "  onkeypress="return Se_apertar_enter(event)" onclick = "clicar_input();"  placeholder="CEP ou Bairro" />
+		<p style="position: fixed; top:3.7em; left: 60.4%; color:white; font-weight: bold; font-size:0.9em;" >Cidade:</p>
+		<input id="cidade" name="cidade" type="text" style="position: fixed; top:5.5em; height:1.2em; width:30%; left: 60.4%; font-weight: bold; font-size:16px;" Value="São Paulo" onkeypress="return Se_apertar_enter(event)" onclick = "clicar_input();"  placeholder="Cidade" />
+		
+		<p style="position: fixed; top:7.5em; left: 10%; color:white; font-weight: bold; font-size:0.9em;" >Categorias:</p>
+		
+		<div id="categorias_produtos" style="overflow-y: scroll; position:fixed; left:10%; top:8.8em; height:15%; width:90%;" >
+		</div>
+		
+		
+		<input onclick="filtrar()" type="submit" style="position: fixed; top:13.5em; height:2em; width:20%; left: 40%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" Value="Achar"/>
+			
+</div>
+ 
+ 
+ 
+ 
+ <!--FIM dos Filtros -->
+ 
+ <div id="menu">
+
+</div>	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+<script> 
+    $(function(){
+      $("#menu").load("menu_fixo.html"); 
+    });
+</script> 
+  
+ 
+ 
+</body>
+	
+
+
+	
+</html>

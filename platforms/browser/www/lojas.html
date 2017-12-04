@@ -1,0 +1,2251 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+
+<meta name="google-site-verification" content="Wiq9h-MVFjBO3hYHciruU4k0Wk08XVFGfFgvRQi_YPM" />
+
+<meta name="Keywords" content="publicar, publicar do brasil, listaonline, lista online, guia, guia de lojas, empresa, acheloja.com, lojas, loja, lista, busca de lojas, busca de produtos, guia local, busca local, consulta serviços produtos, lista telefonica, telefones, endereços." />
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+
+<meta name="description" content="Você escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais próximo de você!">
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+
+
+
+
+<style>
+
+::-webkit-input-placeholder {
+   color: gray;
+   font: 50px verdana, arial, sans-serif;
+}
+
+:-moz-placeholder {
+   color: gray;
+   font: 50px verdana, arial, sans-serif;
+}
+
+::-moz-placeholder {
+   color: gray;  
+   font: 50px verdana, arial, sans-serif;
+}
+
+:-ms-input-placeholder {  
+   color: gray;  
+   font: 50px verdana, arial, sans-serif;
+}
+
+</style>
+
+<style type="text/css">
+   .labels {
+     color: black;
+     background-color: white;
+     font-family: "Lucida Grande", "Arial", sans-serif;
+     font-size: 1.5em;
+     font-weight: bold;
+     text-align: center;
+     width: 20%;
+     border: 2px solid black;
+     white-space: nowrap;
+   }
+ </style>
+ 
+ <script>
+ 
+ var esta_aumentado = 0;
+ 
+ function aumentar_mapa(e){
+	 
+	 if (esta_aumentado == 0){
+		e.style.height = "70%";
+		esta_aumentado = 1;
+		google.maps.event.trigger(map, "resize");
+		//initialize();
+	 }
+
+ }
+ 
+  function diminuir_mapa(){
+	
+   	if (esta_aumentado == 1){
+		document.getElementById("map-canvas").style.height = "10em";
+		esta_aumentado = 0;
+		google.maps.event.trigger(map, "resize");
+		//map.setCenter(results[0].geometry.location);
+		//initialize();
+		
+	}
+
+ }
+ 
+ </script>
+ 
+ <script>
+
+function setDefault(){
+	  
+	 if( (document.getElementById("top_caso_voltar").value) != ''){
+		document.getElementById("contador_geral").value =  document.getElementById("contador_geral_caso_voltar").value;
+		document.getElementById("contador_geral_prod1").value =  document.getElementById("contador_geral_prod1_caso_voltar").value;
+		document.getElementById("contador_geral_prod2").value =  document.getElementById("contador_geral_prod2_caso_voltar").value;
+		document.getElementById("contador").value = document.getElementById("contador_caso_voltar").value;
+		document.getElementById("top").value = document.getElementById("top_caso_voltar").value;
+		document.getElementById("left").value = document.getElementById("left_caso_voltar").value;
+		  
+	 }//fim do iff
+	  
+}
+  
+</script>
+
+
+<title>AcheLoja</title>
+</br></br>
+
+
+
+</head>
+     <body onload="setDefault()"  >
+	 
+				
+		
+		
+<!--<img id="nome_empresa" style="position: absolute; top:3em; width:40%; left: 30%;" src="../fotos/logo.png" />
+	-->
+
+			
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>		   
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+ <script type="text/javascript" src="markerwithlabel.js"></script>
+<script type="text/javascript">
+
+
+		var mapOptions;
+		var pinColor;
+		var pinImage;
+		var pinShadow;
+		var address;
+		var posicao_inicial="";
+		var marker;
+		var iw;
+		var geocoder;
+		var map;
+		var latlng;
+		
+		
+		var marker1;
+		var iw1;
+		
+		
+		
+		
+		var marker2;
+		var iw2;
+		
+		
+		
+		
+		var marker3;
+		var iw3;
+		
+		
+		
+		
+		var marker4;
+		var iw4;
+		
+		
+		
+		
+		var marker5;
+		var iw5;
+		
+		
+		
+		
+		var marker6;
+		var iw6;
+		
+		
+		
+		
+		var marker7;
+		var iw7;
+		
+		
+		
+		
+		var marker8;
+		var iw8;
+		
+		
+		
+		
+		var marker9;
+		var iw9;
+		
+		
+		
+		
+		var marker10;
+		var iw10;
+		
+		
+		
+		
+		var marker11;
+		var iw11;
+		
+		
+		
+		
+		var marker12;
+		var iw12;
+		
+		
+		
+		
+		var marker13;
+		var iw13;
+		
+		
+		
+		
+		var marker14;
+		var iw14;
+		
+		
+		
+		
+		var marker15;
+		var iw15;
+		
+		
+		
+		
+		var marker16;
+		var iw16;
+		
+		
+		
+		
+		var marker17;
+		var iw17;
+		
+		
+		
+		
+		var marker18;
+		var iw18;
+		
+		
+		
+		
+		var marker19;
+		var iw19;
+		
+		
+		
+		
+		var marker20;
+		var iw20;
+		
+		
+		
+		
+		var marker21;
+		var iw21;
+		
+		
+		
+		
+		var marker22;
+		var iw22;
+		
+		
+		
+		
+		var marker23;
+		var iw23;
+		
+		
+		
+		
+		var marker24;
+		var iw24;
+		
+		
+		
+		
+		var marker25;
+		var iw25;
+		
+		
+		
+		
+		var marker26;
+		var iw26;
+		
+		
+		
+		
+		var marker27;
+		var iw27;
+		
+		
+		
+		
+		var marker28;
+		var iw28;
+		
+		
+		
+		
+		var marker29;
+		var iw29;
+		
+		
+		
+		
+		var marker30;
+		var iw30;
+		
+		
+		
+		
+		var marker31;
+		var iw31;
+		
+		
+		
+		
+		var marker32;
+		var iw32;
+		
+		
+		
+		
+		var marker33;
+		var iw33;
+		
+		
+		
+		
+		var marker34;
+		var iw34;
+		
+		
+		
+		
+		var marker35;
+		var iw35;
+		
+		
+		
+		
+		var marker36;
+		var iw36;
+		
+		
+		
+		
+		var marker37;
+		var iw37;
+		
+		
+		
+		
+		var marker38;
+		var iw38;
+		
+		
+		
+		
+		var marker39;
+		var iw39;
+		
+		
+		
+		
+		var marker40;
+		var iw40;
+		
+		
+
+function initialize() {
+	
+	  
+	  geocoder = new google.maps.Geocoder();
+	  //var latlng = new google.maps.LatLng(-23.629919, -46.602441);
+	  mapOptions = {
+	    zoom: 12	,
+	    //center: latlng,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	  }
+	  
+	 pinColor = "ffff80";
+     pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+     pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35));
+	  
+	
+	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	  
+	  address = "01001000 São Paulo Brasil";//document.getElementById('address').value;
+	  
+	 
+	  
+	  geocoder.geocode( { 'address': address}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+			map.setCenter(results[0].geometry.location);
+				
+			marker = new MarkerWithLabel({
+			   position: results[0].geometry.location,
+			   draggable: true,
+			   map: map,
+			   labelContent: "Localização escolhida",
+			   labelAnchor: new google.maps.Point(22, 0),
+			   labelClass: "labels", // the CSS class for the label
+			   labelStyle: {opacity: 0.75}
+			 });
+			
+			 iw = new google.maps.InfoWindow({
+			   content: "Localização escolhida"
+			 });
+			 
+
+				  
+			google.maps.event.addListener(marker, "click", function (e) { 
+				
+				iw.open(map, marker);
+				//window.location.href = "lolaloka";
+				
+			});
+		  
+		  
+		  
+		  
+		  
+	    } else {
+	      //alert('Geocode was not successful for the following reason: ' + status);
+	    }
+	  });
+
+	 ///
+	   
+	   
+			 		
+					latlng = new google.maps.LatLng(-23.6111903, -46.7026427);
+						
+					marker1 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Decatlhon",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw1 = new google.maps.InfoWindow({
+					   content: "Decatlhon"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker1, "click", function (e) { iw1.open(map, marker1); window.location.href = "47"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker1, "mouseover", function (e) { iw1.open(map, marker1);});
+				  
+				    google.maps.event.addListener(marker1, "mouseout", function (e) { iw1.close(map, marker1);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5863012, -46.7219618);
+						
+					marker2 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Cobasi",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw2 = new google.maps.InfoWindow({
+					   content: "Cobasi"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker2, "click", function (e) { iw2.open(map, marker2); window.location.href = "cobasi"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker2, "mouseover", function (e) { iw2.open(map, marker2);});
+				  
+				    google.maps.event.addListener(marker2, "mouseout", function (e) { iw2.close(map, marker2);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5992992, -46.6974838);
+						
+					marker3 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Paquetá",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw3 = new google.maps.InfoWindow({
+					   content: "Paquetá"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker3, "click", function (e) { iw3.open(map, marker3); window.location.href = "49"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker3, "mouseover", function (e) { iw3.open(map, marker3);});
+				  
+				    google.maps.event.addListener(marker3, "mouseout", function (e) { iw3.close(map, marker3);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5862763, -46.718765);
+						
+					marker4 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Ariane",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw4 = new google.maps.InfoWindow({
+					   content: "Ariane"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker4, "click", function (e) { iw4.open(map, marker4); window.location.href = "50"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker4, "mouseover", function (e) { iw4.open(map, marker4);});
+				  
+				    google.maps.event.addListener(marker4, "mouseout", function (e) { iw4.close(map, marker4);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6084009, -46.706182);
+						
+					marker5 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "SUB",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw5 = new google.maps.InfoWindow({
+					   content: "SUB"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker5, "click", function (e) { iw5.open(map, marker5); window.location.href = "sub"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker5, "mouseover", function (e) { iw5.open(map, marker5);});
+				  
+				    google.maps.event.addListener(marker5, "mouseout", function (e) { iw5.close(map, marker5);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6234844, -46.6989223);
+						
+					marker6 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Crocs",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw6 = new google.maps.InfoWindow({
+					   content: "Crocs"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker6, "click", function (e) { iw6.open(map, marker6); window.location.href = "crocs"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker6, "mouseover", function (e) { iw6.open(map, marker6);});
+				  
+				    google.maps.event.addListener(marker6, "mouseout", function (e) { iw6.close(map, marker6);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5731219, -46.6678869);
+						
+					marker7 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Fernanda Ramos Store",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw7 = new google.maps.InfoWindow({
+					   content: "Fernanda Ramos Store"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker7, "click", function (e) { iw7.open(map, marker7); window.location.href = "9"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker7, "mouseover", function (e) { iw7.open(map, marker7);});
+				  
+				    google.maps.event.addListener(marker7, "mouseout", function (e) { iw7.close(map, marker7);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5505199, -46.6333094);
+						
+					marker8 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "UZGAMES",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw8 = new google.maps.InfoWindow({
+					   content: "UZGAMES"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker8, "click", function (e) { iw8.open(map, marker8); window.location.href = "53"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker8, "mouseover", function (e) { iw8.open(map, marker8);});
+				  
+				    google.maps.event.addListener(marker8, "mouseout", function (e) { iw8.close(map, marker8);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6046024, -46.6687663);
+						
+					marker9 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Voltage Moda Feminina",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw9 = new google.maps.InfoWindow({
+					   content: "Voltage Moda Feminina"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker9, "click", function (e) { iw9.open(map, marker9); window.location.href = "10"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker9, "mouseover", function (e) { iw9.open(map, marker9);});
+				  
+				    google.maps.event.addListener(marker9, "mouseout", function (e) { iw9.close(map, marker9);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.52517, -46.6854661);
+						
+					marker10 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Fabrika de Som",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw10 = new google.maps.InfoWindow({
+					   content: "Fabrika de Som"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker10, "click", function (e) { iw10.open(map, marker10); window.location.href = "54"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker10, "mouseover", function (e) { iw10.open(map, marker10);});
+				  
+				    google.maps.event.addListener(marker10, "mouseout", function (e) { iw10.close(map, marker10);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6065537, -46.6701757);
+						
+					marker11 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Dolps",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw11 = new google.maps.InfoWindow({
+					   content: "Dolps"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker11, "click", function (e) { iw11.open(map, marker11); window.location.href = "11"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker11, "mouseover", function (e) { iw11.open(map, marker11);});
+				  
+				    google.maps.event.addListener(marker11, "mouseout", function (e) { iw11.close(map, marker11);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6025967, -46.6726877);
+						
+					marker12 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "São Casa",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw12 = new google.maps.InfoWindow({
+					   content: "São Casa"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker12, "click", function (e) { iw12.open(map, marker12); window.location.href = "saocasa"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker12, "mouseover", function (e) { iw12.open(map, marker12);});
+				  
+				    google.maps.event.addListener(marker12, "mouseout", function (e) { iw12.close(map, marker12);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6002335, -46.6671957);
+						
+					marker13 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Mundo Enxoval",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw13 = new google.maps.InfoWindow({
+					   content: "Mundo Enxoval"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker13, "click", function (e) { iw13.open(map, marker13); window.location.href = "25"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker13, "mouseover", function (e) { iw13.open(map, marker13);});
+				  
+				    google.maps.event.addListener(marker13, "mouseout", function (e) { iw13.close(map, marker13);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6046251, -46.6698724);
+						
+					marker14 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Catatau",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw14 = new google.maps.InfoWindow({
+					   content: "Catatau"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker14, "click", function (e) { iw14.open(map, marker14); window.location.href = "catatau"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker14, "mouseover", function (e) { iw14.open(map, marker14);});
+				  
+				    google.maps.event.addListener(marker14, "mouseout", function (e) { iw14.close(map, marker14);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6074985, -46.6696907);
+						
+					marker15 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Darco Moema",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw15 = new google.maps.InfoWindow({
+					   content: "Darco Moema"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker15, "click", function (e) { iw15.open(map, marker15); window.location.href = "27"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker15, "mouseover", function (e) { iw15.open(map, marker15);});
+				  
+				    google.maps.event.addListener(marker15, "mouseout", function (e) { iw15.close(map, marker15);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5995621, -46.6664763);
+						
+					marker16 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Rei do Whisky",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw16 = new google.maps.InfoWindow({
+					   content: "Rei do Whisky"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker16, "click", function (e) { iw16.open(map, marker16); window.location.href = "28"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker16, "mouseover", function (e) { iw16.open(map, marker16);});
+				  
+				    google.maps.event.addListener(marker16, "mouseout", function (e) { iw16.close(map, marker16);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6053666, -46.6711561);
+						
+					marker17 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Cia da Moda",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw17 = new google.maps.InfoWindow({
+					   content: "Cia da Moda"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker17, "click", function (e) { iw17.open(map, marker17); window.location.href = "29"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker17, "mouseover", function (e) { iw17.open(map, marker17);});
+				  
+				    google.maps.event.addListener(marker17, "mouseout", function (e) { iw17.close(map, marker17);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.599857, -46.6673183);
+						
+					marker18 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Pinheirense",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw18 = new google.maps.InfoWindow({
+					   content: "Pinheirense"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker18, "click", function (e) { iw18.open(map, marker18); window.location.href = "30"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker18, "mouseover", function (e) { iw18.open(map, marker18);});
+				  
+				    google.maps.event.addListener(marker18, "mouseout", function (e) { iw18.close(map, marker18);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6063637, -46.6700291);
+						
+					marker19 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Locitanne",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw19 = new google.maps.InfoWindow({
+					   content: "Locitanne"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker19, "click", function (e) { iw19.open(map, marker19); window.location.href = "32"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker19, "mouseover", function (e) { iw19.open(map, marker19);});
+				  
+				    google.maps.event.addListener(marker19, "mouseout", function (e) { iw19.close(map, marker19);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.607493, -46.6676026);
+						
+					marker20 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Magazine25",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw20 = new google.maps.InfoWindow({
+					   content: "Magazine25"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker20, "click", function (e) { iw20.open(map, marker20); window.location.href = "34"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker20, "mouseover", function (e) { iw20.open(map, marker20);});
+				  
+				    google.maps.event.addListener(marker20, "mouseout", function (e) { iw20.close(map, marker20);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-14.235004, -51.92528);
+						
+					marker21 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Lolaloka",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw21 = new google.maps.InfoWindow({
+					   content: "Lolaloka"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker21, "click", function (e) { iw21.open(map, marker21); window.location.href = "lolaloka"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker21, "mouseover", function (e) { iw21.open(map, marker21);});
+				  
+				    google.maps.event.addListener(marker21, "mouseout", function (e) { iw21.close(map, marker21);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.4809493, -46.6143395);
+						
+					marker22 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Clube D",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw22 = new google.maps.InfoWindow({
+					   content: "Clube D"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker22, "click", function (e) { iw22.open(map, marker22); window.location.href = "clubd"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker22, "mouseover", function (e) { iw22.open(map, marker22);});
+				  
+				    google.maps.event.addListener(marker22, "mouseout", function (e) { iw22.close(map, marker22);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5247556, -46.6582643);
+						
+					marker23 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Myshoes",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw23 = new google.maps.InfoWindow({
+					   content: "Myshoes"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker23, "click", function (e) { iw23.open(map, marker23); window.location.href = "8"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker23, "mouseover", function (e) { iw23.open(map, marker23);});
+				  
+				    google.maps.event.addListener(marker23, "mouseout", function (e) { iw23.close(map, marker23);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6111903, -46.7026427);
+						
+					marker24 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Decatlhon",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw24 = new google.maps.InfoWindow({
+					   content: "Decatlhon"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker24, "click", function (e) { iw24.open(map, marker24); window.location.href = "47"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker24, "mouseover", function (e) { iw24.open(map, marker24);});
+				  
+				    google.maps.event.addListener(marker24, "mouseout", function (e) { iw24.close(map, marker24);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5863012, -46.7219618);
+						
+					marker25 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Cobasi",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw25 = new google.maps.InfoWindow({
+					   content: "Cobasi"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker25, "click", function (e) { iw25.open(map, marker25); window.location.href = "cobasi"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker25, "mouseover", function (e) { iw25.open(map, marker25);});
+				  
+				    google.maps.event.addListener(marker25, "mouseout", function (e) { iw25.close(map, marker25);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5992992, -46.6974838);
+						
+					marker26 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Paquetá",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw26 = new google.maps.InfoWindow({
+					   content: "Paquetá"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker26, "click", function (e) { iw26.open(map, marker26); window.location.href = "49"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker26, "mouseover", function (e) { iw26.open(map, marker26);});
+				  
+				    google.maps.event.addListener(marker26, "mouseout", function (e) { iw26.close(map, marker26);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5862763, -46.718765);
+						
+					marker27 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Ariane",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw27 = new google.maps.InfoWindow({
+					   content: "Ariane"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker27, "click", function (e) { iw27.open(map, marker27); window.location.href = "50"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker27, "mouseover", function (e) { iw27.open(map, marker27);});
+				  
+				    google.maps.event.addListener(marker27, "mouseout", function (e) { iw27.close(map, marker27);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6084009, -46.706182);
+						
+					marker28 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "SUB",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw28 = new google.maps.InfoWindow({
+					   content: "SUB"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker28, "click", function (e) { iw28.open(map, marker28); window.location.href = "sub"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker28, "mouseover", function (e) { iw28.open(map, marker28);});
+				  
+				    google.maps.event.addListener(marker28, "mouseout", function (e) { iw28.close(map, marker28);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6234844, -46.6989223);
+						
+					marker29 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Crocs",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw29 = new google.maps.InfoWindow({
+					   content: "Crocs"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker29, "click", function (e) { iw29.open(map, marker29); window.location.href = "crocs"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker29, "mouseover", function (e) { iw29.open(map, marker29);});
+				  
+				    google.maps.event.addListener(marker29, "mouseout", function (e) { iw29.close(map, marker29);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5731219, -46.6678869);
+						
+					marker30 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Fernanda Ramos Store",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw30 = new google.maps.InfoWindow({
+					   content: "Fernanda Ramos Store"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker30, "click", function (e) { iw30.open(map, marker30); window.location.href = "9"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker30, "mouseover", function (e) { iw30.open(map, marker30);});
+				  
+				    google.maps.event.addListener(marker30, "mouseout", function (e) { iw30.close(map, marker30);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5505199, -46.6333094);
+						
+					marker31 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "UZGAMES",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw31 = new google.maps.InfoWindow({
+					   content: "UZGAMES"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker31, "click", function (e) { iw31.open(map, marker31); window.location.href = "53"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker31, "mouseover", function (e) { iw31.open(map, marker31);});
+				  
+				    google.maps.event.addListener(marker31, "mouseout", function (e) { iw31.close(map, marker31);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6046024, -46.6687663);
+						
+					marker32 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Voltage Moda Feminina",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw32 = new google.maps.InfoWindow({
+					   content: "Voltage Moda Feminina"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker32, "click", function (e) { iw32.open(map, marker32); window.location.href = "10"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker32, "mouseover", function (e) { iw32.open(map, marker32);});
+				  
+				    google.maps.event.addListener(marker32, "mouseout", function (e) { iw32.close(map, marker32);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.52517, -46.6854661);
+						
+					marker33 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Fabrika de Som",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw33 = new google.maps.InfoWindow({
+					   content: "Fabrika de Som"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker33, "click", function (e) { iw33.open(map, marker33); window.location.href = "54"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker33, "mouseover", function (e) { iw33.open(map, marker33);});
+				  
+				    google.maps.event.addListener(marker33, "mouseout", function (e) { iw33.close(map, marker33);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6065537, -46.6701757);
+						
+					marker34 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Dolps",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw34 = new google.maps.InfoWindow({
+					   content: "Dolps"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker34, "click", function (e) { iw34.open(map, marker34); window.location.href = "11"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker34, "mouseover", function (e) { iw34.open(map, marker34);});
+				  
+				    google.maps.event.addListener(marker34, "mouseout", function (e) { iw34.close(map, marker34);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6025967, -46.6726877);
+						
+					marker35 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "São Casa",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw35 = new google.maps.InfoWindow({
+					   content: "São Casa"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker35, "click", function (e) { iw35.open(map, marker35); window.location.href = "saocasa"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker35, "mouseover", function (e) { iw35.open(map, marker35);});
+				  
+				    google.maps.event.addListener(marker35, "mouseout", function (e) { iw35.close(map, marker35);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6002335, -46.6671957);
+						
+					marker36 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Mundo Enxoval",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw36 = new google.maps.InfoWindow({
+					   content: "Mundo Enxoval"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker36, "click", function (e) { iw36.open(map, marker36); window.location.href = "25"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker36, "mouseover", function (e) { iw36.open(map, marker36);});
+				  
+				    google.maps.event.addListener(marker36, "mouseout", function (e) { iw36.close(map, marker36);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6046251, -46.6698724);
+						
+					marker37 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Catatau",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw37 = new google.maps.InfoWindow({
+					   content: "Catatau"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker37, "click", function (e) { iw37.open(map, marker37); window.location.href = "catatau"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker37, "mouseover", function (e) { iw37.open(map, marker37);});
+				  
+				    google.maps.event.addListener(marker37, "mouseout", function (e) { iw37.close(map, marker37);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6074985, -46.6696907);
+						
+					marker38 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Darco Moema",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw38 = new google.maps.InfoWindow({
+					   content: "Darco Moema"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker38, "click", function (e) { iw38.open(map, marker38); window.location.href = "27"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker38, "mouseover", function (e) { iw38.open(map, marker38);});
+				  
+				    google.maps.event.addListener(marker38, "mouseout", function (e) { iw38.close(map, marker38);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.5995621, -46.6664763);
+						
+					marker39 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Rei do Whisky",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw39 = new google.maps.InfoWindow({
+					   content: "Rei do Whisky"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker39, "click", function (e) { iw39.open(map, marker39); window.location.href = "28"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker39, "mouseover", function (e) { iw39.open(map, marker39);});
+				  
+				    google.maps.event.addListener(marker39, "mouseout", function (e) { iw39.close(map, marker39);});
+				  
+				
+		
+			 		
+					latlng = new google.maps.LatLng(-23.6053666, -46.6711561);
+						
+					marker40 = new MarkerWithLabel({
+					   position: latlng,
+					   draggable: false,
+					   map: map,
+					   labelContent: "Cia da Moda",
+					   labelAnchor: new google.maps.Point(22, 0),
+					   labelClass: "labels", // the CSS class for the label
+					   labelStyle: {opacity: 0.75},
+					   icon: pinImage,
+					   shadow: pinShadow
+					 });
+					
+					 iw40 = new google.maps.InfoWindow({
+					   content: "Cia da Moda"
+					 });
+					 
+
+						  
+					google.maps.event.addListener(marker40, "click", function (e) { iw40.open(map, marker40); window.location.href = "29"; });
+					                                                                                                                                                                                           
+					google.maps.event.addListener(marker40, "mouseover", function (e) { iw40.open(map, marker40);});
+				  
+				    google.maps.event.addListener(marker40, "mouseout", function (e) { iw40.close(map, marker40);});
+				  
+				
+		
+			 			 
+			   
+
+
+
+
+
+
+			
+}
+
+
+</script>
+
+<script>
+
+function abrir_filtro(){
+	
+	document.getElementById("div_filtro").style.visibility = "visible";
+	document.getElementById("div_fundo_filtro").style.visibility = "visible";
+	
+}
+
+
+function fechar(){
+	
+	document.getElementById("div_filtro").style.visibility = "hidden";
+	document.getElementById("div_fundo_filtro").style.visibility = "hidden";
+	
+}
+
+</script>
+
+
+	
+<div id="div_produtos" onmouseover="diminuir_mapa();" style="position: absolute; top:10em; width:90%; left: 5%; " >	
+
+
+		   
+	 
+		<a href="8" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:5em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Myshoes</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/8/foto_produtos/8_1_2.1.64.90rasteira.png" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Rasteira</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$64,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 1em; ">Barra Funda - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="47" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:5em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Decatlhon</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/47/foto_produtos/47_1_capturadetela20160320_as12.03.04.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">ÓCULOS NATAÇÃO ...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$24,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 1em; ">Morumbi - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="clubd" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:45em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Clube D</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/215735/foto_produtos/215735_1_shorts.jpg" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Shorts jeans</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$80,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Água Fria - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="cobasi" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:45em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Cobasi</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/48/foto_produtos/48_1_capturadetela20160320_as12.16.03.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Ração Adulto Sp...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$99,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Butantã - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="lolaloka" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:85em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Lolaloka</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/2/foto_produtos/2_1_1.jpg" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Cropped de alci...</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$35,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Vila Vermelha - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="49" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:85em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Paquetá</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/49/foto_produtos/49_1_capturadetela20160320_as12.47.14.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Tênis Adidas Su...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$269,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Morumbi - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="8" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:110em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Myshoes</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/8/foto_produtos/8_2_2.2.94.90rasteirapinups.png" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Rasteira Pin Up...</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$94,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Barra Funda - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="50" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:110em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Ariane</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/50/foto_produtos/50_1_capturadetela20160320_as13.53.16.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Caixa com bombo...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$18,50</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Morumbi - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="clubd" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:165em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Clube D</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/215735/foto_produtos/215735_2_2.jpg" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Cropped com boj...</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$50,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Água Fria - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="sub" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:165em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">SUB</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/51/foto_produtos/51_1_capturadetela20160320_as14.02.06.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Vestido Curto c...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$278,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Real Parque - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="lolaloka" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:205em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Lolaloka</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/2/foto_produtos/2_2_2.jpg" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Croppedverdinho...</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$35,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Vila Vermelha - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="crocs" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:205em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Crocs</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/52/foto_produtos/52_1_capturadetela20160320_as14.09.42.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Sandália Crocs ...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$119,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Morumbi - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="8" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:245em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Myshoes</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/8/foto_produtos/8_3_2.4.302botasaltofino.png" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Bota Salto Fino</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$302,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Barra Funda - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="9" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:245em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Fernanda Ramos S...</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/9/foto_produtos/9_1_5.1.69.90blusapeplumcombojo.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Blusa Peplum co...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$69,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Moema - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+		 
+		<a href="clubd" >
+			<div onmouseover="aparecer_localizacao(this); " onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:285em; left: 2%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black;  text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">Clube D</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/215735/foto_produtos/215735_3_3.jpg" style="position:relative; width:10em; height:10em; "/>
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Biquíni</p>
+				
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$190,00</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">Água Fria - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+			    
+		<a href="53" >
+			<div onmouseover="aparecer_localizacao(this);" onmouseout="desaparecer_localizacao(this);" style="position: absolute; top:285em; left: 52%; width: 44%; height: 50%; line-height:20%; cursor: pointer;">
+			
+				<p style="position:relative; color: black; text-align: left; width:13em;  font-size: 1em; color: #0054a6; font-weight: bolder;">UZGAMES</p></br>
+			
+				<img  src="https://s3-sa-east-1.amazonaws.com/acheloja-ponto-com/53/foto_produtos/53_1_capturadetela20160320_as14.24.48.png" style="position:relative; width:10em; height:10em;" />
+					
+				<p style="position:relative;  color: #0054a6; font-size: 1em; font-weight: bolder;">Jogo Sniper Eli...</p>
+				
+				 <p style="position:relative; color: black; font-size: 1em; font-weight: bolder;">R$89,90</p>				
+				<div id="localicacao" style="visibility: hidden;">
+					</br>
+					<p style="position:relative; color: black; font-size: 0.5em; ">VILA VERMELHA  - São Paulo</p>
+					
+				</div>
+				
+			</div>
+		</a>
+		
+	
+		
+		
+</div>	
+	
+	
+<div id="map-canvas" onclick="aumentar_mapa(this); "  style=" position:absolute; top: 1em; left:0%; width: 100%; height: 10em;" ></div>
+		
+		
+		
+<!--
+<div id="mapa" onmouseover="aumentar_mapa(this); " onmouseout="diminuir_mapa();"  style=" position: absolute; top: 1em; width:100%; left:0%; height: 80%;"> 
+		<div id="map-canvas" style=" position:absolute; top: 0%; left:0%; width: 100%; height: 100%;" ></div>
+		
+</div>
+-->
+
+
+ <form name="formulario" action="#" method="post">
+       <input type="hidden" value="16" id="contador_geral" name="contador_geral" />
+       <input type="hidden" value="8" id="contador_geral_prod1" name="contador_geral_prod1" />
+       <input type="hidden" value="8" id="contador_geral_prod2" name="contador_geral_prod2" />
+       <input type="hidden" value="1" id="contador" name="contador" />
+       <input type="hidden" value="325" id="top" name="top" />
+       <input type="hidden" value="2" id="left" name="left" />
+	   <input type="hidden" value="1" id="tem_loja_na_cidade" name="tem_loja_na_cidade" />
+ </form>
+
+ 
+<form name="formulario_caso_voltar" action="#" method="post">
+       <input type="hidden" value="16" id="contador_geral_caso_voltar" name="contador_geral_caso_voltar" />
+       <input type="hidden" value="8" id="contador_geral_prod1_caso_voltar" name="contador_geral_prod1" />
+       <input type="hidden" value="8" id="contador_geral_prod2_caso_voltar" name="contador_geral_prod2_caso_voltar" />
+       <input type="hidden" value="1" id="contador_caso_voltar" name="contador_caso_voltar" />
+       <input type="hidden" value="325" id="top_caso_voltar" name="top_caso_voltar" />
+       <input type="hidden" value="2" id="left_caso_voltar" name="left_caso_voltar" />
+	   <input type="hidden" value="1" id="tem_loja_na_cidade_caso_voltar" name="tem_loja_na_cidade_caso_voltar" />
+ </form>
+
+ 
+ 
+<script>
+
+function aparecer_localizacao(e){
+		
+	e.getElementsByTagName('div')[0].style.visibility= "visible";
+	
+}
+
+function desaparecer_localizacao(e){
+		
+	e.getElementsByTagName('div')[0].style.visibility= "hidden";
+}
+</script>
+
+	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_mais_produtos() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			xmlHttp.open("POST", "ajax_lojas.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias=&cep_bairro=1001000&cidade=São Paulo&tem_loja_na_cidade=1");
+			
+			//alert("contador_geral=" + document.getElementById("contador_geral").value + "&top=" + document.getElementById("top").value+ "&left=" + document.getElementById("left").value +"");
+			top_ultimo_prod = document.getElementById("top").value;
+			
+			top_ultimo_prod = parseInt(top_ultimo_prod) + 8;
+			
+			document.getElementById("img_carregando_produtos").style.top = top_ultimo_prod.toString()+"em";
+			document.getElementById("img_carregando_produtos").style.visibility = "visible";
+			
+			//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				var str = xmlHttp.responseText.trim();
+				
+				var pos_cg = str.indexOf("#cg");
+				var pos_cg_p1 = str.indexOf("#cgp1");
+				var pos_cg_p2 = str.indexOf("#cgp2");
+				
+				var pos_ct = str.indexOf("#ct");
+				var pos_t = str.indexOf("#t");
+				var pos_l = str.indexOf("#l");
+				
+				
+				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+				document.getElementById("div_produtos").innerHTML = document.getElementById("div_produtos").innerHTML + str.substring(0, pos_cg);
+				
+				
+				document.getElementById("contador_geral").value =  str.substring((pos_cg+3), pos_cg_p1);
+				document.getElementById("contador_geral_prod1").value =  str.substring((pos_cg_p1+5), pos_cg_p2);
+				document.getElementById("contador_geral_prod2").value =  str.substring((pos_cg_p2+5), pos_ct);
+				document.getElementById("contador").value = str.substring((pos_ct+3), pos_t);
+				document.getElementById("top").value = str.substring((pos_t+2), pos_l);
+				document.getElementById("left").value = str.substring((pos_l+2), str.length);
+				
+				
+			}
+			}
+			}
+			
+		
+			
+			
+			
+</script>   
+<script>
+
+function checar(categoria){
+	
+	 var x = document.getElementById("categoria"+categoria).checked;
+	 
+	 if(x == true){
+		 
+		document.getElementById("categoria"+categoria).checked = false;
+		document.getElementById("categoria_escrito"+categoria).style.color = "gray";
+		
+	 }else{
+		 
+		 document.getElementById("categoria"+categoria).checked = true;
+		 
+		document.getElementById("categoria_escrito"+categoria).style.color = "green";
+		 
+	 }
+	 
+	
+}
+
+</script>
+
+<!--
+
+<p onclick="startRequest_mais_produtos()" id="mais_produtos" style="visibility: hidden; text-align: center; position: fixed; top:92%; border: solid 2px; border-color: #0054a6; width:10.5%; right:0%; cursor: pointer; font-size:20px; font-weight: bold; color: white; background-color: #0054a6; border-radius: 5px;"> Mais produtos </p>
+
+-->
+
+<script type="text/javascript">
+
+
+/*
+	$(function () {
+		
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 1000) {
+                //startRequest_mais_produtos();
+				//alert(window.innerHeight);
+				document.getElementById("mais_produtos").style.visibility = "visible";
+			
+            }else{
+				if ($(this).scrollTop() > 200) {
+               
+					diminuir_mapa();
+				}
+				
+				document.getElementById("mais_produtos").style.visibility = "hidden";
+				
+			}
+			
+			
+        });
+    });
+*/
+</script>
+
+<script type="text/javascript">
+$(function () {
+		
+       $(window).scroll(function () {
+			if($(window).scrollTop() + $(window).height() > $(document).height()-1500) {
+					  //alert("foi");
+					  startRequest_mais_produtos();
+						// add your custom function here. i.e what you want to do.
+			 }
+		});
+});
+</script>
+
+
+<script>
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		//setTimeout(function(){ diminuir_mapa(); map.setCenter(posicao_inicial); }, 1777;
+</script> 
+ 
+ 
+
+<table id="div_fundo_filtro" onclick="fechar()" style="visibility: hidden; position:fixed; width: 100%; height: 100%; background-color: black; opacity:0.70; filter:alpha(opacity=70);" >
+</table>
+		
+<div id="div_filtro" style="border-radius: 10px; visibility: hidden; position: absolute; top:10%; width:80%; left: 10%; height:70em; background-color: #f2f2f2; text-align:center;" >	
+	<form action="lojas.php" method="POST">
+		<p style="color:#0054a6; font-weight: bold; font-size: 3em;">Filtros</p>
+
+		
+
+		<p style="color:#0054a6; font-weight: bold; text-align: left; font-size: 3em;">Categorias:</p>	
+
+		
+
+		<input checked style="zoom:3; position:absolute; left:0%; " type="checkbox" id="categoria0" name="categoria0" value="Roupas"> <span id="categoria_escrito0" onclick="checar(0);" style="color:gray;  color: green;  font-size: 3em;"> Roupas </span><br>
+
+
+		<input checked style="zoom:3; position:absolute; left:0%; " type="checkbox" id="categoria1" name="categoria1" value="Calçados"> <span id="categoria_escrito1" onclick="checar(1);" style="color:gray;  color: green;  font-size: 3em;"> Calçados </span><br>
+
+
+		<input checked style="zoom:3; position:absolute; left:0%; " type="checkbox" id="categoria2" name="categoria2" value="Acessórios"> <span id="categoria_escrito2" onclick="checar(2);" style="color:gray;  color: green;  font-size: 3em;"> Acessórios </span><br>
+
+
+		<input checked style="zoom:3; position:absolute; left:0%; " type="checkbox" id="categoria3" name="categoria3" value="Info e Eletro"> <span id="categoria_escrito3" onclick="checar(3);" style="color:gray;  color: green;  font-size: 3em;"> Info e Eletro </span><br>
+
+
+		<input checked style="zoom:3; position:absolute; left:0%; " type="checkbox" id="categoria4" name="categoria4" value="Estética e Saúde"> <span id="categoria_escrito4" onclick="checar(4);" style="color:gray;  color: green;  font-size: 3em;"> Estética e Saúde </span><br>
+
+
+		<input checked style="zoom:3; position:absolute; left:0%; " type="checkbox" id="categoria5" name="categoria5" value="Outros"> <span id="categoria_escrito5" onclick="checar(5);" style="color:gray;  color: green;  font-size: 3em;"> Outros </span><br>
+
+
+	
+			</br>
+			
+			<input id="n_categorias" name="n_categorias" type="hidden"  value="6" />
+			
+			
+			<p style="color:#0054a6; font-weight: bold; text-align: left; font-size: 3em;">AcheLojas perto do:</p>
+
+			<input id="cep_bairro" name="cep_bairro" type="text" value="" style="font-size: 3em; font-weight: bold; width:90%"  placeholder="CEP ou Bairro" />
+
+
+			<p style="color:#0054a6; font-weight: bold; text-align: left; font-size: 3em;">Cidade:</p>
+
+			<input id="cidade" name="cidade" type="text" style="font-size: 3em; font-weight: bold; width:90%" value="São Paulo"  placeholder="Cidade" />
+
+			</br></br>
+			
+
+			<input type="submit" style="  height:1em; width:6em; left: 30%; font-weight: bold; color:white; background-color: #0070a1; font-size:3em; cursor: pointer;" Value="Filtrar"/>
+	</form>
+	
+	<p style="position: absolute; top:-1em; right:1%; color: red; cursor: pointer; font-size: 1em;" onclick="fechar()"> Fechar </p>
+</div>
+	
+
+
+ 
+  
+<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; border: 0.5px dashed; visibility: hidden; width:40%; position: absolute; left:30%;" />
+ 
+ 
+</body>
+	
+	
+
+	
+</html>

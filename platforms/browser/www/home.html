@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+
+ <link rel="stylesheet" href="lib/font-awesome-4.5.0/css/font-awesome.min.css" />
+
+  <title>AcheLoja</title>
+  
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+<style>
+p, input, span,a,li,placeholder,select,option,td,tr{
+	font-family: 'Montserrat', sans-serif;
+}
+
+body{
+	
+	background-color: #F9F9F9;
+}
+</style>
+</head>
+
+ <body onload="setDefault2();">
+			  
+		<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+
+
+		<style>
+
+		input,
+		textarea {
+			opacity: 0.5;
+			filter: alpha(opacity=50);
+			border:0.1px dashed;
+			background-color: #0070a1;
+		}
+
+		::-webkit-input-placeholder {
+		   color: lightgray;
+		   font: 1em verdana, arial, sans-serif;
+		}
+
+		:-moz-placeholder {
+		   color: lightgray;
+		   font: 1em verdana, arial, sans-serif;
+		}
+
+		</style>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+<script>
+//enviar o REG ID para o BD - para push notification
+			 
+			 var xmlHttp;
+			 
+			function createXMLHttpRequest_id_push() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_id_push(reg_id) {
+			createXMLHttpRequest_id_push();
+			xmlHttp.onreadystatechange = handleStateChange_id_push;
+			
+			
+			var regid = reg_id.trim();
+			
+			regid = regid.replace(" ", "");
+			
+			localStorage.id_dispositivo = regid;
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/app_reg_id_push_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
+			
+			
+		
+			}
+
+			
+			function handleStateChange_id_push() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}						
+</script>	
+
+		<title>AcheLoja</title>
+		</br></br>
+
+		<script>
+
+		function setDefault(){
+			  
+			 if( (document.getElementById("top_caso_voltar").value) != ''){
+				document.getElementById("contador_geral").value =  document.getElementById("contador_geral_caso_voltar").value;
+				document.getElementById("contador_geral_prod1").value =  document.getElementById("contador_geral_prod1_caso_voltar").value;
+				document.getElementById("contador_geral_prod2").value =  document.getElementById("contador_geral_prod2_caso_voltar").value;
+				document.getElementById("contador").value = document.getElementById("contador_caso_voltar").value;
+				document.getElementById("top").value = document.getElementById("top_caso_voltar").value;
+				document.getElementById("left").value = document.getElementById("left_caso_voltar").value;
+				  
+			 }//fim do iff
+			  
+		}
+		
+		
+		function setDefault2(){
+			  
+				document.getElementById("contador_geral").value =  0;
+				document.getElementById("contador_geral_prod1").value =  0;
+				document.getElementById("contador_geral_prod2").value = 0;
+				document.getElementById("contador").value = 1;
+				document.getElementById("top").value = 0;
+				document.getElementById("left").value = 2;
+				  
+			
+		}
+
+		  
+		</script>
+
+
+			
+				<script>
+					var windowHeight = window.innerHeight;
+					document.getElementsByTagName('body')[0].style.height = windowHeight + "px";
+					//alert(windowHeight);
+				</script>
+		
+		<div id="msg_sem_lojas"	style="position: absolute; top:0%; left:0%; width:100%; height:150%; visibility: hidden;" >
+		
+			<img src="https://acheloja.com/fotos/passo_a_passo_mobile.png"  style=" position:absolute; top:4em; background-color: #0054a6; width:80%; left:10%;" /> 
+				
+		</div>
+		
+		<div id="div_produtos" style="position: absolute; top:10%; left:0%; width:100%; visibility:visible;" ></div>	
+		
+		<div id="rodape_para_aparecer_produtos" style="position: absolute; width: 90%; left:5%; height: 30%; line-height:20%;">
+			
+			<p>&nbsp;</p>
+			</br>
+			<p>&nbsp;</p>
+			
+		</div>
+		
+		<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
+		
+		
+		<!-- Ver Vitrine Loja -->
+		<div id="div_vitrine_loja" style=" visibility: hidden; position: fixed; left:0%; top:0%; height:100%;  width:100%;">
+			<iframe id="iframe_vitrine_loja" src="vitrine_virtual.html" style="position: fixed; top:0%; width:100%; left:0%; height:100%; visibility: hidden;"></iframe>
+			<!--<span onclick="document.getElementById('div_produtos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" style="position:fixed; top:2em; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦ </span> -->
+			<img onclick="document.getElementById('div_produtos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" id="seta_voltar" src="fotos/seta_voltar.png" style=" position:fixed; top:2.75em; left:2%; width:2.5em; " />
+		</div>
+		
+		
+		
+			
+		<div id="menu">
+
+		</div>	
+			
+		<script> 
+			$(function(){
+			  $("#menu").load("menu_fixo.html"); 
+			});
+		</script> 		
+				
+
+
+		  
+		 <form name="formulario" action="#" method="post" style="position: absolute; bottom:0%; left:0%; width:10%;">
+			   <input type="hidden" value="0" id="contador_geral" name="contador_geral" />
+			   <input type="hidden" value="0" id="contador_geral_prod1" name="contador_geral_prod1" />
+			   <input type="hidden" value="0" id="contador_geral_prod2" name="contador_geral_prod2" />
+			   <input type="hidden" value="1" id="contador" name="contador" />
+			   <input type="hidden" value="0" id="top" name="top" />
+			   <input type="hidden" value="2" id="left" name="left" />
+			   <input type="hidden" value="1" id="tem_loja_na_cidade" name="tem_loja_na_cidade" />
+		 </form>
+
+		 
+		 
+		 
+		<form name="formulario_caso_voltar" action="#" method="post" style="position: absolute; bottom:0%; left:0%; width:10%;">
+			   <input type="hidden" value="8" id="contador_geral_caso_voltar" name="contador_geral_caso_voltar" />
+			   <input type="hidden" value="0" id="contador_geral_prod1_caso_voltar" name="contador_geral_prod1" />
+			   <input type="hidden" value="8" id="contador_geral_prod2_caso_voltar" name="contador_geral_prod2_caso_voltar" />
+			   <input type="hidden" value="1" id="contador_caso_voltar" name="contador_caso_voltar" />
+			   <input type="hidden" value="0" id="top_caso_voltar" name="top_caso_voltar" />
+			   <input type="hidden" value="2" id="left_caso_voltar" name="left_caso_voltar" />
+			   <input type="hidden" value="1" id="tem_loja_na_cidade_caso_voltar" name="tem_loja_na_cidade_caso_voltar" />
+		 </form>
+		 
+		 <!--
+		<script language="javascript" type="text/javascript">
+			
+			function chamar_vitrine(nick_site, id_anuncio){
+					
+				startRequest_clique_produtos(id_anuncio);
+				
+				localStorage.nick_site = nick_site;
+				
+				window.location.href="vitrine_virtual.html";
+				
+
+			}
+
+		</script>
+		-->
+
+		<!-- Validação do forumlário -->
+		<script type="text/javascript">
+					var top_ultimo_prod;
+					
+					var tem_conexao_internet = 1;
+				
+					function createXMLHttpRequest() {
+					if (window.ActiveXObject) {
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_mais_produtos() {
+					createXMLHttpRequest();
+					xmlHttp.onreadystatechange = handleStateChange;
+					
+					
+					xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrines_favoritas_app.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&id_usuario="+ localStorage.id_usuario +"&tem_loja_na_cidade=1");
+					
+					//alert("contador_geral=" + document.getElementById("contador_geral").value + "&top=" + document.getElementById("top").value+ "&left=" + document.getElementById("left").value +"");
+					
+					
+					
+					top_ultimo_prod = document.getElementById("top").value;
+					
+					top_ultimo_prod = parseInt(top_ultimo_prod) + 8;
+					
+					//document.getElementById("img_carregando_produtos").style.top = top_ultimo_prod.toString()+"em";
+					document.getElementById("img_carregando_produtos").style.visibility = "visible";
+					
+					document.getElementById("rodape_para_aparecer_produtos").style.top = top_ultimo_prod.toString()+"em";
+					
+					
+					//alert("Emails enviados com Sucesso!");
+					}
+
+					
+					function handleStateChange() {
+					if(xmlHttp.readyState == 4) {
+					if(xmlHttp.status == 200) {
+					//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+					//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+					
+						var str = xmlHttp.responseText.trim();
+						
+						var pos_cg = str.indexOf("#cg");
+						var pos_cg_p1 = str.indexOf("#cgp1");
+						
+						var pos_ct = str.indexOf("#ct");
+						var pos_t = str.indexOf("#t");
+						var pos_l = str.indexOf("#l");
+						
+						document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+						
+						document.getElementById("div_produtos").innerHTML = document.getElementById("div_produtos").innerHTML + str.substring(0, pos_cg);
+						
+						
+						document.getElementById("contador_geral").value =  str.substring((pos_cg+3), pos_cg_p1);
+						document.getElementById("contador_geral_prod1").value =  str.substring((pos_cg_p1+5), pos_ct);
+						document.getElementById("contador").value = str.substring((pos_ct+3), pos_t);
+						document.getElementById("top").value = str.substring((pos_t+2), pos_l);
+						document.getElementById("left").value = str.substring((pos_l+2), str.length);
+						
+						if( (document.getElementById("div_produtos").innerHTML) == '') document.getElementById("msg_sem_lojas").style.visibility = "visible";
+						//if( document.getElementById("contador_geral").value < 1 ) document.getElementById("msg_sem_lojas").style.visibility = "visible";
+
+						tem_conexao_internet = 1;
+						
+						
+					}else{
+			
+						if(tem_conexao_internet == 1){
+							document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+							alert("Sem Conexão com a Internet");
+							tem_conexao_internet = 0;
+						}
+					}
+					}
+					}
+					
+				
+					
+					
+					
+		</script>   
+			
+
+		<script type="text/javascript">
+		$(function () {
+				
+			   $(window).scroll(function () {
+					if(habilitar_scroll == true){
+						if($(window).scrollTop() + $(window).height() > $(document).height()-1500) {
+								  //alert("foi");
+								  startRequest_mais_produtos();
+									// add your custom function here. i.e what you want to do.
+						 }
+					}
+				});
+		});
+		</script>
+
+		<script>
+							
+							function createXMLHttpRequest_visualizar_vitrine() {
+							if (window.ActiveXObject) {
+							xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+							}
+							else if (window.XMLHttpRequest) {
+							xmlHttp = new XMLHttpRequest();
+							}
+							}
+
+							function startRequest_visualizar_vitrine() {
+							createXMLHttpRequest_visualizar_vitrine();
+							xmlHttp.onreadystatechange = handleStateChange_visualizar_vitrine;
+							
+							xmlHttp.open("POST", "https://acheloja.com/validar/atualizar_visualizacao_minhas_vitrine.php", true);
+							xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+							
+							xmlHttp.send("id_usuario="+localStorage.id_usuario+"");
+							
+							
+							}
+
+							
+							function handleStateChange_visualizar_vitrine() {
+							if(xmlHttp.readyState == 4) {
+							if(xmlHttp.status == 200) {
+								
+								//não fazer nada
+							
+							}
+							}
+							}		
+
+							
+
+		</script>
+
+
+
+
+
+		<script>
+		window.onbeforeunload = startRequest_visualizar_vitrine;
+		</script>
+
+		  
+		 <a href="home.html"><img src="fotos/casa_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
+
+	
+
+		<!-- 
+		 <div id="msg_sem_lojas" style="visibility: hidden; position: absolute; top:10%; width:90%; left:5%; height:75%; background-color: black; opacity:0.70; filter:alpha(opacity=70);">
+		 
+			<p style="color: white; font-size:1em;">Você ainda <b>não</b> está </br> <b>SEGUINDO</b> nenhuma Loja. </br></br>Clique no botão </br><a href="busca.html"><img src="fotos/lupa.png" width="100%"  style=" background-color: #0054a6; width:2.8em; height:2.8em;" /> </a></br>
+			para achar Produtos, Lojas e assim <b style="color:#0054a9;">SEGUIR SUAS LOJAS FAVORITAS</b>. </br> </br> Aqui aparecerão as <b style="color:#0054a9;">novidades</b> em <b style="color:#0054a9;">PRODUTOS</b> das suas <b style="color:#0054a9;">Lojas Favoritas</b> que estará <b>seguindo</b>!!</p>
+		
+		 </div>
+		 -->
+		 
+		 
+		 
+		<script>
+		startRequest_mais_produtos();
+		</script> 	
+
+</body>
+
+</html>

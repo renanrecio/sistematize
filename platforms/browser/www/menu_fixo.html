@@ -1,0 +1,506 @@
+﻿
+<script>
+//variavel global para liberar o scroll da pagina home, para aparecer mais produtos
+var habilitar_scroll = true;
+</script>
+
+<script>
+//verificar se não identificar nenhum usuario
+
+if(localStorage.id_usuario == ""){
+
+	window.location.href="index.html";
+		
+}
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+		
+<img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em;" /> 
+
+<!--
+<span id="acheloja_menu" name="acheloja_menu" style=" font-family: Montserrat; position: fixed; font-size: 1.3em; font-weight:bold; top:0.6em; right:2%; color: white;"> AcheLoja </span> 
+ -->
+ 
+ <a href="pessoal.html" style="text-decoration: none;"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar_.png" style="position: fixed; left: 3%; top:0.1em; width:2.8em; height:2.8em;"/> <span id="nome_usuario" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; "></span></div></a>
+
+	
+
+<img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> 
+<a href="home.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="busca.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="lojas_favoritas.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
+
+
+<script>
+
+
+if( ( (localStorage.foto_usuario) != '') && (typeof (localStorage.foto_usuario) !== "undefined") ) document.getElementById("foto_perfil_menu").src = localStorage.foto_usuario;
+
+var nome_menu = localStorage.nome_usuario;
+
+var pos_espaco = nome_menu.indexOf(" ");
+
+//definir tamanho do nome
+if(nome_menu.length > 12){
+	nome_menu = nome_menu.substring(0,pos_espaco);
+}
+
+document.getElementById("nome_usuario").innerHTML = nome_menu;
+
+</script>		
+
+
+
+
+<div id="novidades">
+</div>
+
+<!-- Quando a notificação for aberta alterar a data de vizualização -->
+<script type="text/javascript">
+//Carregar Lampada de novidades
+					
+					var xmlHttp2; 
+					
+					function createXMLHttpRequest_abrir_novidades() {
+					if (window.ActiveXObject) {
+					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp2 = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_abrir_novidades() {
+					createXMLHttpRequest_abrir_novidades();
+					xmlHttp2.onreadystatechange = handleStateChange_abrir_novidades;
+					
+					xmlHttp2.open("POST", "https://acheloja.com/validar/abrir_novidades.php", true);
+					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
+					
+					
+					}
+
+					
+					function handleStateChange_abrir_novidades() {
+					if(xmlHttp2.readyState == 4) {
+					if(xmlHttp2.status == 200) {
+						
+						window.location.href = "home.html";
+						
+					
+					}
+					}
+					}		
+
+					
+					function createXMLHttpRequest_novidades() {
+					if (window.ActiveXObject) {
+					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp2 = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_novidades() {
+					createXMLHttpRequest_novidades();
+					xmlHttp2.onreadystatechange = handleStateChange_novidades;
+					
+					xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
+					
+					
+					}
+
+					
+					function handleStateChange_novidades() {
+					if(xmlHttp2.readyState == 4) {
+					if(xmlHttp2.status == 200) {
+					
+						var str = xmlHttp2.responseText.trim();
+				
+						var marcador_novidades = str.indexOf("#n");
+						
+						document.getElementById("novidades").innerHTML = document.getElementById("novidades").innerHTML + str.substring(0, marcador_novidades);;
+						
+						//var novidades = str.substring((marcador_novidades+2), str.length);
+						
+						//if(novidades != '0') document.title = "(" + novidades.trim() + ") "+document.title;
+							
+						
+					
+					}
+					}
+					}		
+
+					//Executar função para ver se tem novidades
+					startRequest_novidades();
+</script>
+
+
+
+<script type="text/javascript">
+		var aberto=0;
+		
+		function abrir_balao_notificacao(){
+			
+			if(aberto == 0){
+				document.getElementById("notificacao").style.visibility="visible";
+				aberto = 1;
+			}else{
+			
+				if(aberto == 1){
+					document.getElementById("notificacao").style.visibility="hidden";
+					aberto = 0;
+				}
+			}
+		}
+		
+</script>
+
+<script type="text/javascript">
+$(function () {
+		
+       $(window).scroll(function () {
+			//if($(window).scrollTop() + $(window).height() > $(document).height()-50000) {
+					  //alert("foi");
+					 document.getElementById("notificacao").style.visibility="hidden";
+					 aberto = 0;
+			 //}
+		});
+});
+
+
+</script>
+
+
+<script language="javascript" type="text/javascript">
+	
+	function chamar_vitrine(nick_site, id_anuncio, id_produto){
+	
+		document.getElementById('iframe_vitrine_loja').src = "http://acheloja.com/m/carregando_app.php";
+		
+		//document.getElementById("img_carregando").style.visibility = "visible";
+		
+		if( (id_produto != '') || (id_produto != null) ){
+		
+			startRequest_clique_produtos(id_anuncio, id_produto, localStorage.id_usuario);
+		
+		}
+		
+		
+		localStorage.nick_site = nick_site;
+		
+		//window.location.href="vitrine_virtual.html";
+		document.getElementById('iframe_vitrine_loja').src = 'vitrine_virtual.html'; 
+		document.getElementById('div_produtos').style.visibility = 'hidden';
+		habilitar_scroll = false; 
+		document.getElementById('div_vitrine_loja').style.visibility = 'visible';
+		document.getElementById('iframe_vitrine_loja').style.visibility = 'visible'; 
+		
+		
+
+	}
+
+</script>
+
+
+<script>
+
+function recarregar_iframe(){
+
+	document.getElementById('iframe_vitrine_loja').src = 'vitrine_virtual.html';
+
+}
+
+</script>
+
+
+<script>
+//Conta o clique no produto do anunciante
+			 
+			function createXMLHttpRequest_clique_produtos() {
+			if (window.ActiveXObject) {
+			xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp2 = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_clique_produtos(id_anuncio, id_produto, id_usuario) {
+			createXMLHttpRequest_clique_produtos();
+			xmlHttp2.onreadystatechange = handleStateChange_clique_produtos;
+			
+			xmlHttp2.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
+			xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			//xmlHttp2.send("id="+id+"&tipo=clique_produto");
+			xmlHttp2.send("id="+id_anuncio+"&tipo=clique_produto&id_usuario="+id_usuario+"&id_produto="+id_produto+"");
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_clique_produtos() {
+			if(xmlHttp2.readyState == 4) {
+			if(xmlHttp2.status == 200) {
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}
+</script>
+
+<script>			
+		//Conta o visualização do produto do anunciante
+					
+					
+					 
+					function createXMLHttpRequest_visualizacao_produtos() {
+					if (window.ActiveXObject) {
+					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp2 = new XMLHttpRequest();
+					}
+					}
+					
+					
+					function startRequest_visualizacao_produtos(id) {
+					createXMLHttpRequest_visualizacao_produtos();
+					xmlHttp2.onreadystatechange = handleStateChange_visualizacao_produtos;
+					
+					xmlHttp2.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
+					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp2.send("id="+id+"&tipo=visualizacao_produto");
+					
+					
+					
+					
+				
+					}
+
+					
+					function handleStateChange_visualizacao_produtos() {
+					if(xmlHttp2.readyState == 4) {
+					if(xmlHttp2.status == 200) {
+						
+						
+						//Não fazer nada
+						 
+						
+					}
+					}
+					}			
+
+</script>
+
+
+		<div class="app" style="visibility:hidden;">
+        <div id="deviceready" class="blink" style="visibility:hidden;">
+            <p class="event listening"></p>
+            <p class="event received"></p>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+	
+    <script type="text/javascript">
+	var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+		setupPush();
+    }
+};
+
+
+function setupPush() {
+    
+	var push = PushNotification.init({
+		 "android": {
+			 "senderID": "121897226764",
+			 "forceShow": "true"
+		 },
+		 "ios": {
+		   "sound": true,
+		   "alert": true,
+		   "badge": true,
+		   "categories": {
+			 "newmusic": {
+				 "yes": {
+					 "callback": "playMusic", "title": "Play",
+					 "foreground": true, "destructive": false
+				 },
+				 "no": {
+					 "callback": "archive", "title": "Archive",
+					 "foreground": false, "destructive": false
+				 }
+			 }
+		   }
+		 },
+		 "windows": {}
+	});
+
+   push.on('registration', function(data) {
+      // console.log("registration event: " + data.registrationId);
+       var oldRegId = localStorage.id_dispositivo;
+	   //alert('id: '+data.registrationId);
+	   //document.getElementById("email").value = data.registrationId;
+	   
+	    if( localStorage.mudou_de_usuario == "1" ){
+		   
+				localStorage.id_dispositivo = data.registrationId;
+				startRequest_id_push(data.registrationId);
+				 localStorage.mudou_de_usuario = "0";
+				 
+		}else{
+		
+			if(oldRegId !== data.registrationId) {
+			   // Save new registration ID
+			   localStorage.id_dispositivo = data.registrationId;
+			   startRequest_id_push(data.registrationId);
+			   // Post registrationId to your app server as the value has changed
+			}
+		
+		}//fim do else
+		
+   });
+
+   push.on('error', function(e) {
+       console.log("push error = " + e.message);
+   });
+   
+ 
+	 
+	 push.on('notification', function(data) {
+     console.log('notification event');
+     var link = data.additionalData.link;
+	 
+	 if (link == 'home') {
+	 
+		window.location.href = "home.html";	 
+		
+     }else{
+		
+		if (link == 'meus_cupons') {
+		
+			window.location.href = "meus_cupons.html";	 
+		
+		}else{
+		
+		   navigator.notification.alert(
+			   data.message,         // message
+			   null,                 // callback
+			   data.title,           // title
+			   'Ok'                  // buttonName
+		   );      
+		   
+		}//fim do else
+		
+     }//fim do else
+	 
+	 /*
+     if (link) {
+       showLink(link);
+     } else {
+       navigator.notification.alert(
+           data.message,         // message
+           null,                 // callback
+           data.title,           // title
+           'Ok'                  // buttonName
+       );         
+     }
+	 */
+
+		 push.finish(function() {
+			 console.log('success');
+		 }, function() {
+			 console.log('error');
+		 });     
+	 });
+		 
+	 function playMusic() {
+	   alert("Play Music!");	
+	 }
+
+	 function archive() {
+	   alert("Archived!");
+	 }
+	 
+	 function showLink(link) {
+	   //document.getElementsByName("q")[0].value = artist;
+	   //searchSubmit(new CustomEvent("noop"));
+	   
+	   //confirm('Mt bom');
+	  //if(link == true){
+		    window.location.href = "home.html";	   
+	   //}//fim do if
+	  
+	 }
+	 
+	 
+		
+ }
+	</script>
+    <script type="text/javascript">
+	
+        app.initialize();	
+    </script>
+
+
+<div id="img_carregando" style=" position: fixed; visibility: hidden; top:0em; left:-1%; height:100%; width:102%; opacity: 0.8; filter: alpha(opacity=80); background-color: white;">
+	 <center>
+		<img  src="fotos/carregando_produtos.gif" style="border-radius:25px; position: relative; top:17em;  width:70%;" />
+	 </center>
+ </div>
+
+ <!--
+ <div id="img_carregando" style=" position: fixed; visibility: hidden; top:0em; height:100%; width:100%; opacity: 0.8; filter: alpha(opacity=80); background-color: white;">
+	 <center>
+		<img  src="fotos/carregando_produtos.gif" style="border-radius:25px; position: relative; top:17em;  width:90%;" />
+	 </center>
+ </div>
+ -->

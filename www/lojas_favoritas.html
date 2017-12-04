@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+<script language="javascript" type="text/javascript">
+	
+	function chamar_vitrine(nick_site, id_anuncio){
+			
+		//startRequest_clique_loja(id_anuncio);
+		
+		localStorage.nick_site = nick_site;
+		
+		window.location.href="vitrine_virtual.html";
+		
+
+	}
+
+</script>
+	
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_lojas_favoritas() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_lojas_favoritas_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_usuario="+localStorage.id_usuario);
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("div_produtos").innerHTML = document.getElementById("div_produtos").innerHTML + str;
+				
+				//alert(str.length);
+				
+				if( (document.getElementById("div_produtos").innerHTML) == '') document.getElementById("msg_sem_lojas").style.visibility = "visible";
+
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_lojas_favoritas();
+			
+</script>   
+
+</head>
+
+<body>
+
+<p id="titulo_lojas_favoritas" style="position:absolute; top:11%; color:black; font-size:1.1em; width:80%; left:10%; "> Lojas Favoritas </p>
+
+
+<!-- essa div é de lojas mas foi nomeada como div_produtos para facilitar a programacao -->
+<div id="div_produtos" style="position:absolute; width:100%; top:16%; left:0%;"></div>
+
+
+<div id="msg_sem_lojas"	style="position: absolute; top:0%; left:0%; width:100%; height:150%; visibility: hidden;" >
+	
+		<img src="https://acheloja.com/fotos/passo_a_passo_mobile.png"  style=" position:absolute; top:4em; background-color: #0054a6; width:80%; left:10%;" /> 
+			
+</div>
+
+
+
+ 
+<!-- Ver Vitrine Loja -->
+		<div id="div_vitrine_loja" style=" visibility: hidden; position: fixed; left:0%; top:0%; height:100%;  width:100%;">
+			<iframe id="iframe_vitrine_loja" src="vitrine_virtual.html" style="position: fixed; top:0%; width:100%; left:0%; height:100%; visibility: hidden;"></iframe>
+			<!--<span onclick="document.getElementById('div_produtos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" style="position:fixed; top:2em; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦ </span> -->
+			<img onclick="document.getElementById('div_produtos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" id="seta_voltar" src="fotos/seta_voltar.png" style=" position:fixed; top:2.75em; left:2%; width:2.5em; " />
+		
+		</div>
+	
+<div id="menu">
+
+</div>	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+<script> 
+    $(function(){
+      $("#menu").load("menu_fixo.html"); 
+    });
+</script> 
+
+
+<a href="lojas_favoritas.html"><img src="fotos/estrela_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
+
+
+
+
+<div onclick="document.getElementById('titulo_lojas_favoritas').scrollIntoView();">
+
+	<!--<img  src="" width="55%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" />  -->
+	<div style="position:fixed; width: 55%; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" ></div> 
+	
+	<span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:0.5em; width:50%; color: #c6c9cc;"> Lojas Favoritas </span> 
+</div>
+
+	
+<a href="meus_cupons.html" style="text-decoration:none;">
+		<!-- <img  src="" width="45%" style=" position:fixed; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" /> -->
+		<div style="position:fixed; width: 45%; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" ></div> 
+		
+		<span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; right:2%; width:40%; color: white;"> Meus Cupons </span> 
+</a>
+ 
+
+
+<script>
+//Conta o clique no produto do anunciante
+			var link_vitrine = "";
+			 
+			function createXMLHttpRequest_clique_loja() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_clique_loja(id) {
+			createXMLHttpRequest_clique_loja();
+			xmlHttp.onreadystatechange = handleStateChange_clique_loja;
+			
+			xmlHttp.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id="+id+"&tipo=clique_produto");
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_clique_loja() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}
+		
+
+</script>	
+
+
+ 
+
+</body>
+</html>

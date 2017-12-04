@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+	
+
+<style>
+.telefone{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 9em;
+    height: 2em;
+
+    position: relative;
+	top:0em;
+	
+	left:1em;
+}
+
+.telefone:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e6e6e6;
+
+    top: -20px;
+    right: 5%;
+}
+</style>
+
+<style>
+.info{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 96%;
+    height: 4em;
+
+    position: absolute;
+	top:0em;
+	
+	left:2%;
+}
+
+.info:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e6e6e6;
+
+    top: -20px;
+    right: 8%;
+}
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*   
+   window.onload = function(){
+		$('.cabecalho').fadeOut();
+	}	
+	
+	$(function () {
+		
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.cabecalho').fadeIn();
+            } else {
+                $('.cabecalho').fadeOut();
+            }
+			
+        });
+    });
+	*/
+</script>
+
+<script>
+
+var aberto=0;
+function abrir_telefone(){
+	
+	if(aberto == 0){
+		document.getElementById("telefone").style.visibility="visible";
+		document.getElementById("info").style.visibility="hidden";
+		aberto=1;
+		aberto2=0;
+	}else{
+		
+		document.getElementById("telefone").style.visibility="hidden";
+		aberto=0;
+	}
+}
+
+var aberto2=0;
+function abrir_info(){
+	
+	if(aberto2 == 0){
+		document.getElementById("info").style.visibility="visible";
+		document.getElementById("telefone").style.visibility="hidden";
+		aberto2=1;
+		aberto=0;
+	}else{
+		
+		document.getElementById("info").style.visibility="hidden";
+		aberto2=0;
+	}
+}
+
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<script type="text/javascript">
+
+function initialize() {
+	  geocoder = new google.maps.Geocoder();
+	  //var latlng = new google.maps.LatLng(-23.629919, -46.602441);
+	  var mapOptions = {
+	    zoom: 17,
+	    //center: latlng,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	  }
+	  
+	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	  
+	  var address = document.getElementById('address').value;
+	  geocoder.geocode( { 'address': address}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	     map.setCenter(results[0].geometry.location);
+   
+	      //document.getElementById("demo").innerHTML="Latitude"+results[0].geometry.location.lat()+"Longitude"+results[0].geometry.location.lng();
+	      
+	      var marker = new google.maps.Marker({
+	          map: map,
+	          position: results[0].geometry.location
+	      });
+	    } else {
+	      //alert('Geocode was not successful for the following reason: ' + status);
+	    }
+	  });
+
+	  
+}
+
+
+</script>
+
+
+<script>
+
+function aparece_mapa(){
+	
+	document.getElementById("mapa").style.visibility="visible";
+	
+}
+
+function desaparece_mapa(){
+	
+	document.getElementById("mapa").style.visibility="hidden";
+	
+}
+
+function aparecer_detalhes(e){
+		
+	e.getElementsByTagName('div')[0].style.visibility= "visible";
+	
+}
+
+function desaparecer_detalhes(e){
+		
+	e.getElementsByTagName('div')[0].style.visibility= "hidden";
+}
+
+</script>
+
+
+
+
+
+	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_vitrine_virtual() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "http://52.67.44.156/m/ajax_vitrine_app.php", true);
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				
+				$('.cabecalho').fadeOut();
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_vitrine_virtual();
+			
+</script>   
+
+
+<div id="div_vitrine"></div>
+	
+<!--
+<a id="botao_voltar" style="text-decoration: none;" href="javascript:window.history.go(-1)"><span style="position:fixed; top:10%	; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦</span></a>
+-->
+
+<script>
+//Deixar de seguir
+			
+			function createXMLHttpRequest_deixar_de_seguir() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_deixar_de_seguir(id_usuario, id_anuncio) {
+				
+				if(!confirm("Tem certeza que Não quer mais seguir essa Loja?")){
+					return false;
+				}	
+					
+					//document.getElementById("img_carregando").style.visibility = "visible";
+								
+					createXMLHttpRequest_deixar_de_seguir();
+					xmlHttp.onreadystatechange = handleStateChange_deixar_de_seguir;
+					
+					xmlHttp.open("POST", "https://acheloja.com/validar/deixar_de_seguir.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp.send("id_usuario="+id_usuario+"&id_anuncio="+id_anuncio);
+					
+					//document.getElementById("msg_enviado").style.visibility = "visible";
+					
+					//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_deixar_de_seguir() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			
+					location.href=location.href;
+					history.go(0);
+			}
+			}
+			}
+			
+			//Começar de seguir
+			
+			function createXMLHttpRequest_comecar_seguir() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_comecar_seguir(id_usuario, id_anuncio) {
+			
+			//document.getElementById("img_carregando").style.visibility = "visible";
+			
+			createXMLHttpRequest_comecar_seguir();
+			xmlHttp.onreadystatechange = handleStateChange_comecar_seguir;
+			
+			xmlHttp.open("POST", "https://acheloja.com/validar/comecar_seguir.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_usuario="+id_usuario+"&id_anuncio="+id_anuncio);
+			
+			
+			
+			
+			//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_comecar_seguir() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+					
+					//startRequest_cadastrar_novos_seguidores(<?php printf("".$consulta_loja['id'].""); ?>);
+					location.reload();
+			}
+			}
+			}
+			
+			//Contar novos seguidores
+			
+			function createXMLHttpRequest_novos_seguidores() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_cadastrar_novos_seguidores(id) {
+			createXMLHttpRequest_novos_seguidores();
+			xmlHttp.onreadystatechange = handleStateChange_novos_seguidores;
+			
+			xmlHttp.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id="+id+"&tipo=novos_seguidores");
+			
+			
+			//document.getElementById("msg_enviado").style.visibility = "visible";
+			
+			//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_novos_seguidores() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			
+					//não fazer nada
+			}
+			}
+			}
+			
+
+</script>
+
+<script>
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+</script> 
+
+<!-- Para fazer a div com o nome da loja aparece ou desaparece -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				$('.cabecalho').fadeOut();
+			}	
+			
+			$(function () {
+				
+				$(window).scroll(function () {
+					if ($(this).scrollTop() > 100) {
+						$('.cabecalho').fadeIn();
+					} else {
+						$('.cabecalho').fadeOut();
+					}
+					
+				});
+			});
+		</script>
+
+
+</body>
+</html>

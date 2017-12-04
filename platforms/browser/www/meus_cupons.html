@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+<script language="javascript" type="text/javascript">
+	
+	function chamar_vitrine(nick_site, id_anuncio){
+			
+		//startRequest_clique_loja(id_anuncio);
+		
+		localStorage.nick_site = nick_site;
+		
+		window.location.href="vitrine_virtual.html";
+		
+
+	}
+
+</script>
+	
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_meus_cupons() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			xmlHttp.open("POST", "https://acheloja.com/m/ajax_meus_cupons_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_usuario="+localStorage.id_usuario);
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("div_meus_cupons").innerHTML = document.getElementById("div_meus_cupons").innerHTML + str;
+				
+				
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_meus_cupons();
+			
+</script>   
+
+</head>
+
+<body>
+
+<p id="titulo_meus_cupons" style="position:absolute; top:11%; color:black; font-size:1.1em; width:80%; left:10%; "> Meus Cupons </p>
+
+<div id="div_meus_cupons" style="position:absolute; width:100%; top:16%; left:0%;">
+
+</div>
+
+
+	
+<div id="menu">
+
+</div>	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+<script> 
+    $(function(){
+      $("#menu").load("menu_fixo.html"); 
+    });
+</script> 
+
+
+<a href="lojas_favoritas.html"><img src="fotos/estrela_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
+
+
+
+
+
+<a href="lojas_favoritas.html" style="text-decoration:none;">
+	<img  src="" width="55%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" /> 
+	<span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:0.5em; width:50%; color: white;"> Lojas Favoritas </span> 
+</a>
+
+<div onclick="document.getElementById('titulo_meus_cupons').scrollIntoView();">
+
+		<img  src="" width="45%" style=" position:fixed; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" /> 
+	 
+		<span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; right:2%; width:40%; color: #c6c9cc;"> Meus Cupons </span> 
+</div> 
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+	var xmlHttp;
+	
+		function cancelar_cupom(id_cupom, id_usuario, id_anuncio){
+			
+			var answer = confirm("Tem certeza que não utilizou o Cupom e deseja cancelar?");
+			if (answer){
+				startRequest_cancelar_cupom(id_cupom, id_usuario, id_anuncio);
+			}
+			
+		}
+		
+		
+
+		function createXMLHttpRequest_cancelar_cupom() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_cancelar_cupom(id_cupom, id_usuario, id_anuncio) {
+			createXMLHttpRequest_cancelar_cupom();
+			xmlHttp.onreadystatechange = handleStateChange_cancelar_cupom;
+			
+			xmlHttp.open("GET", "https://acheloja.com/cancelar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"", true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send();
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_cancelar_cupom() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				if(xmlHttp.responseText.trim() == "ok"){
+					
+					location.reload();
+					
+				}else{
+					
+					alert("Ocorreu algum problema!")
+					
+				}
+				
+						
+				
+				
+			}
+			}
+			}
+
+</script>
+
+
+<script>
+	//Aceitar somente numeros
+			
+			function Apenas_Numeros(caracter)
+			{
+			  var nTecla = 0;
+			  if (document.all) {
+				  nTecla = caracter.keyCode;
+			  } else {
+				  nTecla = caracter.which;
+			  }
+			  if ((nTecla> 47 && nTecla <58)
+			  || nTecla == 8 || nTecla == 127
+			  || nTecla == 0 || nTecla == 9  // 0 == Tab
+			  || nTecla == 13) { // 13 == Enter
+				  return true;
+			  } else {
+				  return false;
+			  }
+			}
+			
+			
+</script>
+
+<script>
+
+		function aparece_div_avaliacao(id_cupom, id_usuario, id_anuncio){
+			
+			document.getElementById('botao_avaliacao').setAttribute('onclick',"startRequest_avaliar_cupom('"+id_cupom+"','"+id_usuario+"','"+id_anuncio+"')");
+			document.getElementById('avaliar').style.visibility='visible';
+			document.getElementById('fundo_avaliar').style.visibility='visible';
+			
+		}
+		
+		function desaparece_avaliacao(){
+			document.getElementById('avaliar').style.visibility='hidden';
+			document.getElementById('fundo_avaliar').style.visibility='hidden';
+			
+			
+		}
+</script>
+
+<script>		
+		
+		
+
+		function createXMLHttpRequest_avaliar_cupom() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+
+			
+			
+			function startRequest_avaliar_cupom(id_cupom, id_usuario, id_anuncio) {
+			createXMLHttpRequest_avaliar_cupom();
+			xmlHttp.onreadystatechange = handleStateChange_avaliar_cupom;
+			
+			var nota = document.getElementById('nota').value;
+			
+			var comentario = document.getElementById('comentario').value;
+			
+			if(nota == ''){
+				
+				alert('Preencha uma nota! Clique nas estrelas!');
+				document.getElementById('nota').focus();
+				return false;
+				
+			}		
+			
+			xmlHttp.open("GET", "https://acheloja.com/avaliar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"&nota="+nota+"&comentario="+comentario+"", true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			document.getElementById("img_carregando").style.visibility = "visible";
+			
+			xmlHttp.send();
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_avaliar_cupom() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				if(xmlHttp.responseText.trim() == "ok"){
+					
+					alert('Obrigado pela avaliação');
+					document.getElementById("img_carregando").style.visibility = "hidden";
+					window.location="meus_cupons.html";
+					
+				}else{
+					
+					alert("Ocorreu algum problema!");
+					document.getElementById("img_carregando").style.visibility = "hidden";
+					
+				}
+				
+						
+				
+				
+			}
+			}
+			}
+
+</script>
+
+ 
+
+</body>
+</html>
