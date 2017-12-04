@@ -76,6 +76,11 @@ var id_loja = '87';
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
+			if(typeof localStorage.nome_produto === "undefined"){
+
+				localStorage.nome_produto = '';
+
+			}//fim do if
 			
 			var palavra_chave_produto = localStorage.nome_produto;
 			
