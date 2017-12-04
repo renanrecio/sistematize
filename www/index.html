@@ -107,7 +107,9 @@ var nome_usuario_guardado = localStorage.nome_usuario;
 
 if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefined") ){
 
-	window.location.href="home.html";
+	//window.location.href="home.html";
+	window.location.href="vitrine_virtual.html";
+	
 	exit();
 	
 }else{
@@ -188,7 +190,10 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 			xmlHttp.onreadystatechange = handleStateChange_login;
 			
 			
-			xmlHttp.open("POST", "https://acheloja.com/m/login_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/login_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/login_app.php", true);
+			
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			xmlHttp.send("email=" + document.getElementById("email").value  + "&senha=" + document.getElementById("senha").value);

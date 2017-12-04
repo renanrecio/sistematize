@@ -44,7 +44,11 @@ var xmlHttp;
 			xmlHttp.onreadystatechange = handleStateChange;
 			
 				
-			xmlHttp.open("POST", "https://acheloja.com/m/ajax_cadastra_usuario_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_cadastra_usuario_app.php", true);
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_cadastra_usuario_app.php", true);
+			
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			xmlHttp.send("nome=" + document.getElementById("nome").value + "&email=" + document.getElementById("email").value +  "&senha=" + document.getElementById("senha").value + "");
@@ -224,7 +228,10 @@ var xmlHttp;
 				}
 			
 			
-			xmlHttp.open("GET", "https://acheloja.com/validar/email.php?email="+document.getElementById("email").value+"", true);
+			//xmlHttp.open("GET", "https://acheloja.com/validar/email.php?email="+document.getElementById("email").value+"", true);
+			
+			xmlHttp.open("GET", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/email.php?email="+document.getElementById("email").value+"", true);
+			
 			
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -483,7 +490,10 @@ textarea {
 		xmlHttp.onreadystatechange = handleStateChange_termos;
 		
 			
-		xmlHttp.open("POST", "https://acheloja.com/m/ajax_termos_de_uso.php", true);
+		//xmlHttp.open("POST", "https://acheloja.com/m/ajax_termos_de_uso.php", true);
+		
+		
+		xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_termos_de_uso.php", true);
 		xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		
 		xmlHttp.send();

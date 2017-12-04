@@ -705,7 +705,9 @@ function submeter(){
 			xmlHttp.onreadystatechange = handleStateChange;
 			
 			
-			xmlHttp.open("POST", "https://acheloja.com/m/ajax_pessoal_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_pessoal_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_pessoal_app.php", true);
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			xmlHttp.send("id_usuario="+localStorage.id_usuario+"&atualizar=0");
