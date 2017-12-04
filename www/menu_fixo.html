@@ -119,7 +119,9 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					createXMLHttpRequest_novidades();
 					xmlHttp2.onreadystatechange = handleStateChange_novidades;
 					
-					xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					//xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					xmlHttp2.open("POST", "https://acheloja.com/sistematize/ajax_novidades_usuario_app.php", true);
+					
 					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
 					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");

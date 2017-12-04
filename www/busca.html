@@ -2,6 +2,10 @@
 <html>
 <head>
 
+<script>
+var id_loja = '87';
+</script>
+
 
 
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
@@ -239,17 +243,19 @@ function fechar(){
 			
 			//alert(categorias);
 			
-			xmlHttp.open("POST", "https://acheloja.com/m/ajax_lojas_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_lojas_app.php", true);
+			xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_lojas_app.php", true);
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			if(enviou_filtro_id_usuario == 0){
 			
-				xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&tem_loja_na_cidade=1&filtro="+localStorage.filtro+"&id_usuario="+localStorage.id_usuario);
+				xmlHttp.send("id_loja="+id_loja+"&contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&tem_loja_na_cidade=1&filtro="+localStorage.filtro+"&id_usuario="+localStorage.id_usuario);
 				enviou_filtro_id_usuario = 1;
 				
 			}else{
 			
-				xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&tem_loja_na_cidade=1&filtro="+localStorage.filtro+"&id_usuario=");
+				xmlHttp.send("id_loja="+id_loja+"&contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&tem_loja_na_cidade=1&filtro="+localStorage.filtro+"&id_usuario=");
 				
 			}
 			
@@ -625,26 +631,48 @@ function desaparecer_busca_produto(){
 	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:0.6em; left:4%;  width:1.8em; height:1.8em; " /><span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:1.2em; width:50%; color: white;"> Achar Produto </span> 
 </div>
 
-	
+
+<!--	
 <div onclick="aparecer_busca_loja(); desaparecer_busca_produto()" >
 	<!-- <img  src="" width="45%" style=" position:fixed; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" />  -->
+<!--
 	<div style=" position:fixed; width: 45%; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" > </div>
 	
 	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:0.6em; left:58%; width:1.8em; height:1.8em;" /><span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; right:0%; width:40%; color: white;"> Achar Loja </span> 
 </div>
+ -->
  
  
+<!-- 
 <div id="busca_loja" style="visibility: hidden;">
 
 
 <!-- <img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" />  -->
+<!--
 <div  style="position:fixed; width: 100%; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);"></div>  
  
 <input type="text" id="nome_da_loja_buscar" name="nome_da_loja_buscar" value="" placeholder="Escreva o Nome da Loja"  style=" position:fixed; font-size:1em; top:5em; left:10%; height: 1.5em; width: 80%; "/> 
 <input type="button" onclick="buscar_loja()" value="Achar" style=" position:fixed; top:9em; left:40%; height: 2em; width: 20%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" />
  
 </div>
+-->
 
+
+<!--------------------------------------------------------------------------------------------------
+
+<div id="busca_produto" style="visibility: hidden;">
+
+
+<!-- <img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" />  -->
+<!--
+<div  style="position:fixed; width: 100%; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);"></div>  
+ 
+<input type="text" id="nome_da_loja_buscar" name="nome_da_loja_buscar" value="" placeholder="Escreva o Nome do Produto"  style=" position:fixed; font-size:1em; top:5em; left:10%; height: 1.5em; width: 80%; "/> 
+<input type="button" onclick="buscar_loja()" value="Achar" style=" position:fixed; top:9em; left:40%; height: 2em; width: 20%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" />
+ 
+</div>
+
+--------------------------------------------------------------------------------------------------------->
 
 <!--
 <div id="busca_produto" style="visibility: hidden;">

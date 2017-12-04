@@ -2,7 +2,9 @@
 <html>
 <head>
 
-
+<script>
+var id_loja = '87';
+</script>
 
  <link rel="stylesheet" href="lib/font-awesome-4.5.0/css/font-awesome.min.css" />
 
@@ -250,10 +252,14 @@ body{
 					xmlHttp.onreadystatechange = handleStateChange;
 					
 					
-					xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrines_favoritas_app.php", true);
+					//xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrines_favoritas_app.php", true);
+					xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrines_favoritas_app.php", true);
 					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&id_usuario="+ localStorage.id_usuario +"&tem_loja_na_cidade=1");
+					//xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&id_usuario="+ localStorage.id_usuario +"&tem_loja_na_cidade=1");
+					
+					xmlHttp.send("id_loja="+id_loja+"&contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&id_usuario="+ localStorage.id_usuario +"&tem_loja_na_cidade=1");
+					
 					
 					//alert("contador_geral=" + document.getElementById("contador_geral").value + "&top=" + document.getElementById("top").value+ "&left=" + document.getElementById("left").value +"");
 					

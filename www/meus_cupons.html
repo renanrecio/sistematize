@@ -10,6 +10,10 @@
 
 <link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
 
+<script>
+var id_loja = "87";
+</script>
+
 <script language="javascript" type="text/javascript">
 	
 	function chamar_vitrine(nick_site, id_anuncio){
@@ -46,10 +50,12 @@
 			xmlHttp.onreadystatechange = handleStateChange;
 			
 			
-			xmlHttp.open("POST", "https://acheloja.com/m/ajax_meus_cupons_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_meus_cupons_app.php", true);
+			xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_meus_cupons_app.php", true);
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
 			
 			}
 

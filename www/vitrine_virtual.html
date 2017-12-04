@@ -215,8 +215,10 @@ function desaparecer_detalhes(e){
 			xmlHttp.onreadystatechange = handleStateChange;
 			
 			
-			xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
 			//xmlHttp.open("POST", "http://52.67.44.156/m/ajax_vitrine_app.php", true);
+			xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrine_app.php", true);
+			
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
