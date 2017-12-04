@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+	
+<script>
+var id_loja = '87';
+</script>
+
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*   
+   window.onload = function(){
+		$('.cabecalho').fadeOut();
+	}	
+	
+	$(function () {
+		
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.cabecalho').fadeIn();
+            } else {
+                $('.cabecalho').fadeOut();
+            }
+			
+        });
+    });
+	*/
+</script>
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+
+
+
+
+	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_vitrine_virtual() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "http://52.67.44.156/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrine_app.php", true);
+			
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_buscar_produtos.php", true);
+			
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			
+			var palavra_chave_produto = localStorage.nome_produto;
+			
+			if( (palavra_chave_produto != '') && (typeof palavra_chave_produto !== "undefined") ){
+
+				palavra_chave_produto = localStorage.nome_produto;
+				
+			}else{
+
+				localStorage.nome_produto = '';
+				palavra_chave_produto = '';
+
+			}//fim do else			
+			
+			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("palavra_chave_produto="+palavra_chave_produto+"&id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
+			
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				
+				$('.cabecalho').fadeOut();
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_vitrine_virtual();
+			
+</script>   
+
+
+<div id="div_vitrine"></div>
+	
+<!--
+<a id="botao_voltar" style="text-decoration: none;" href="javascript:window.history.go(-1)"><span style="position:fixed; top:10%	; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦</span></a>
+-->
+
+<script>
+//Deixar de seguir
+			
+			function createXMLHttpRequest_deixar_de_seguir() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_deixar_de_seguir(id_usuario, id_anuncio) {
+				
+				if(!confirm("Tem certeza que Não quer mais seguir essa Loja?")){
+					return false;
+				}	
+					
+					//document.getElementById("img_carregando").style.visibility = "visible";
+								
+					createXMLHttpRequest_deixar_de_seguir();
+					xmlHttp.onreadystatechange = handleStateChange_deixar_de_seguir;
+					
+					xmlHttp.open("POST", "https://acheloja.com/validar/deixar_de_seguir.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp.send("id_usuario="+id_usuario+"&id_anuncio="+id_anuncio);
+					
+					//document.getElementById("msg_enviado").style.visibility = "visible";
+					
+					//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_deixar_de_seguir() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			
+					location.href=location.href;
+					history.go(0);
+			}
+			}
+			}
+			
+			//Começar de seguir
+			
+			function createXMLHttpRequest_comecar_seguir() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_comecar_seguir(id_usuario, id_anuncio) {
+			
+			//document.getElementById("img_carregando").style.visibility = "visible";
+			
+			createXMLHttpRequest_comecar_seguir();
+			xmlHttp.onreadystatechange = handleStateChange_comecar_seguir;
+			
+			xmlHttp.open("POST", "https://acheloja.com/validar/comecar_seguir.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_usuario="+id_usuario+"&id_anuncio="+id_anuncio);
+			
+			
+			
+			
+			//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_comecar_seguir() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+					
+					//startRequest_cadastrar_novos_seguidores(<?php printf("".$consulta_loja['id'].""); ?>);
+					location.reload();
+			}
+			}
+			}
+			
+			//Contar novos seguidores
+			
+			function createXMLHttpRequest_novos_seguidores() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_cadastrar_novos_seguidores(id) {
+			createXMLHttpRequest_novos_seguidores();
+			xmlHttp.onreadystatechange = handleStateChange_novos_seguidores;
+			
+			xmlHttp.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id="+id+"&tipo=novos_seguidores");
+			
+			
+			//document.getElementById("msg_enviado").style.visibility = "visible";
+			
+			//alert("Emails enviados com Sucesso!");
+			}
+
+			
+			function handleStateChange_novos_seguidores() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			
+					//não fazer nada
+			}
+			}
+			}
+			
+
+</script>
+
+
+
+<!-- Para fazer a div com o nome da loja aparece ou desaparece -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				$('.cabecalho').fadeOut();
+			}	
+			
+			$(function () {
+				
+				$(window).scroll(function () {
+					if ($(this).scrollTop() > 100) {
+						$('.cabecalho').fadeIn();
+					} else {
+						$('.cabecalho').fadeOut();
+					}
+					
+				});
+			});
+		</script>
+
+		
+	<div id="menu">
+
+	</div>	
+			
+	<script> 
+		$(function(){
+		  $("#menu").load("menu_fixo.html"); 
+		});
+	</script> 		
+	
+	
+	
+
+ <!-- Filtros -->
+<script>
+ 
+ var buscar_produto = 0;
+ 
+function aparecer_buscar_produto(){
+	if(buscar_produto == 0){
+		document.getElementById("buscar_produto").style.visibility = "visible";
+		buscar_produto = 1;
+	}else{
+		document.getElementById("buscar_produto").style.visibility = "hidden";
+		buscar_produto = 0;
+	}
+} 
+function desaparecer_buscar_produto(){
+	
+	document.getElementById("buscar_produto").style.visibility = "hidden";
+	buscar_produto = 0;
+} 
+
+ 
+ 
+ </script>
+ <script>
+ 
+ function busca_produto(){
+ 
+	localStorage.nome_produto = document.getElementById("nome_produto").value;
+	 
+	startRequest_vitrine_virtual();
+ 
+ }
+ 
+ </script>
+ 
+<div onclick="aparecer_buscar_produto()">
+
+	<!-- <img  src="" width="55%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" /> -->
+	<div  style=" position:fixed; width: 55%; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" > </div> 
+	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:0.6em; left:4%;  width:1.8em; height:1.8em; " /><span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:1.2em; width:50%; color: white;"> Achar Produto </span> 
+
+</div>
+
+
+<div id="buscar_produto" style="visibility: visible;">
+
+	<!-- <img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" />  -->
+	<div  style="position:fixed; width: 100%; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);"></div>  
+	 
+	<input type="text" id="nome_produto" name="nome_produto" value="" placeholder="Escreva o Nome da Loja"  style=" position:fixed; font-size:1em; top:5em; left:10%; height: 1.5em; width: 80%; "/> 
+	<input type="button" onclick="busca_produto()" value="Achar" style=" position:fixed; top:9em; left:40%; height: 2em; width: 20%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" />
+	 
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+$(function () {
+		
+       $(window).scroll(function () {
+			if(habilitar_scroll == true){
+				if($(window).scrollTop() + $(window).height() > $(document).height()-1500) {
+						  //alert("foi");
+						  //startRequest_mais_produtos();
+							// add your custom function here. i.e what you want to do.
+				 }
+				 desaparecer_buscar_produto(); 
+			}
+		});
+});
+</script>
+
+ <!--FIM dos Filtros -->
+ 
+ 
+			
+	<a href="buscar_produtos.html"><img src="fotos/lupa_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
+
+
+</body>
+</html>
