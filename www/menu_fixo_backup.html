@@ -4,10 +4,23 @@
 var habilitar_scroll = true;
 </script>
 
+<script>
+//verificar se não identificar nenhum usuario
+
+if(localStorage.id_usuario == ""){
+
+	window.location.href="index.html";
+		
+}
+</script>
+
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 		
-<img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em;" /> 
+<!--<img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em;" /> -->
+
+<div style=" position:fixed; width: 100%; background-color: #0054a6; top:0em; left:0%; height: 3em;" ></div> 
+
 
 <!--
 <span id="acheloja_menu" name="acheloja_menu" style=" font-family: Montserrat; position: fixed; font-size: 1.3em; font-weight:bold; top:0.6em; right:2%; color: white;"> AcheLoja </span> 
@@ -17,12 +30,14 @@ var habilitar_scroll = true;
 
 	
 
-<img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> 
-<a href="home.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
+<!-- <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> --> 
+<div style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  ></div> 
 
-<a href="busca.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
+<a href="vitrine_virtual.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
 
-<a href="lojas_favoritas.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
+<a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="promocoes.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
 
 <a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
 
@@ -104,7 +119,11 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					createXMLHttpRequest_novidades();
 					xmlHttp2.onreadystatechange = handleStateChange_novidades;
 					
-					xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					//xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					//xmlHttp2.open("POST", "https://acheloja.com/sistematize/ajax_novidades_usuario_app.php", true);
+					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_novidades_usuario_app.php", true);
+					
+					
 					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
 					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
@@ -176,13 +195,18 @@ $(function () {
 
 <script language="javascript" type="text/javascript">
 	
-	function chamar_vitrine(nick_site, id_anuncio){
+	function chamar_vitrine(nick_site, id_anuncio, id_produto){
 	
 		document.getElementById('iframe_vitrine_loja').src = "http://acheloja.com/m/carregando_app.php";
 		
 		//document.getElementById("img_carregando").style.visibility = "visible";
 		
-		startRequest_clique_produtos(id_anuncio);
+		if( (id_produto != '') || (id_produto != null) ){
+		
+			startRequest_clique_produtos(id_anuncio, id_produto, localStorage.id_usuario);
+		
+		}
+		
 		
 		localStorage.nick_site = nick_site;
 		
@@ -224,14 +248,15 @@ function recarregar_iframe(){
 			}
 			
 			
-			function startRequest_clique_produtos(id) {
+			function startRequest_clique_produtos(id_anuncio, id_produto, id_usuario) {
 			createXMLHttpRequest_clique_produtos();
 			xmlHttp2.onreadystatechange = handleStateChange_clique_produtos;
 			
 			xmlHttp2.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
 			xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp2.send("id="+id+"&tipo=clique_produto");
+			//xmlHttp2.send("id="+id+"&tipo=clique_produto");
+			xmlHttp2.send("id="+id_anuncio+"&tipo=clique_produto&id_usuario="+id_usuario+"&id_produto="+id_produto+"");
 			
 			
 			
@@ -250,6 +275,51 @@ function recarregar_iframe(){
 			}
 			}
 			}
+</script>
+
+<script>			
+		//Conta o visualização do produto do anunciante
+					
+					
+					 
+					function createXMLHttpRequest_visualizacao_produtos() {
+					if (window.ActiveXObject) {
+					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp2 = new XMLHttpRequest();
+					}
+					}
+					
+					
+					function startRequest_visualizacao_produtos(id) {
+					createXMLHttpRequest_visualizacao_produtos();
+					xmlHttp2.onreadystatechange = handleStateChange_visualizacao_produtos;
+					
+					xmlHttp2.open("POST", "https://acheloja.com/validar/cliques_ajax.php", true);
+					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp2.send("id="+id+"&tipo=visualizacao_produto");
+					
+					
+					
+					
+				
+					}
+
+					
+					function handleStateChange_visualizacao_produtos() {
+					if(xmlHttp2.readyState == 4) {
+					if(xmlHttp2.status == 200) {
+						
+						
+						//Não fazer nada
+						 
+						
+					}
+					}
+					}			
+
 </script>
 
 
@@ -360,7 +430,8 @@ function setupPush() {
 	 
 	 if (link == 'home') {
 	 
-		window.location.href = "home.html";	 
+		//window.location.href = "home.html";
+        window.location.href = "vitrine_virtual.html";		
 		
      }else{
 		
@@ -415,7 +486,12 @@ function setupPush() {
 	   
 	   //confirm('Mt bom');
 	  //if(link == true){
-		    window.location.href = "home.html";	   
+	  
+	  
+		    //window.location.href = "home.html";
+			window.location.href = "vitrine_virtual.html";
+
+			
 	   //}//fim do if
 	  
 	 }

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+	
+<script>
+var id_loja = '87';
+</script>
+
+<style>
+.telefone{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 9em;
+    height: 2em;
+
+    position: relative;
+	top:0em;
+	
+	left:1em;
+}
+
+.telefone:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e6e6e6;
+
+    top: -20px;
+    right: 5%;
+}
+</style>
+
+<style>
+.info{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 96%;
+    height: 4em;
+
+    position: absolute;
+	top:0em;
+	
+	left:2%;
+}
+
+.info:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #e6e6e6;
+
+    top: -20px;
+    right: 8%;
+}
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*   
+   window.onload = function(){
+		$('.cabecalho').fadeOut();
+	}	
+	
+	$(function () {
+		
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.cabecalho').fadeIn();
+            } else {
+                $('.cabecalho').fadeOut();
+            }
+			
+        });
+    });
+	*/
+</script>
+
+<script>
+
+var aberto=0;
+function abrir_telefone(){
+	
+	if(aberto == 0){
+		document.getElementById("telefone").style.visibility="visible";
+		document.getElementById("info").style.visibility="hidden";
+		aberto=1;
+		aberto2=0;
+	}else{
+		
+		document.getElementById("telefone").style.visibility="hidden";
+		aberto=0;
+	}
+}
+
+var aberto2=0;
+function abrir_info(){
+	
+	if(aberto2 == 0){
+		document.getElementById("info").style.visibility="visible";
+		document.getElementById("telefone").style.visibility="hidden";
+		aberto2=1;
+		aberto=0;
+	}else{
+		
+		document.getElementById("info").style.visibility="hidden";
+		aberto2=0;
+	}
+}
+
+</script>
+
+
+	
+<!-- Validação do forumlário -->
+<!--
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_vitrine_virtual() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "http://52.67.44.156/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrine_app.php", true);
+			
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_vitrine_app.php", true);
+			
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
+			
+			document.getElementById("img_carregando_produtos").style.visibility = "visible";
+			
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				
+				$('.cabecalho').fadeOut();
+				
+				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_vitrine_virtual();
+			
+</script>   
+-->
+
+<div id="div_vitrine"></div>
+	
+	<div id="menu">
+
+	</div>	
+			
+	<script> 
+		$(function(){
+		  $("#menu").load("menu_fixo.html"); 
+		});
+	</script> 		
+			
+	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
+
+	 <a href="chat.html"><img src="fotos/chat_selecionada.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:48%; width:2.8em; height:2.8em;" /> </a>
+
+</body>
+</html>
