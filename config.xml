@@ -1,9 +1,9 @@
 ﻿<?xml version='1.2' encoding='utf-8'?>
 <widget id="com.acheloja" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>AcheLoja</name>
-    <description> Os produtos das melhores Lojas perto de você.</description>
+    <name>Sistematize</name>
+    <description> Sistematize com Apps</description>
     <author email="atendimento@acheloja.com" href="http://acheloja.com">
-        Grupo AcheLoja
+        Grupo RSR
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
