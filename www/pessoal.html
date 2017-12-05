@@ -1,6 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
+<script>
+var id_loja = '87';
+</script>
+
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
@@ -599,7 +604,9 @@ function submeter(){
 
 			
 			
-			xmlHttp.open("POST", "https://acheloja.com/ajax_foto_perfil.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/ajax_foto_perfil.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_foto_perfil.php", true);
+			
 			
 			xmlHttp.send(formData);
 			
@@ -657,7 +664,8 @@ function submeter(){
 
 			
 			
-			xmlHttp.open("POST", "https://acheloja.com/ajax_capa_usuario.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/ajax_capa_usuario.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_capa_usuario.php", true);
 			
 			xmlHttp.send(formData);
 			
@@ -710,7 +718,7 @@ function submeter(){
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("id_usuario="+localStorage.id_usuario+"&atualizar=0");
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&atualizar=0");
 			
 			}
 
@@ -754,7 +762,10 @@ function submeter(){
 			createXMLHttpRequest4();
 			xmlHttp.onreadystatechange = handleStateChange4;
 			
-			xmlHttp.open("GET", "https://acheloja.com/validar/editar_email.php?email="+document.getElementById("email").value+"&email_antigo="+localStorage.email_usuario, true);
+			//xmlHttp.open("GET", "https://acheloja.com/validar/editar_email.php?email="+document.getElementById("email").value+"&email_antigo="+localStorage.email_usuario, true);
+			
+			xmlHttp.open("GET", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/editar_email.php?id_loja="id_loja"&email="+document.getElementById("email").value+"&email_antigo="+localStorage.email_usuario, true);
+			
 			
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -773,7 +784,7 @@ function submeter(){
 				if(xmlHttp.responseText.trim() == "1"){
 					
 					//document.getElementById("email_aviso").innerHTML = "<?php echo $traducao['email_ja_cadastrado']; ?>";
-					alert("Email já cadastrado, verifique se já possui cadastro no AcheLoja!")
+					alert("Email já cadastrado, verifique se já possui cadastro no App!")
 					document.getElementById("email").focus();
 					return false;
 					
@@ -807,11 +818,13 @@ function submeter(){
 			createXMLHttpRequest_update();
 			xmlHttp.onreadystatechange = handleStateChange_update;
 			
-			xmlHttp.open("POST", "https://acheloja.com/m/ajax_pessoal_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_pessoal_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_pessoal_app.php", true);
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			
-			xmlHttp.send("id_usuario="+localStorage.id_usuario+"&email="+document.getElementById("email").value+"&nome="+document.getElementById("nome").value+"&senha="+document.getElementById("senha").value+"&telefone_comercial="+document.getElementById("telefone_comercial").value+"&cep="+document.getElementById("cep").value+"&endereco="+document.getElementById("endereco").value+"&cidade="+document.getElementById("cidade").value+"&bairro="+document.getElementById("bairro").value+"&estado="+document.getElementById("estado").value+"&atualizar=1");
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&email="+document.getElementById("email").value+"&nome="+document.getElementById("nome").value+"&senha="+document.getElementById("senha").value+"&telefone_comercial="+document.getElementById("telefone_comercial").value+"&cep="+document.getElementById("cep").value+"&endereco="+document.getElementById("endereco").value+"&cidade="+document.getElementById("cidade").value+"&bairro="+document.getElementById("bairro").value+"&estado="+document.getElementById("estado").value+"&atualizar=1");
 			
 			
 			
