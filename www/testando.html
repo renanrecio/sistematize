@@ -1,5 +1,90 @@
 
 
+<style>
+.telefone{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 80%;
+    height: 2em;
+
+    position: absolute;
+	top:0em;
+	
+	right:2%;
+}
+
+.telefone:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: absolute;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #e6e6e6;
+
+    top: 2em;
+    right: 2.5%;
+}
+
+.caixa_msg{
+    background: #e6e6e6;
+    border-radius: 10px;
+    width: 80%;
+    height: 3em;
+
+    position: absolute;
+	top:0em;
+	
+	left:2%;
+}
+
+.enviar{
+    background: green;
+    border-radius: 10px;
+    width: 10%;
+    height: 2em;
+
+    position: absolute;
+	top:0.25em;
+	
+	right:2%;
+}
+</style>
+
+
+	<div id="telefone" style="position:fixed; width: 100%;  bottom:7em; right:0%; height: 3.5em;">
+
+		<div class="telefone" >
+			<span style=" position:absolute; top: 0.5em; left:1%; font-size: 0.9em; width:100%;  color: black; line-height:1em;  " > Isso é uma mensagem </span>
+		</div>
+	</div>
+	
+	<div id="telefone" style="position:fixed; width: 100%;  bottom:3em; right:0%; height: 3.5em;">
+
+			<textarea class="caixa_msg" style="resize: none; width:85%;"  rows="4" cols="50" placeholder="Escreva sua mensagem">
+				
+			</textarea>
+	
+		<div class="enviar" >
+		    <center>
+			<span style=" position:relative; top: 0.5em; left:1%; font-size: 0.9em; width:10%;  color: white; line-height:1em;  " > ENVIAR </span>
+			</center>
+		</div>
+	</div>
+	
+	<!--
+	<div id="telefone" style="position:fixed; width: 100%;  bottom:3em; right:0%; height: 3.5em;">
+
+		<div class="telefone" >
+			<span style=" position:absolute; top: 0.5em; left:1%; font-size: 0.9em; width:100%;  color: black; line-height:1em;  " > Isso é uma mensagem </span>
+		</div>
+	</div>
+-->
+
 <!-- <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" />
 <div style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  ></div>  --> 
 
