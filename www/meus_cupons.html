@@ -165,7 +165,7 @@ var id_loja = "87";
 			createXMLHttpRequest_cancelar_cupom();
 			xmlHttp.onreadystatechange = handleStateChange_cancelar_cupom;
 			
-			xmlHttp.open("GET", "https://acheloja.com/cancelar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"", true);
+			xmlHttp.open("GET", "http://54.207.38.125/AcheLoja2.0/cancelar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"", true);
 			
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -277,7 +277,10 @@ var id_loja = "87";
 				
 			}		
 			
-			xmlHttp.open("GET", "https://acheloja.com/avaliar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"&nota="+nota+"&comentario="+comentario+"", true);
+			//xmlHttp.open("GET", "https://acheloja.com/avaliar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"&nota="+nota+"&comentario="+comentario+"", true);
+			
+			xmlHttp.open("GET", "http://54.207.38.125/AcheLoja2.0/avaliar_cupom_ajax.php?id="+id_cupom+"&id_u="+id_usuario+"&id_a="+id_anuncio+"&nota="+nota+"&comentario="+comentario+"", true);
+			
 			
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
