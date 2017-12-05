@@ -2,6 +2,10 @@
 <html>
 <head>
 
+<script>
+var id_loja = '87';
+</script>
+
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 
 <meta name="google-site-verification" content="Wiq9h-MVFjBO3hYHciruU4k0Wk08XVFGfFgvRQi_YPM" />
@@ -197,7 +201,7 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("email=" + document.getElementById("email").value  + "&senha=" + document.getElementById("senha").value);
+			xmlHttp.send("id_loja=" + id_loja + "&email=" + document.getElementById("email").value  + "&senha=" + document.getElementById("senha").value);
 			
 			
 			
@@ -230,6 +234,7 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 				
 				if(str == "lojista"){
 					
+					//Alterar em breve para aparecer a tela no app somente para lojistas (chat_lista_clientes.html), se clicar em um abre chat_lojista.html
 					alert("Você possui cadastro como Lojista, esse App é somente para Usuários. Para acessar como Lojista entre pelo site acheloja.com! Obrigado!");
 				
 				}
@@ -254,7 +259,8 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 						localStorage.email_usuario = str.substring((pos_email+6), str.length);
 
 						//form[0].submit;
-						window.location.href="home.html";
+						//window.location.href="home.html";
+						window.location.href="vitrine_virtual.html";
 							
 							
 				}//fim do if
@@ -266,7 +272,7 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 			
 			
 				document.getElementById("img_carregando").style.visibility = "hidden";
-				alert("Sem Conexão com a Internet");
+				//alert("Sem Conexão com a Internet");
 				
 			}
 			}

@@ -2,6 +2,10 @@
 <html>
 <head>
 
+<script>
+var id_loja = '87';
+</script>
+
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 
 <meta name="google-site-verification" content="Wiq9h-MVFjBO3hYHciruU4k0Wk08XVFGfFgvRQi_YPM" />
@@ -11,7 +15,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 
-<meta name="description" content="Você escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais próximo de você!">
+<meta name="description" content="App">
 
 
 <link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
@@ -51,7 +55,7 @@ var xmlHttp;
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("nome=" + document.getElementById("nome").value + "&email=" + document.getElementById("email").value +  "&senha=" + document.getElementById("senha").value + "");
+			xmlHttp.send("id_loja=" + id_loja + "&nome=" + document.getElementById("nome").value + "&email=" + document.getElementById("email").value +  "&senha=" + document.getElementById("senha").value + "");
 			
 			
 			
@@ -90,7 +94,8 @@ var xmlHttp;
 						//alert(localStorage.id_usuario);
 
 						//form[0].submit;
-						window.location.href="home.html";
+						//window.location.href="home.html";
+						window.location.href="vitrine_virtual.html";
 						exit();	
 							
 				}else{
@@ -230,7 +235,7 @@ var xmlHttp;
 			
 			//xmlHttp.open("GET", "https://acheloja.com/validar/email.php?email="+document.getElementById("email").value+"", true);
 			
-			xmlHttp.open("GET", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/email.php?email="+document.getElementById("email").value+"", true);
+			xmlHttp.open("GET", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/email.php?email="+document.getElementById("email").value+"&id_loja="+id_loja+"", true);
 			
 			
 			
@@ -250,7 +255,7 @@ var xmlHttp;
 				if(xmlHttp.responseText.trim() == "1"){
 					
 					//document.getElementById("email_aviso").innerHTML = "<?php echo $traducao['email_ja_cadastrado']; ?>";
-					alert("Email já cadastrado, verifique se já possui cadastro no AcheLoja!")
+					alert("Email já cadastrado, verifique se já possui cadastro no App!")
 					document.getElementById("email").focus();
 					document.getElementById("img_carregando").style.visibility = "hidden";
 					return false;
@@ -269,7 +274,7 @@ var xmlHttp;
 			
 			
 				document.getElementById("img_carregando").style.visibility = "hidden";
-				alert("Sem Conexão com a Internet");
+				//alert("Sem Conexão com a Internet");
 				
 			}
 			}
@@ -299,7 +304,7 @@ textarea {
 </style>
 
 
-<title>AcheLoja</title>
+<title>App</title>
 </br></br>
 
 
@@ -321,7 +326,7 @@ textarea {
 		</form>
 				<input onclick="startRequest_email()" type="submit" style="position: absolute; top:70%; left:5%; height: 7%; width:90%;  font-weight: bold; color:white; background-color: #0070a1; font-size:1.5em; cursor: pointer; border-radius: 5px; opacity: 1; filter: alpha(opacity=100);" Value="Cadastrar"/>
 			
-		<p style="cursor: pointer; text-decoration: underline; color: blue; position: absolute; top:80%; width:80%; left:10%; font-size:0.7em;" onclick="abrir_termos_de_uso()" >Ao clicar em Cadastrar você está de acordo com os <b>Termos de uso</b> do Acheloja.com, <br>clique aqui para ver os Termos de uso</p>
+		<p style="cursor: pointer; text-decoration: underline; color: blue; position: absolute; top:80%; width:80%; left:10%; font-size:0.7em;" onclick="abrir_termos_de_uso()" >Ao clicar em Cadastrar você está de acordo com os <b>Termos de uso</b>, <br>clique aqui para ver os Termos de uso</p>
 
 		
 		<a style="text-decoration: none;" href="index.html"><span style="position:fixed; top:0%;left:0%; font-size:3em;">⇦</span></a>
@@ -332,103 +337,6 @@ textarea {
 </table> 
 <div id="termo_de_uso" style="visibility: hidden; overflow-y: auto; position: fixed; top:10%; height: 80%; left: 5%; width:90%; background-color: white; opacity:0.90; filter:alpha(opacity=90);">
  
-	<p style="font-size: 1em; text-align: center;">
-		TERMOS DE USO DO ACHELOJA</br>
-		</br>
-		<p style="position:absolute;  top:10%;  left:5%;  height: 80%; width:90%; font-size: 0.7em; text-align: justify;">
-		1.            PARTES
-		</br>
-		</br>1.1          Estes Termos de Uso aplicam-se entre, de um lado, Acheloja, e, de outro lado, a todo e qualquer usuário, seja pessoa física ou jurídica, doravante designado USUÁRIO, do serviço do Acheloja, prestado por meio do site www.acheloja.com.
-		</br>1.2          Ao utilizar o serviço do Acheloja, o USUÁRIO fica ciente e concorda que está sujeito a todas as disposições destes Termos de Uso, declarando, para todos os fins de Direito, possuir capacidade jurídica para tanto.
-		</br></br>
-		</br>2.           OBJETO
-		</br>
-		</br>2.1          Estes Termos de Uso regem a utilização, pelo USUÁRIO, do Acheloja, um serviço online de visualização de mapas, localização de endereços, estabelecimentos, exibição de imagens e informações a respeito dos locais indicados , prestado gratuitamente pelo Acheloja por meio do site  www.acheloja.com.
-		</br></br>
-		</br>3.           CONDIÇÕES GERAIS DE USO
-		</br>
-		</br>3.1          O USUÁRIO fica ciente e concorda que a utilização do serviço Acheloja deve ser feita com finalidade exclusivamente pessoal imediata. Os mapas, endereços, estabelecimentos, imagens, informações e qualquer outro conteúdo do serviço do Acheloja são meramente ilustrativos, podendo não retratar fielmente a situação real em que se encontrem.
-		</br>3.2          O USUÁRIO fica ciente e concorda que o Acheloja não pode garantir a qualidade, exatidão, completude, adequação, efetividade, confiabilidade ou utilidade dos mapas, endereços, estabelecimentos, imagens, informações ou de qualquer outro conteúdo do serviço do Acheloja.
-		</br></br>
-		</br>4.           CADASTRO E SENHA DO USUÁRIO
-		</br>
-		</br>4.1          A utilização de determinadas funcionalidades do serviço Acheloja condiciona-se ao prévio cadastro do USUÁRIO, por meio do site www.acheloja.com, mediante o fornecimento dos dados pessoais solicitados, definição de uma identificação ou indicação de um endereço de e-mail, bem como de uma senha, de uso pessoal e intransferível.
-		</br>4.2          O USUÁRIO obriga-se a fornecer ao Acheloja, por ocasião do seu cadastro, informações verdadeiras, atuais e completas, bem como a assim mantê-las durante todo o período em que utilizar o serviço do Acheloja.
-		</br>4.3          O USUÁRIO obriga-se, ainda, a manter a confidencialidade da sua senha e a notificar imediatamente o Acheloja a respeito de eventual acesso indevido ou uso não autorizado da sua senha por terceiros.
-		</br></br>
-		</br>5.           CONTEÚDO CRIADO PELO USUÁRIO ANUNCIANTE
-		</br>
-		</br>5.1          O USUÁRIO ANUNCIANTE poderá incluir estabelecimentos, fotografias  a seu respeito, para exibição no serviço do Acheloja, atribuindo-lhes, para tanto, título, endereço completo, categoria e outras informações porventura exigidas pelo Acheloja.
-		</br>5.2          Qualquer pessoa poderá visualizar estabelecimentos e fotografias incluídos no serviço do Acheloja por um USUÁRIO ANUNCIANTE.
-		</br>5.3          O USUÁRIO ANUNCIANTE obriga-se a fornecer ao Acheloja, ao incluir estabelecimentos, fotografias para exibição no serviço do Acheloja, informações verdadeiras, objetivas, atuais e pertinentes à finalidade do serviço do Acheloja. 
-		</br>5.4          O USUÁRIO declara ter todos os direitos e autorizações necessários para a inclusão dos estabelecimentos, fotografias e demais conteúdos no serviço Acheloja, incluindo (mas não se limitando a) os relativos a direitos autorais e direito de imagem.
-		</br>5.5          O USUÁRIO fica ciente e concorda que a criação, inclusão ou divulgação de qualquer conteúdo no serviço do Acheloja não gera nem implica, para si, direito de propriedade ou remuneração. Todo e qualquer conteúdo criado, incluído ou divulgado pelo USUÁRIO poderá continuar disponível no serviço Acheloja, inclusive após o término deste contrato.
-		</br>5.6		  O USUÁRIO ANUNCIANTE fica ciente que os benefícios adquiridos pelo pagamento do planos fica disponível somente durante a vigência do mesmo. Após o termino do período os benefícios exclusivos dos planos pagos são suspensos, e somente estarão disponíveis se o plano for renovado. Os benefícios de cada plano estão descritos no endereço www.acheloja.com/lojista.
-		</br>5.7 		  Caso o USUÁRIO ANUNCIANTE opte por utilizar cupons de descontos, o mesmo está de acordo em pagar uma comissão (porcentagem sobre o valor do produto ou serviço) para o Acheloja sobre cada cupom validado pelo USUARIO ANUNCIANTE. O valor da comissão é definido entre o USUARIO ANUNCIANTE e o Acheloja, que pode ser formalizado por e-mail. Será considerado um cupom validado aquele que após ser gerado por um USUARIO (cliente do USUARIO ANUNCIANTE) no sistema do Acheloja, apresenta o mesmo e solicita ao USUARIO ANUNCIANTE a validação do cupom via sistema para notificar o Acheloja que a compra ou a prestação de serviço foi feita com sucesso graças ao cupom que foi apresentado pelo USUARIO (cliente). 
-		</br></br>
-		</br>6.           REMOÇÃO DE CONTEÚDO DO USUÁRIO
-		</br>
-		</br>6.1          O USUÁRIO fica ciente e concorda que qualquer conteúdo que criar, incluir ou divulgar no serviço Acheloja, em contrariedade a estes Termos de Uso, poderá ser removido pelo Acheloja, independentemente de comunicação.
-		</br></br>
-		</br>7.           PRÁTICAS PROIBIDAS
-		</br>
-		</br>7.1          O USUÁRIO fica ciente e concorda que, na utilização do serviço do Acheloja, é terminantemente proibido:
-		</br>(i)           distribuir, modificar, vender, alugar ou de qualquer forma explorar economicamente o serviço do Acheloja, os dados e informações a ele relacionados, bem como utilizá-los para finalidade que não seja pessoal imediata ou, ainda, para a criação ou fornecimento de outros produtos ou serviços;
-		</br>(ii)          criar, incluir ou divulgar qualquer conteúdo – incluindo (mas não se limitando a) informações relativas a endereços, estabelecimentos e fotografias – que seja ofensivo a quaisquer direitos de terceiros ou do Acheloja, inclusive direitos sobre marcas, direitos autorais, direitos de imagem, honra, nome e quaisquer outros;
-		</br>(iii)        criar, incluir ou divulgar qualquer conteúdo – incluindo (mas não se limitando a) informações relativas a endereços, estabelecimentos e fotografias– que seja ameaçador, preconceituoso, racista, calunioso, difamador, injurioso ou de qualquer outra forma ilícito;
-		</br>(iv)         criar, incluir ou divulgar qualquer conteúdo – incluindo (mas não se limitando a) informações relativas a endereços, estabelecimentos, pontos públicos e fotografias – que seja imoral, malicioso, falso, inexato, desatualizado, inoportuno ou estranho à finalidade do serviço do Acheloja;
-		</br>(v)          criar, incluir ou divulgar qualquer conteúdo particular – incluindo (mas não se limitando a) nome, endereço, telefone e fotografia – relativo a pessoa física, e não a estabelecimentos;
-		</br>(vi)         fornecer ao Acheloja, por ocasião do cadastro no site  www.acheloja.com, informações falsas, inexatas, desatualizadas ou incompletas, bem como assumir intencionalmente a personalidade de outra pessoa, física ou jurídica;
-		</br>(vii)       disseminar ou instalar vírus ou qualquer outro código, arquivo ou software com o propósito de interromper, destruir, acessar indevidamente, limitar ou interferir no funcionamento ou segurança do serviço do Acheloja, bem como das informações, dados e equipamentos do Acheloja, de seus USUÁRIOS ou de terceiros, ou, ainda, para qualquer outra finalidade ilícita; e
-		</br>(viii)      praticar qualquer ato contrário à legislação em vigor.
-		</br></br>
-		</br>8.           UTILIZAÇÃO E DIVULGAÇÃO DE DADOS DO USUÁRIO
-		</br>
-		</br>8.1          O USUÁRIO fica ciente e concorda que a Acheloja poderá utilizar o endereço de e-mail porventura fornecido por ocasião do seu cadastro no site  www.acheloja.com para o envio de informações, de que natureza for, relacionadas ao serviço do Acheloja.
-		</br>8.2          O USUÁRIO fica ciente e concorda que os dados que fornece ao Acheloja e os porventura registrados por esta, por ocasião de seu cadastro no site  www.acheloja.com e em decorrência da utilização do serviço do Acheloja, incluindo informações relativas à sua identificação e localização, poderão ser preservados e/ou fornecidos às autoridades competentes em cumprimento de ordens judiciais.
-		</br></br>
-		</br>9.           BLOQUEIO E CANCELAMENTO DE CADASTRO DO USUÁRIO
-		</br>
-		</br>9.1          O USUÁRIO fica ciente e concorda que o Acheloja, tomando conhecimento de qualquer violação ao disposto nestes Termos de Uso, poderá bloquear temporariamente ou cancelar em caráter definitivo o seu cadastro no site  www.acheloja.com, independentemente de comunicação.
-		</br></br>
-		</br>10.         RESPONSABILIDADE
-		</br>
-		</br>10.1        O USUÁRIO fica ciente e concorda que o Acheloja não é responsável:
-		</br>(i)           por eventual falta de qualidade, de exatidão, de completude, de adequação, de efetividade, de confiabilidade ou de utilidade dos mapas, endereços, estabelecimentos, imagens, informações, preços, disponibilidade de produtos, rotas ou de qualquer outro conteúdo do serviço Acheloja;
-		</br>(ii)          por qualquer serviço, anúncio, propaganda, imagem, texto ou outro conteúdo relacionado ao serviço do Acheloja que seja criado, mantido ou prestado por USUÁRIOS ou por terceiros, ainda que acessível ou visualizável no site www.acheloja.com;
-		</br>(iii)        pelas condições reais de uso, conseqüências e eventuais danos decorrentes do uso dos mapas, endereços, estabelecimentos, pontos públicos, imagens, informações ou de qualquer outro conteúdo do serviço do Acheloja;
-		</br>(iv)         por eventuais danos decorrentes da inobservância, pelo USUÁRIO, do dever de manutenção da confidencialidade da sua senha, bem como da falta ou atraso no envio de notificação ao Acheloja a respeito de eventual acesso indevido ou uso não autorizado da sua senha por terceiros;
-		</br>(v)          por qualquer dano sofrido pelo USUÁRIO em decorrência da conduta de outros USUÁRIOS ou terceiros, ainda que no âmbito do serviço do Acheloja;
-		</br>(vi)         por qualquer dano sofrido pelo USUÁRIO em decorrência da remoção de qualquer conteúdo que criar, incluir ou divulgar no serviço do Acheloja, do cancelamento do seu cadastro no site www.acheloja.com, bem como da preservação ou fornecimento de informações a seu respeito, incluindo relativas à sua identificação e localização, pelo Acheloja, em cumprimento de ordens judiciais; e
-		</br>(vii)       por eventual modificação, suspensão ou interrupção do serviço Acheloja.
-		</br>10.2       O USUÁRIO fica ciente e concorda que é integralmente responsável:
-		</br>(i)           por qualquer dano decorrente de eventual distribuição, modificação, venda, aluguel ou de qualquer forma de exploração econômica do serviço do Acheloja, dos dados e informações a ele relacionados, bem como da sua utilização para finalidade que não seja pessoal imediata ou, ainda, para a criação ou fornecimento de outros produtos ou serviços;
-		</br>(ii)          por qualquer dano decorrente do conteúdo que criar, incluir ou divulgar no serviço do Acheloja, incluindo (mas não se limitando a) estabelecimentos, informações, fotografias e comentários a seu respeito;
-		</br>(iii)        por qualquer dano decorrente do fornecimento, ao Acheloja, por ocasião do cadastro no site www.acheloja.com, de informações falsas, inexatas, desatualizadas ou incompletas;
-		</br>(iv)         por qualquer dano decorrente da disseminação ou instalação de vírus ou de qualquer outro código, arquivo ou software com o propósito de interromper, destruir, acessar indevidamente, limitar ou interferir no funcionamento ou segurança do serviço do Acheloja, bem como das informações, dados e equipamentos do Acheloja, de seus USUÁRIOS ou de terceiros, ou, ainda, para qualquer outra finalidade ilícita;
-		</br>(v)          por qualquer dano decorrente da prática de qualquer ato contrário à legislação em vigor, com a utilização do serviço do Acheloja.
-		</br>10.3       O USUÁRIO isenta o Acheloja de qualquer responsabilidade decorrente de eventuais atos que praticar em contrariedade ao disposto nestes Termos de Uso. O USUÁRIO obriga-se a ressarcir o Acheloja qualquer quantia porventura despendida pelo Acheloja em decorrência da violação, pelo USUÁRIO, de qualquer disposição destes Termos de Uso.
-		</br></br>
-
-
-		</br>11.          TÉRMINO DO CONTRATO
-		</br>
-		</br>11.1        Considera-se encerrado este contrato:
-		</br>(i)           a partir do momento em que o USUÁRIO, ao seu exclusivo critério, cessar a utilização do serviço do Acheloja; ou
-		</br>(ii)          a partir do cancelamento, pelo Acheloja, do cadastro do USUÁRIO no site www.acheloja.com, na forma prevista na cláusula acima.
-		</br></br>
-		</br>12.         MODIFICAÇÃO DOS TERMOS DE USO
-		</br>
-		</br>12.1        O USUÁRIO fica ciente e concorda que estes Termos de Uso poderão ser alterados pelo Acheloja, independentemente de qualquer comunicação. O USUÁRIO poderá, a qualquer momento, acessar a versão atualizada destes Termos de Uso no endereço www.acheloja.com/termos_de_uso.php
-		</br></br>
-		</br>13.         FORO
-		</br>
-		</br>13.1        As partes elegem o Foro Central da Comarca de São Paulo para dirimir quaisquer controvérsias e demandas decorrentes ou relacionadas ao objeto destes Termos de Uso, renunciando a qualquer outro, por mais privilegiado que possa ser.
-		</br>
-		</br>
-		 
-		 </p>
-		 <p onclick="fechar_termos_de_uso()" style="cursor: pointer; position: fixed; top:9%; right:12%; color: red;"><b> X </b></p>
  </div>
  
  <script> 
@@ -496,7 +404,10 @@ textarea {
 		xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_termos_de_uso.php", true);
 		xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		
-		xmlHttp.send();
+		//xmlHttp.send();
+		
+		xmlHttp.send("id_loja=" + id_loja + "");
+			
 		
 	
 	
