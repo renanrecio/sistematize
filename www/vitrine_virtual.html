@@ -71,6 +71,62 @@ var id_loja = '87';
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+<script>
+//enviar o REG ID para o BD - para push notification
+			 
+			 var xmlHttp;
+			 
+			function createXMLHttpRequest_id_push() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_id_push(reg_id) {
+			createXMLHttpRequest_id_push();
+			xmlHttp.onreadystatechange = handleStateChange_id_push;
+			
+			
+			var regid = reg_id.trim();
+			
+			regid = regid.replace(" ", "");
+			
+			localStorage.id_dispositivo = regid;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/app_reg_id_push_ajax.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/app_reg_id_push_ajax.php", true);
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_loja"+ id_loja +"&reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
+			
+			
+		
+			}
+
+			
+			function handleStateChange_id_push() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}						
+</script>	
+
+
 <script type="text/javascript">
 /*   
    window.onload = function(){
@@ -198,7 +254,7 @@ function desaparecer_detalhes(e){
 	
 <!-- Validação do forumlário -->
 <script type="text/javascript">
-			var xmlHttp;
+			//var xmlHttp;
 			var top_ultimo_prod;
 			var cidade;
 			var cep_bairro;
