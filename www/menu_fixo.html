@@ -483,13 +483,19 @@ function setupPush() {
 			window.location.href = "meus_cupons.html";	 
 		
 		}else{
+			
+			if (link == 'promocoes') {
 		
-		   navigator.notification.alert(
-			   data.message,         // message
-			   null,                 // callback
-			   data.title,           // title
-			   'Ok'                  // buttonName
-		   );      
+				window.location.href = "promocoes.html";	 
+		
+			}else{
+				   navigator.notification.alert(
+					   data.message,         // message
+					   null,                 // callback
+					   data.title,           // title
+					   'Ok'                  // buttonName
+				   );      
+		   }//fim do else
 		   
 		}//fim do else
 		
