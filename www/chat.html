@@ -7,6 +7,75 @@
 var id_loja = '87';
 </script>
 
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+<style>
+p, input, span,a,li,placeholder,select,option,td,tr{
+	font-family: 'Montserrat', sans-serif;
+}
+
+body{
+	
+	background-color: #F9F9F9;
+}
+</style>
+<style>
+
+.msg{
+    background: #dcf8c6;
+    border-radius: 10px;
+    max-width: 80%;
+	min-width: 30%;	
+    height: auto;
+	width: auto;
+	
+	right:2%;
+}
+
+.msg:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: relative;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #dcf8c6;
+
+    top: 2.25em;
+    right: 0%;
+}
+
+
+.msg2{
+    background: #e6e6e6;
+    border-radius: 10px;
+    max-width: 60%;
+	min-width: 30%;	
+	min-height: 25px;
+    height: auto;
+	width: auto;
+	
+	left:2%;
+}
+
+
+.caixa_msg{
+    background: #e6e6e6;
+    border-radius: 10px;
+    
+}
+
+.enviar{
+    background: green;
+    border-radius: 10px;
+
+}
+
+</style>
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -126,6 +195,22 @@ function abrir_info(){
 			var cidade;
 			var cep_bairro;
 			var str;
+			
+			var id = 0;
+					
+			var id_antigo;
+
+			var height_antigo;
+
+			var top_ = 100;
+
+			var top2;
+
+			var span;
+			
+			var msg;
+			
+			var ultimo_index;
 
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
@@ -170,10 +255,62 @@ function abrir_info(){
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
+				var obj = JSON.parse(str);
+				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
+
+				ultimo_index = (obj.length) - 1;
 				
+				//for (i = 0; i < obj.length; i++) { 
+				for (i = ultimo_index; i >= 0; i--) { 
+
+					msg = obj[i].mensagem;
+
+						if( msg != ''){
+						
+							if(id==0){
+							
+								height_antigo= 0;
+								
+							}else{
+								id_antigo = id - 1;
+								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
+
+							}
+							
+							top_ = 	top_ + height_antigo;
+						
+							if( obj[i].quem_envia == "usuario"){
+								
+								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}else{
+								
+								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}//fim do else	
+								
+								
+							$('#div_chat').append( span );
+							
+							height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
+								
+							top2 = 	top_ + height_antigo;
+							
+							span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+
+							$('#div_chat').append( span_espaco );
+							
+							id = id + 1;
+							
+						}	//fim do if
+						
+				}//fim do for
 				
+				//document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+				document.body.scrollTop = document.body.scrollHeight;
+							
 
 				
 			}
