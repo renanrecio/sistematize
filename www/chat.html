@@ -196,7 +196,7 @@ function abrir_info(){
 			var cep_bairro;
 			var str;
 			
-			var id = 0;
+			var id_msg = 0;
 					
 			var id_antigo;
 
@@ -211,6 +211,8 @@ function abrir_info(){
 			var msg;
 			
 			var ultimo_index;
+			
+			var obj;
 
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
@@ -255,7 +257,9 @@ function abrir_info(){
 				str = xmlHttp.responseText.trim();
 				
 				
-				var obj = JSON.parse(str);
+				obj = JSON.parse(str);
+			
+				
 				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
 
 				ultimo_index = (obj.length) - 1;
@@ -264,35 +268,38 @@ function abrir_info(){
 				for (i = ultimo_index; i >= 0; i--) { 
 
 					msg = obj[i].mensagem;
-
+					
 						if( msg != ''){
 						
-							if(id==0){
+							if(id_msg==0){
 							
 								height_antigo= 0;
 								
+					alert(msg);
+								
 							}else{
-								id_antigo = id - 1;
+								id_antigo = id_msg - 1;
 								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
 
 							}
 							
 							top_ = 	top_ + height_antigo;
+							
 						
 							if( obj[i].quem_envia == "usuario"){
 								
-								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
 							}else{
 								
-								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg2" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
 							}//fim do else	
 								
 								
 							$('#div_chat').append( span );
 							
-							height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
+							height_antigo = (document.getElementById('msg'+id_msg).clientHeight)+30;
 								
 							top2 = 	top_ + height_antigo;
 							
@@ -300,7 +307,7 @@ function abrir_info(){
 
 							$('#div_chat').append( span_espaco );
 							
-							id = id + 1;
+							id_msg = id_msg + 1;
 							
 						}	//fim do if
 						

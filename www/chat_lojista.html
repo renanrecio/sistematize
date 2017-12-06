@@ -129,6 +129,24 @@ function abrir_info(){
 			var cidade;
 			var cep_bairro;
 			var str;
+			
+			var id_msg = 0;
+					
+			var id_antigo;
+
+			var height_antigo;
+
+			var top_ = 100;
+
+			var top2;
+
+			var span;
+			
+			var msg;
+			
+			var ultimo_index;
+			
+			var obj;
 
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
@@ -173,11 +191,67 @@ function abrir_info(){
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
+				obj = JSON.parse(str);
+			
 				
-				
-				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
 
+				ultimo_index = (obj.length) - 1;
+				
+				//for (i = 0; i < obj.length; i++) { 
+				for (i = ultimo_index; i >= 0; i--) { 
+
+					msg = obj[i].mensagem;
+					
+						if( msg != ''){
+						
+							if(id_msg==0){
+							
+								height_antigo= 0;
+								
+					alert(msg);
+								
+							}else{
+								id_antigo = id_msg - 1;
+								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
+
+							}
+							
+							top_ = 	top_ + height_antigo;
+							
+						
+							if( obj[i].quem_envia == "lojista"){
+								
+								span = '<span class="msg" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}else{
+								
+								span = '<span class="msg2" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}//fim do else	
+								
+								
+							$('#div_chat').append( span );
+							
+							height_antigo = (document.getElementById('msg'+id_msg).clientHeight)+30;
+								
+							top2 = 	top_ + height_antigo;
+							
+							span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+
+							$('#div_chat').append( span_espaco );
+							
+							id_msg = id_msg + 1;
+							
+						}	//fim do if
+						
+				}//fim do for
+				
+				//document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
+				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+				document.body.scrollTop = document.body.scrollHeight;
+				
 				
 			}
 			}
