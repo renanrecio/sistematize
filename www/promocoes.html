@@ -47,7 +47,7 @@ var id_loja = "87";
 			}
 			}
 
-			function startRequest_lojas_favoritas() {
+			function startRequest_promocoes_avisos() {
 			createXMLHttpRequest();
 			xmlHttp.onreadystatechange = handleStateChange;
 			
@@ -55,12 +55,12 @@ var id_loja = "87";
 			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_lojas_favoritas_app.php", true);
 			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_lojas_favoritas_app.php", true);
 			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_lojas_favoritas_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_promocoes_avisos.php", true);
 			
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("id_loja="+id_loja+"");
 			
 			}
 
@@ -87,7 +87,7 @@ var id_loja = "87";
 			
 		
 			
-		startRequest_lojas_favoritas();
+		startRequest_promocoes_avisos();
 			
 </script>   
 
