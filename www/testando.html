@@ -2,10 +2,13 @@
 
 <style>
 .telefone{
-    background: #e6e6e6;
+    background: #ccff66;
     border-radius: 10px;
-    width: 80%;
-    height: 2em;
+    max-width: 60%;
+	min-width: 30%;	
+	min-height: 25px;
+    height: auto;
+	width: auto;
 
     position: absolute;
 	top:0em;
@@ -20,15 +23,59 @@
     width: 0;
     height: 0;
 
-    position: absolute;
+    position: relative;
 
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 20px solid #e6e6e6;
+    border-top: 20px solid #ccff66;
 
-    top: 2em;
-    right: 2.5%;
+    top: 2.25em;
+    right: 0%;
 }
+
+.msg{
+    background: #dcf8c6;
+    border-radius: 10px;
+    max-width: 60%;
+	min-width: 30%;	
+	min-height: 25px;
+    height: auto;
+	width: auto;
+	
+	right:2%;
+}
+
+.msg:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: relative;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #dcf8c6;
+
+    top: 2.25em;
+    right: 0%;
+}
+
+
+.msg2{
+    background: #e6e6e6;
+    border-radius: 10px;
+    max-width: 60%;
+	min-width: 30%;	
+	min-height: 25px;
+    height: auto;
+	width: auto;
+	
+	left:2%;
+}
+
+
 
 .caixa_msg{
     background: #e6e6e6;
@@ -56,12 +103,32 @@
 </style>
 
 
+<body style="position: absolute; height: 100%; width:100%;">
+
+<div style="position: absolute; bottom:10em; width:100%;">
+
+<span class="msg" id="msg1" style=" position:absolute; bottom: 0em; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " > Isso é uma mensagem asuhaushauhsuas aushauhsuahsuaasuhaushauhsuas aushauhsuahsuaasuhaushauhsuas aushauhsuahsua asuaushauhs </span>
+
+<span class="msg2" id="msg2" style=" position:absolute; bottom: 0px; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " > Isso é uma mensagem asuhaushauhsuas aushauhsuahsuaasuhaushauhsuas aushauhsuahsuaasuhaushauhsuas aushauhsuahsua asuaushauhs </span>
+
+<span class="msg" id="msg3" style=" position:absolute; bottom: 0px; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " > Isso </span>
+
+<span class="msg2" id="msg4" style=" position:absolute; bottom: 0px; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " > Isso é uasuaushauhs </span>
+
+
+</div>
+
+
+<!--
 	<div id="telefone" style="position:fixed; width: 100%;  bottom:7em; right:0%; height: 3.5em;">
 
 		<div class="telefone" >
 			<span style=" position:absolute; top: 0.5em; left:1%; font-size: 0.9em; width:100%;  color: black; line-height:1em;  " > Isso é uma mensagem </span>
 		</div>
 	</div>
+	-->
+	
+	
 	
 	<div id="telefone" style="position:fixed; width: 100%;  bottom:3em; right:0%; height: 3.5em;">
 
@@ -111,3 +178,24 @@
 	</tr>
 
 </table>
+
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<script>
+
+
+var height = (document.getElementById('msg1').clientHeight)+30;
+
+document.getElementById('msg2').style.bottom = height+'px';
+
+var height = (document.getElementById('msg2').clientHeight)+height+30;
+
+document.getElementById('msg3').style.bottom = height+'px';
+
+var height = (document.getElementById('msg3').clientHeight)+height+30;
+
+document.getElementById('msg4').style.bottom = height+'px';
+
+</script>
+
+</body>

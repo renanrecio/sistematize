@@ -7,68 +7,6 @@
 var id_loja = '87';
 </script>
 
-<style>
-.telefone{
-    background: #e6e6e6;
-    border-radius: 10px;
-    width: 9em;
-    height: 2em;
-
-    position: relative;
-	top:0em;
-	
-	left:1em;
-}
-
-.telefone:after{
-  
-    content: "";
-
-    width: 0;
-    height: 0;
-
-    position: absolute;
-
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #e6e6e6;
-
-    top: 2em;
-    right: 2.5%;
-	
-}
-</style>
-
-<style>
-.info{
-    background: #e6e6e6;
-    border-radius: 10px;
-    width: 96%;
-    height: 4em;
-
-    position: absolute;
-	top:0em;
-	
-	left:2%;
-}
-
-.info:after{
-
-    content: "";
-
-    width: 0;
-    height: 0;
-
-    position: absolute;
-
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 20px solid #e6e6e6;
-
-    top: -20px;
-    right: 8%;
-}
-</style>
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -185,6 +123,19 @@ function abrir_info(){
 				
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
+				
+				var height = (document.getElementById('msg1').clientHeight)+30;
+
+				document.getElementById('msg2').style.bottom = height+'px';
+
+				var height = (document.getElementById('msg2').clientHeight)+height+30;
+
+				document.getElementById('msg3').style.bottom = height+'px';
+
+				var height = (document.getElementById('msg3').clientHeight)+height+30;
+
+				document.getElementById('msg4').style.bottom = height+'px';
+				
 			}
 			}
 			}
@@ -215,6 +166,7 @@ function abrir_info(){
 	<!--
 	<a href="chat.html"><img src="fotos/chat.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:48%; width:2.8em; height:2.8em;" /> </a>
 	-->
+	
 	
 </body>
 </html>
