@@ -72,7 +72,7 @@ if(localStorage.id_usuario == ""){
 			<a href="buscar_produtos.html"><img id="menu_busca" src="fotos/lupa.png" width="100%"  style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
 		</td>
 		<td style="text-align:center; width:20%;">
-			<a href="chat.html"><img id="menu_chat" src="fotos/chat.png" width="100%"  style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
+			<a href="chat.html" id="chat_link" ><img id="menu_chat" src="fotos/chat.png" width="100%"  style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
 		</td>
 		<td style="text-align:center; width:20%;">
 			<a href="promocoes.html"><img id="menu_promocoes" src="fotos/estrela.png" width="100%" style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
@@ -84,6 +84,16 @@ if(localStorage.id_usuario == ""){
 	</tr>
 
 </table>
+
+<script>
+//Se for lojista mudar link de chat para chat_lojista
+if(localStorage.eh_lojista == "1"){
+
+	document.getElementById('chat_link').setAttribute('href','chat_lojista.html');
+
+}
+
+</script>
 
 <script>
 
