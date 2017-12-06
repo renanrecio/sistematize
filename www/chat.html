@@ -141,7 +141,7 @@ function abrir_info(){
     border-radius: 10px;
     max-width: 60%;
 	min-width: 30%;	
-	min-height: 10px;
+	min-height: 5px;
     height: auto;
 	width: auto;
 	
@@ -183,25 +183,25 @@ function abrir_info(){
 .caixa_msg{
     background: #e6e6e6;
     border-radius: 10px;
-    width: 80%;
+    width: 70%;
     height: 3em;
 
     position: absolute;
 	top:0em;
 	
-	left:2%;
+	left:1%;
 }
 
 .enviar{
     background: green;
     border-radius: 10px;
-    width: 10%;
+    width: 25%;
     height: 2em;
 
     position: absolute;
 	top:0.25em;
 	
-	right:2%;
+	right:1%;
 }
 </style>
 
@@ -209,7 +209,7 @@ function abrir_info(){
 
 	<div id="div_chat" name="div_chat">
 
-		<span class="msg2" id="espaco" style=" position:absolute; top: 0em; font-size:2em; height:2.5em; color: black; line-height:1em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>
+		<span class="msg2" id="espaco" style=" position:absolute; top: 0em; font-size:1em; height:5em; color: black; line-height:1em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>
 
 	</div>
 	
@@ -257,7 +257,7 @@ function enviar(){
 		
 		id = id + 1;
 		
-		span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " >'+msg+'</span>';
+		span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " >'+msg+'</span>';
 
 		$('#div_chat').append( span );
 		
