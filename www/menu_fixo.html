@@ -508,13 +508,15 @@ function setupPush() {
 			}else{
 				if (link == 'chat') {
 		
-					window.location.href = "chat.html";	 
+					window.location.href = "chat.html";
+					startRequest_chat();
 		
 				}else{
 					  
 					    if (link == 'chat_lojista') {
 		
-					       window.location.href = "chat_lojista.html";	 
+					       window.location.href = "chat_lojista.html";
+						   startRequest_chat();
 		
 				        }else{
 						   navigator.notification.alert(
