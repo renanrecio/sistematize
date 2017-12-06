@@ -8,63 +8,8 @@ var id_loja = '87';
 </script>
 
 
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-
-
-<script>
-//enviar o REG ID para o BD - para push notification
-			 
-			 var xmlHttp;
-			 
-			function createXMLHttpRequest_id_push() {
-			if (window.ActiveXObject) {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			else if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
-			}
-			}
-			
-			
-			function startRequest_id_push(reg_id) {
-			createXMLHttpRequest_id_push();
-			xmlHttp.onreadystatechange = handleStateChange_id_push;
-			
-			
-			var regid = reg_id.trim();
-			
-			regid = regid.replace(" ", "");
-			
-			localStorage.id_dispositivo = regid;
-			
-			
-			//xmlHttp.open("POST", "https://acheloja.com/m/app_reg_id_push_ajax.php", true);
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/app_reg_id_push_ajax.php", true);
-			
-			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			
-			xmlHttp.send("id_loja="+id_loja+"&reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
-			
-			
-		
-			}
-
-			
-			function handleStateChange_id_push() {
-			if(xmlHttp.readyState == 4) {
-			if(xmlHttp.status == 200) {
-				
-				
-				//Não fazer nada
-				
-				
-			}
-			}
-			}						
-</script>	
-
-
 <script type="text/javascript">
 /*   
    window.onload = function(){
@@ -120,15 +65,88 @@ function abrir_info(){
 </script>
 
 
-	
-<!-- Validação do forumlário -->
+
 
 <script type="text/javascript">
-			//var xmlHttp;
+			var xmlHttp;
+
+			var id_usuario_escolhido = "2";
+			
+			function createXMLHttpRequest_envia() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_chat_envia(mensagem) {
+			createXMLHttpRequest_envia();
+			xmlHttp.onreadystatechange = handleStateChange_envia;
+			
+
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_chat_enviar.php", true);
+			
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			//Colocar o id_usuario que vai receber a mensagem
+			//alert("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
+			
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
+			
+
+			
+			
+			}
+
+			
+			function handleStateChange_envia() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+			   //alert('enviou');
+			
+			}
+			}
+			}
+			
+		
+			
+</script>   
+
+
+	
+
+
+<script type="text/javascript">
 			var top_ultimo_prod;
 			var cidade;
 			var cep_bairro;
 			var str;
+			
+			var id_msg = 0;
+					
+			var id_antigo;
+
+			var height_antigo;
+
+			var top_ = 100;
+
+			var top2;
+
+			var span;
+			
+			var msg;
+			
+			var ultimo_index;
+			
+			var obj;
 
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
@@ -173,11 +191,65 @@ function abrir_info(){
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
+				obj = JSON.parse(str);
+			
 				
-				
-				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
 
+				ultimo_index = (obj.length) - 1;
+				
+				//for (i = 0; i < obj.length; i++) { 
+				for (i = ultimo_index; i >= 0; i--) { 
+
+					msg = obj[i].mensagem;
+					
+						if( msg != ''){
+						
+							if(id_msg==0){
+							
+								height_antigo= 0;
+								
+							}else{
+								id_antigo = id_msg - 1;
+								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
+
+							}
+							
+							top_ = 	top_ + height_antigo;
+							
+						
+							if( obj[i].quem_envia == "lojista"){
+								
+								span = '<span class="msg" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}else{
+								
+								span = '<span class="msg2" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}//fim do else	
+								
+								
+							$('#div_chat').append( span );
+							
+							height_antigo = (document.getElementById('msg'+id_msg).clientHeight)+30;
+								
+							top2 = 	top_ + height_antigo;
+							
+							span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+
+							$('#div_chat').append( span_espaco );
+							
+							id_msg = id_msg + 1;
+							
+						}	//fim do if
+						
+				}//fim do for
+				
+				//document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
+				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+				document.body.scrollTop = document.body.scrollHeight;
+				
 				
 			}
 			}
@@ -270,6 +342,8 @@ function enviar(){
 
 		document.getElementById('mensagem_escrita').value = '';
 		
+		startRequest_chat_envia(msg);
+		
 	}//fim do if
 	
 }
@@ -281,6 +355,12 @@ function enviar(){
 
 	</div>	
 			
+	<script> 
+		$(function(){
+		  $("#menu").load("menu_fixo.html"); 
+		});
+	</script> 	
+
 	<script> 
 		$(function(){
 		  $("#menu").load("menu_fixo.html"); 

@@ -196,7 +196,7 @@ function abrir_info(){
 			var cep_bairro;
 			var str;
 			
-			var id_msg = 0;
+			var id = 0;
 					
 			var id_antigo;
 
@@ -271,14 +271,13 @@ function abrir_info(){
 					
 						if( msg != ''){
 						
-							if(id_msg==0){
+							if(id==0){
 							
 								height_antigo= 0;
 								
-					alert(msg);
 								
 							}else{
-								id_antigo = id_msg - 1;
+								id_antigo = id - 1;
 								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
 
 							}
@@ -288,18 +287,18 @@ function abrir_info(){
 						
 							if( obj[i].quem_envia == "usuario"){
 								
-								span = '<span class="msg" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
 							}else{
 								
-								span = '<span class="msg2" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
 							}//fim do else	
 								
 								
 							$('#div_chat').append( span );
 							
-							height_antigo = (document.getElementById('msg'+id_msg).clientHeight)+30;
+							height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
 								
 							top2 = 	top_ + height_antigo;
 							
@@ -307,7 +306,7 @@ function abrir_info(){
 
 							$('#div_chat').append( span_espaco );
 							
-							id_msg = id_msg + 1;
+							id = id + 1;
 							
 						}	//fim do if
 						
@@ -367,13 +366,13 @@ function abrir_info(){
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.5.1.min.js"></script> 
 <script>
 
-	var id = 1;
+	//var id = 1;
 	
-	var top_ = 100;//$("#msg"+id).offset().top;
+	//var top_ = 100;//$("#msg"+id).offset().top;
 	
-	var top2;
+	//var top2;
 	
-	var height_antigo;
+	//var height_antigo;
 	
 function enviar(){
 
@@ -383,21 +382,21 @@ function enviar(){
 	
 	if( msg != ''){
 	
-		if(id==1){
+		if(id==0){
 		
 			height_antigo= 0;
 			
 		}else{
 		
-			height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
+			id_antigo = id - 1;
+			height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
 		}
 		top_ = 	top_ + height_antigo;
-		
-		id = id + 1;
 		
 		span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 
 		$('#div_chat').append( span );
+		
 		
 		height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
 			
@@ -412,6 +411,8 @@ function enviar(){
 		document.getElementById('mensagem_escrita').value = '';
 		
 		startRequest_chat_envia(msg);
+		
+		id = id + 1;
 		
 	}//fim do if
 	

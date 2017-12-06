@@ -7,6 +7,75 @@
 var id_loja = '87';
 </script>
 
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+<style>
+p, input, span,a,li,placeholder,select,option,td,tr{
+	font-family: 'Montserrat', sans-serif;
+}
+
+body{
+	
+	background-color: #F9F9F9;
+}
+</style>
+<style>
+
+.msg{
+    background: #dcf8c6;
+    border-radius: 10px;
+    max-width: 80%;
+	min-width: 30%;	
+    height: auto;
+	width: auto;
+	
+	right:2%;
+}
+
+.msg:after{
+
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    position: relative;
+
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #dcf8c6;
+
+    top: 2.25em;
+    right: 0%;
+}
+
+
+.msg2{
+    background: #e6e6e6;
+    border-radius: 10px;
+    max-width: 60%;
+	min-width: 30%;	
+	min-height: 25px;
+    height: auto;
+	width: auto;
+	
+	left:2%;
+}
+
+
+.caixa_msg{
+    background: #e6e6e6;
+    border-radius: 10px;
+    
+}
+
+.enviar{
+    background: #0052cc;
+    border-radius: 10px;
+
+}
+
+</style>
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -69,9 +138,9 @@ function abrir_info(){
 
 <script type="text/javascript">
 			var xmlHttp;
-
-			var id_usuario_escolhido = "2";
 			
+			var id_usuario_escolhido = "2";
+
 			function createXMLHttpRequest_envia() {
 			if (window.ActiveXObject) {
 			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -93,8 +162,7 @@ function abrir_info(){
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			//Colocar o id_usuario que vai receber a mensagem
-			//alert("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
+			//alert("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&quem_envia=usuario&mensagem="+mensagem+"");
 			
 			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
 			
@@ -130,7 +198,7 @@ function abrir_info(){
 			var cep_bairro;
 			var str;
 			
-			var id_msg = 0;
+			var id = 0;
 					
 			var id_antigo;
 
@@ -205,14 +273,13 @@ function abrir_info(){
 					
 						if( msg != ''){
 						
-							if(id_msg==0){
+							if(id==0){
 							
 								height_antigo= 0;
 								
-					alert(msg);
 								
 							}else{
-								id_antigo = id_msg - 1;
+								id_antigo = id - 1;
 								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
 
 							}
@@ -222,18 +289,18 @@ function abrir_info(){
 						
 							if( obj[i].quem_envia == "lojista"){
 								
-								span = '<span class="msg" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
 							}else{
 								
-								span = '<span class="msg2" id="msg'+id_msg+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
 							}//fim do else	
 								
 								
 							$('#div_chat').append( span );
 							
-							height_antigo = (document.getElementById('msg'+id_msg).clientHeight)+30;
+							height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
 								
 							top2 = 	top_ + height_antigo;
 							
@@ -241,7 +308,7 @@ function abrir_info(){
 
 							$('#div_chat').append( span_espaco );
 							
-							id_msg = id_msg + 1;
+							id = id + 1;
 							
 						}	//fim do if
 						
@@ -251,7 +318,8 @@ function abrir_info(){
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
 				document.body.scrollTop = document.body.scrollHeight;
-				
+							
+
 				
 			}
 			}
@@ -289,7 +357,7 @@ function abrir_info(){
 			<textarea class="caixa_msg" id="mensagem_escrita" style=" position: absolute; top:0em; resize: none; width: 70%; left:1%; height: 3em; "  rows="4" cols="50" placeholder="Escreva sua mensagem"></textarea>
 
 
-			<span  class="enviar" onclick="enviar()" style="position:absolute; top: 0.5em; width: 25%; height: 2em; right:1%; font-size: 0.9em; color: white; line-height:2em;  " > >>> </span>
+			<span  class="enviar" onclick="enviar()" style="position:absolute; top: 0.5em; width: 25%; height: 2em; right:1%; font-size: 0.9em; color: white; line-height:2em;  " > ENVIAR </span>
 
 		</div>
 
@@ -300,13 +368,13 @@ function abrir_info(){
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.5.1.min.js"></script> 
 <script>
 
-	var id = 1;
+	//var id = 1;
 	
-	var top_ = 100;//$("#msg"+id).offset().top;
+	//var top_ = 100;//$("#msg"+id).offset().top;
 	
-	var top2;
+	//var top2;
 	
-	var height_antigo;
+	//var height_antigo;
 	
 function enviar(){
 
@@ -316,21 +384,21 @@ function enviar(){
 	
 	if( msg != ''){
 	
-		if(id==1){
+		if(id==0){
 		
 			height_antigo= 0;
 			
 		}else{
 		
-			height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
+			id_antigo = id - 1;
+			height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
 		}
 		top_ = 	top_ + height_antigo;
-		
-		id = id + 1;
 		
 		span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 
 		$('#div_chat').append( span );
+		
 		
 		height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
 			
@@ -345,6 +413,8 @@ function enviar(){
 		document.getElementById('mensagem_escrita').value = '';
 		
 		startRequest_chat_envia(msg);
+		
+		id = id + 1;
 		
 	}//fim do if
 	
