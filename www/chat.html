@@ -213,6 +213,8 @@ function abrir_info(){
 			var ultimo_index;
 			
 			var obj;
+			
+			var data_msg_mais_recente;
 
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
@@ -263,6 +265,8 @@ function abrir_info(){
 				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
 
 				ultimo_index = (obj.length) - 1;
+				
+				data_msg_mais_recente = obj[0].data_envio;
 				
 				//for (i = 0; i < obj.length; i++) { 
 				for (i = ultimo_index; i >= 0; i--) { 
@@ -336,6 +340,128 @@ function abrir_info(){
 
 
 	</div>
+
+
+<!-- Inserir novas msg online -->	
+<script type="text/javascript">
+
+			function createXMLHttpRequest_chat_atualiza() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_chat_atualiza() {
+			createXMLHttpRequest_chat_atualiza();
+			xmlHttp.onreadystatechange = handleStateChange_chat_atualiza;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "http://52.67.44.156/m/ajax_vitrine_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrine_app.php", true);
+			
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_chat_app_atualiza.php", true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
+			
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&data_msg_mais_recente="+data_msg_mais_recente+'');
+			
+			
+			//document.getElementById("img_carregando_produtos").style.visibility = "visible";
+			
+			
+			}
+
+			
+			function handleStateChange_chat_atualiza() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				
+				obj = JSON.parse(str);
+			
+				
+				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
+
+				ultimo_index = (obj.length) - 1;
+				
+				data_msg_mais_recente = obj[0].data_envio;
+				
+				//for (i = 0; i < obj.length; i++) { 
+				for (i = ultimo_index; i >= 0; i--) { 
+
+					msg = obj[i].mensagem;
+					
+						if( msg != ''){
+						
+							if(id==0){
+							
+								height_antigo= 0;
+								
+								
+							}else{
+								id_antigo = id - 1;
+								height_antigo = (document.getElementById('msg'+id_antigo).clientHeight)+30;
+
+							}
+							
+							top_ = 	top_ + height_antigo;
+							
+						
+							if( obj[i].quem_envia == "usuario"){
+								
+								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}else{
+								
+								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+							
+							}//fim do else	
+								
+								
+							$('#div_chat').append( span );
+							
+							height_antigo = (document.getElementById('msg'+id).clientHeight)+30;
+								
+							top2 = 	top_ + height_antigo;
+							
+							span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+
+							$('#div_chat').append( span_espaco );
+							
+							id = id + 1;
+							
+						}	//fim do if
+						
+				}//fim do for
+				
+				//document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
+				//document.getElementById("img_carregando_produtos").style.visibility = "hidden";
+				
+				document.body.scrollTop = document.body.scrollHeight;
+							
+
+				
+			}
+			}
+			}
+			
+		
+			
+</script>   
+	
+	
 <!--	
 	<div  style="position:fixed; width: 100%;  bottom:3em; right:0%; height: 3.5em;">
 
@@ -434,9 +560,13 @@ function enviar(){
 
 	<script> 
 		$(function(){
-		  $("#menu").load("menu_fixo.html"); 
+		
+		  setInterval(function(){ 
+						startRequest_chat_atualiza();
+		  }, 3000);
+		  
 		});
-	</script> 		
+	</script> 	
 			
 	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
 	
