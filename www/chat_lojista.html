@@ -94,9 +94,9 @@ function abrir_info(){
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			//Colocar o id_usuario que vai receber a mensagem
-			alert("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
+			//alert("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
 			
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&quem_envia=usuario&mensagem="+mensagem+"");
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
 			
 
 			
@@ -110,7 +110,7 @@ function abrir_info(){
 			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
 			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
 			
-			   alert('enviou');
+			   //alert('enviou');
 			
 			}
 			}
