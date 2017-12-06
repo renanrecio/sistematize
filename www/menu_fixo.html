@@ -501,12 +501,26 @@ function setupPush() {
 				window.location.href = "promocoes.html";	 
 		
 			}else{
-				   navigator.notification.alert(
-					   data.message,         // message
-					   null,                 // callback
-					   data.title,           // title
-					   'Ok'                  // buttonName
-				   );      
+				if (link == 'chat') {
+		
+					window.location.href = "chat.html";	 
+		
+				}else{
+					  
+					    if (link == 'chat_lojista') {
+		
+					       window.location.href = "chat_lojista.html";	 
+		
+				        }else{
+						   navigator.notification.alert(
+							   data.message,         // message
+							   null,                 // callback
+							   data.title,           // title
+							   'Ok'                  // buttonName
+						   );   
+						   
+				  		}//fim do else  
+			    }//fim do else
 		   }//fim do else
 		   
 		}//fim do else
