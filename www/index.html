@@ -98,7 +98,7 @@ localStorage.cidade = '';
 localStorage.mudou_de_usuario = '';
 localStorage.id_usuario = '';
 localStorage.nome_produto = '';
-localStorage.eh_lojista = '';
+localStorage.tipo_login = '';
 
 
 }
@@ -233,30 +233,6 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 				
 				}
 				
-				if(str == "lojista"){
-					
-					//Alterar em breve para aparecer a tela no app somente para lojistas (chat_lista_clientes.html), se clicar em um abre chat_lojista.html
-					//alert("Você possui cadastro como Lojista, esse App é somente para Usuários. Para acessar como Lojista entre pelo site acheloja.com! Obrigado!");
-					    var pos_id = str.indexOf("#id");
-						var pos_nome = str.indexOf("#nome");
-						var pos_foto = str.indexOf("#foto");
-						var pos_email = str.indexOf("#email"); 
-						
-						
-						//alert(str);
-						
-						localStorage.id_usuario = str.substring((pos_id+3), pos_nome);
-						localStorage.nome_usuario = str.substring((pos_nome+5), pos_foto);
-						localStorage.foto_usuario = str.substring((pos_foto+5), pos_email);
-						localStorage.email_usuario = str.substring((pos_email+6), str.length);
-
-						//form[0].submit;
-						//window.location.href="home.html";
-						localStorage.mudou_de_usuario = "1";
-						localStorage.eh_lojista = "1";
-						//window.location.href="chat_lojista.html";
-						window.location.href="vitrine_virtual.html";
-				}
 			
 				//alert(str);
 				
@@ -268,6 +244,7 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 						var pos_nome = str.indexOf("#nome");
 						var pos_foto = str.indexOf("#foto");
 						var pos_email = str.indexOf("#email"); 
+						var pos_tipo = str.indexOf("#tipo"); 
 						
 						
 						//alert(str);
@@ -275,14 +252,21 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 						localStorage.id_usuario = str.substring((pos_id+3), pos_nome);
 						localStorage.nome_usuario = str.substring((pos_nome+5), pos_foto);
 						localStorage.foto_usuario = str.substring((pos_foto+5), pos_email);
-						localStorage.email_usuario = str.substring((pos_email+6), str.length);
+						localStorage.email_usuario = str.substring((pos_email+6), pos_tipo);
+						localStorage.tipo_login = str.substring((pos_tipo+5), str.length);
 
 						//form[0].submit;
 						//window.location.href="home.html";
 						localStorage.mudou_de_usuario = "1";
-						localStorage.eh_lojista = '';
-						window.location.href="vitrine_virtual.html";
+						
+						if( localStorage.tipo_login == 'lojista'){
+							window.location.href="chat_lojista.html";
+						}else{
+							window.location.href="vitrine_virtual.html";
+						}//fim do else
+						
 							
+						
 							
 				}//fim do if
 				

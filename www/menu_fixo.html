@@ -87,11 +87,16 @@ if(localStorage.id_usuario == ""){
 
 <script>
 //Se for lojista mudar link de chat para chat_lojista
-if(localStorage.eh_lojista == "1"){
+
+if( localStorage.tipo_login == 'lojista'){
 
 	document.getElementById('chat_link').setAttribute('href','chat_lojista.html');
+	
+}else{
+	
+	document.getElementById('chat_link').setAttribute('href','chat.html');
 
-}
+}//fim do else
 
 </script>
 

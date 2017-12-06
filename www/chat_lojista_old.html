@@ -8,8 +8,63 @@ var id_loja = '87';
 </script>
 
 
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+<script>
+//enviar o REG ID para o BD - para push notification
+			 
+			 var xmlHttp;
+			 
+			function createXMLHttpRequest_id_push() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_id_push(reg_id) {
+			createXMLHttpRequest_id_push();
+			xmlHttp.onreadystatechange = handleStateChange_id_push;
+			
+			
+			var regid = reg_id.trim();
+			
+			regid = regid.replace(" ", "");
+			
+			localStorage.id_dispositivo = regid;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/app_reg_id_push_ajax.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/app_reg_id_push_ajax.php", true);
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_loja="+id_loja+"&reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
+			
+			
+		
+			}
+
+			
+			function handleStateChange_id_push() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}						
+</script>	
+
+
 <script type="text/javascript">
 /*   
    window.onload = function(){
@@ -65,66 +120,11 @@ function abrir_info(){
 </script>
 
 
-
-
-<script type="text/javascript">
-			var xmlHttp;
-
-			var id_usuario_escolhido = "2";
-			
-			function createXMLHttpRequest_envia() {
-			if (window.ActiveXObject) {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			else if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
-			}
-			}
-
-			function startRequest_chat_envia(mensagem) {
-			createXMLHttpRequest_envia();
-			xmlHttp.onreadystatechange = handleStateChange_envia;
-			
-
-			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_chat_enviar.php", true);
-			
-			
-			
-			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			
-			//Colocar o id_usuario que vai receber a mensagem
-			alert("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&quem_envia=lojista&mensagem="+mensagem+"");
-			
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&quem_envia=usuario&mensagem="+mensagem+"");
-			
-
-			
-			
-			}
-
-			
-			function handleStateChange_envia() {
-			if(xmlHttp.readyState == 4) {
-			if(xmlHttp.status == 200) {
-			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
-			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
-			
-			   alert('enviou');
-			
-			}
-			}
-			}
-			
-		
-			
-</script>   
-
-
 	
-
+<!-- Validação do forumlário -->
 
 <script type="text/javascript">
+			//var xmlHttp;
 			var top_ultimo_prod;
 			var cidade;
 			var cep_bairro;
@@ -270,8 +270,6 @@ function enviar(){
 
 		document.getElementById('mensagem_escrita').value = '';
 		
-		startRequest_chat_envia(msg);
-		
 	}//fim do if
 	
 }
@@ -283,12 +281,6 @@ function enviar(){
 
 	</div>	
 			
-	<script> 
-		$(function(){
-		  $("#menu").load("menu_fixo.html"); 
-		});
-	</script> 	
-
 	<script> 
 		$(function(){
 		  $("#menu").load("menu_fixo.html"); 
