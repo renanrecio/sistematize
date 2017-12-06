@@ -468,7 +468,9 @@ function setupPush() {
  
 	 
 	 push.on('notification', function(data) {
+	 
      console.log('notification event');
+	 
      var link = data.additionalData.link;
 	 
 	 if (link == 'home') {
@@ -490,10 +492,10 @@ function setupPush() {
 		
 			}else{
 				   navigator.notification.alert(
-					   data.message,         // message
-					   null,                 // callback
-					   data.title,           // title
-					   'Ok'                  // buttonName
+					   utf8_decode(data.message),         // message
+					   null,                              // callback
+					   utf8_decode(data.title),           // title
+					   'Ok'                               // buttonName
 				   );      
 		   }//fim do else
 		   
