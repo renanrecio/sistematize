@@ -492,10 +492,10 @@ function setupPush() {
 		
 			}else{
 				   navigator.notification.alert(
-					   utf8_decode(data.message),         // message
-					   null,                              // callback
-					   utf8_decode(data.title),           // title
-					   'Ok'                               // buttonName
+					   data.message,         // message
+					   null,                 // callback
+					   data.title,           // title
+					   'Ok'                  // buttonName
 				   );      
 		   }//fim do else
 		   
