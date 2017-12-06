@@ -244,7 +244,7 @@ function abrir_info(){
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido);
 			
 			document.getElementById("img_carregando_produtos").style.visibility = "visible";
 			
@@ -375,7 +375,7 @@ function abrir_info(){
 			
 			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
 			
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&data_msg_mais_recente="+data_msg_mais_recente+'');
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&data_msg_mais_recente="+data_msg_mais_recente+'');
 			
 			
 			//document.getElementById("img_carregando_produtos").style.visibility = "visible";
@@ -423,7 +423,7 @@ function abrir_info(){
 							top_ = 	top_ + height_antigo;
 							
 						
-							if( obj[i].quem_envia == "usuario"){
+							if( obj[i].quem_envia == "lojista"){
 								
 								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
 							
