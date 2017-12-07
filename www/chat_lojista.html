@@ -179,6 +179,8 @@ function abrir_info(){
 			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
 			
 			   //alert('enviou');
+			   
+			   startRequest_chat_atualiza();
 			
 			}
 			}
@@ -505,9 +507,15 @@ function abrir_info(){
 	
 function enviar(){
 
+   	msg = document.getElementById('mensagem_escrita').value;
+	
+	startRequest_chat_envia(msg);
+
+	/*
 	var span;
 	
 	var msg = document.getElementById('mensagem_escrita').value;
+	
 	
 	if( msg != ''){
 	
@@ -545,6 +553,7 @@ function enviar(){
 		id = id + 1;
 		
 	}//fim do if
+	*/
 	
 }
 
