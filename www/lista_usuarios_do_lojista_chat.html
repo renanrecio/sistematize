@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+<script>
+var id_loja = "87";
+</script>
+
+
+</head>
+
+<body>
+
+<!--<p id="titulo_lojas_favoritas" style="position:absolute; top:11%; color:black; font-size:1.1em; width:80%; left:10%; "> Lojas Favoritas </p> -->
+<p id="titulo_lojas_favoritas" style="position:absolute; top:11%; color:black; font-size:1em; width:80%; left:10%; "> Chat com Clientes </p>
+
+<!-- essa div é de lojas mas foi nomeada como div_usuarios para facilitar a programacao -->
+<div id="div_usuarios" style="position:absolute; width:100%; top:16%; left:0%;"></div>
+
+
+<div id="msg_sem_usuarios"	style="position: absolute; top:0%; left:0%; width:100%; height:150%; visibility: hidden;" >
+	
+		<!--<img src="https://acheloja.com/fotos/passo_a_passo_mobile.png"  style=" position:absolute; top:4em; background-color: #0054a6; width:80%; left:10%;" /> -->
+		<p style="color:black; font-size:1em;"> Você ainda não tem nenhum cliente que tenha instalado seu App </p>
+			
+</div>
+
+
+
+ 
+
+	
+<div id="menu">
+
+</div>	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+<script> 
+    $(function(){
+      $("#menu").load("menu_fixo.html"); 
+    });
+</script> 
+
+<script language="javascript" type="text/javascript">
+	
+	function chamar_chat(id_usuario){
+			
+		//startRequest_clique_loja(id_anuncio);
+		
+		localStorage.id_usuario_chat = id_usuario;
+		
+		window.location.href="chat_lojista.html";
+		
+
+	}
+
+</script>
+
+	
+<script type="text/javascript">
+			var xmlHttp;
+			var str;
+
+			
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_lista_chat() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_lojas_favoritas_app.php", true);
+			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_lojas_favoritas_app.php", true);
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_lista_chat.php", true);
+			
+			
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_loja="+id_loja+"");
+			
+			
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				str = xmlHttp.responseText.trim();
+				
+				//alert('oi');
+				
+				document.getElementById("div_usuarios").innerHTML = document.getElementById("div_usuarios").innerHTML + str;
+				
+				//alert(str.length);
+				
+				if( (document.getElementById("div_usuarios").innerHTML) == '') document.getElementById("msg_sem_usuarios").style.visibility = "visible";
+
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_lista_chat();
+			
+</script>   
+
+<!--
+<a href="lojas_favoritas.html"><img src="fotos/estrela_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
+-->
+
+
+
+ 
+
+</body>
+</html>
