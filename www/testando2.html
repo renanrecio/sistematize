@@ -201,6 +201,8 @@ function enviar(){
 
 	var span;
 	
+	var hora = '20:40';
+	
 	var msg = document.getElementById('mensagem_escrita').value;
 	
 	if( msg != ''){
@@ -219,7 +221,7 @@ function enviar(){
 		
 		id = id + 1;
 		
-		span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " >'+msg+'</span>';
+		span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:2em; color: black; line-height:1em;  text-align: left; padding: 20px 20px 20px 20px; " >'+msg+'   </br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+hora+'  <span style="color: blue;">✓✓</span></span></span>';
 
 		$('#div_chat').append( span );
 		
