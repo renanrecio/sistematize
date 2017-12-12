@@ -221,7 +221,11 @@ function abrir_info(){
 			var obj;
 			
 			var data_msg_mais_recente;
-
+			
+			var data_horas_msg_enviada;
+			
+			var horas_msg_enviada;
+			
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
 			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -276,7 +280,10 @@ function abrir_info(){
 				
 				//for (i = 0; i < obj.length; i++) { 
 				for (i = ultimo_index; i >= 0; i--) { 
-
+					
+					data_horas_msg_enviada = obj[i].data_envio;
+					horas_msg_enviada = data_horas_msg_enviada.substr(11, 5);
+					
 					msg = obj[i].mensagem;
 					
 						if( msg != ''){
@@ -297,11 +304,11 @@ function abrir_info(){
 						
 							if( obj[i].quem_envia == "lojista"){
 								
-								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+horas_msg_enviada+'  <span style="color: blue;">✓✓</span></span></span>';
 							
 							}else{
 								
-								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</span>';
+								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+horas_msg_enviada+'</span></span>';
 							
 							}//fim do else	
 								
@@ -437,7 +444,7 @@ function abrir_info(){
 							
 							}else{
 								
-								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+horas_msg_enviada+'  <span style="color: blue;">✓✓</span></span></span>';
+								span = '<span class="msg2" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+horas_msg_enviada+' </span></span>';
 							
 							}//fim do else	
 								
