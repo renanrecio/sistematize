@@ -70,9 +70,6 @@ body{
 .data{
 
     background: #f2f2f2;
-    border-radius: 25px;
-    width: 20%;
-	min-height: 10px;
     height: auto;
 	width: auto;
 	
@@ -418,7 +415,7 @@ function abrir_info(){
 							//Caso entre uma mensagem e outra mude a data colocar no meio do chat qual é a nova data
 							if(data_horas_msg_enviada_sem_hora_anterior != data_horas_msg_enviada_sem_hora){
 							
-								span = '<center><span class="data" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+dia_msg_enviada+'/'+mes_msg_enviada+'/'+ano_msg_enviada+'</span></center>';
+								span = '<center><span class="data" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:0.8em; color: black; line-height:1em; " >'+dia_msg_enviada+'/'+mes_msg_enviada+'/'+ano_msg_enviada+'</span></center>';
 							
 								$('#div_chat').append( span );
 							
@@ -852,7 +849,7 @@ function enviar(){
 			
 			//alert("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&quem_envia=usuario&mensagem="+mensagem+"");
 			
-			xmlHttp4.send("id_usuario="+id_usuario_lojista_no_app+"");
+			xmlHttp4.send("id_usuario="+id_usuario_escolhido+"&id_loja="+id_loja+'&quem_visualizou=lojista');
 			
 
 			
