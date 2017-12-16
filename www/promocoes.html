@@ -60,7 +60,8 @@ var id_loja = "87";
 			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("id_loja="+id_loja+"");
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"");
+			//xmlHttp.send("id_loja="+id_loja+"&id_usuario=115");
 			
 			}
 
@@ -74,11 +75,11 @@ var id_loja = "87";
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_produtos").innerHTML = document.getElementById("div_produtos").innerHTML + str;
+				document.getElementById("div_promocoes_avisos").innerHTML = document.getElementById("div_promocoes_avisos").innerHTML + str;
 				
 				//alert(str.length);
 				
-				if( (document.getElementById("div_produtos").innerHTML) == '') document.getElementById("msg_sem_lojas").style.visibility = "visible";
+				if( (document.getElementById("div_promocoes_avisos").innerHTML) == '') document.getElementById("msg_sem_lojas").style.visibility = "visible";
 
 				
 			}
@@ -98,8 +99,8 @@ var id_loja = "87";
 <!--<p id="titulo_lojas_favoritas" style="position:absolute; top:11%; color:black; font-size:1.1em; width:80%; left:10%; "> Lojas Favoritas </p> -->
 <p id="titulo_lojas_favoritas" style="position:absolute; top:11%; color:black; font-size:1em; width:80%; left:10%; "> Promoções e Avisos </p>
 
-<!-- essa div é de lojas mas foi nomeada como div_produtos para facilitar a programacao -->
-<div id="div_produtos" style="position:absolute; width:100%; top:16%; left:0%;"></div>
+<!-- essa div é de lojas mas foi nomeada como div_promocoes_avisos para facilitar a programacao -->
+<div id="div_promocoes_avisos" style="position:absolute; width:100%; top:16%; left:0%;"></div>
 
 
 <div id="msg_sem_lojas"	style="position: absolute; top:0%; left:0%; width:100%; height:150%; visibility: hidden;" >
@@ -115,8 +116,8 @@ var id_loja = "87";
 <!-- Ver Vitrine Loja -->
 		<div id="div_vitrine_loja" style=" visibility: hidden; position: fixed; left:0%; top:0%; height:100%;  width:100%;">
 			<iframe id="iframe_vitrine_loja" src="vitrine_virtual.html" style="position: fixed; top:0%; width:100%; left:0%; height:100%; visibility: hidden;"></iframe>
-			<!--<span onclick="document.getElementById('div_produtos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" style="position:fixed; top:2em; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦ </span> -->
-			<img onclick="document.getElementById('div_produtos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" id="seta_voltar" src="fotos/seta_voltar.png" style=" position:fixed; top:2.75em; left:2%; width:2.5em; " />
+			<!--<span onclick="document.getElementById('div_promocoes_avisos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" style="position:fixed; top:2em; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦ </span> -->
+			<img onclick="document.getElementById('div_promocoes_avisos').style.visibility = 'visible'; habilitar_scroll = true; document.getElementById('iframe_vitrine_loja').style.visibility = 'hidden'; document.getElementById('div_vitrine_loja').style.visibility = 'hidden';" id="seta_voltar" src="fotos/seta_voltar.png" style=" position:fixed; top:2.75em; left:2%; width:2.5em; " />
 		
 		</div>
 	
@@ -144,7 +145,7 @@ var id_loja = "87";
 	<div style="position:fixed; width: 55%; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" ></div> 
 	
 	<!--<span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:0.5em; width:50%; color: #c6c9cc;"> Lojas Favoritas </span> --> 
-	<span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:0.5em; width:50%; color: #c6c9cc;"> Promoções e Avisos </span> 
+	<span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:0.8em; left:0.5em; width:50%; color: #c6c9cc;"> Promoções e Avisos </span> 
 </div>
 
 	
@@ -152,7 +153,7 @@ var id_loja = "87";
 		<!-- <img  src="" width="45%" style=" position:fixed; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" /> -->
 		<div style="position:fixed; width: 45%; background-color: #0054a6; top:0em; left:55%; height: 3em; opacity:1; filter:alpha(opacity=100);" ></div> 
 		
-		<span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; right:2%; width:40%; color: white;"> Meus Cupons </span> 
+		<span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 0.8em; font-weight:bold; top:1em; right:2%; width:40%; color: white;"> Meus Cupons </span> 
 </a>
  
 
@@ -201,6 +202,57 @@ var id_loja = "87";
 
 </script>	
 
+
+<script>
+//Enviar push notification
+
+
+		function createXMLHttpRequest_enviar_notificacao() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+		}
+			
+			
+			function enviar_notificacao(){
+			createXMLHttpRequest_enviar_notificacao();
+			xmlHttp.onreadystatechange = handleStateChange_enviar_notificacao;
+			
+					xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/enviar_notificacao_ajax.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					var titulo = document.getElementById("titulo").value.trim();
+					
+					var mensagem = document.getElementById("mensagem").value.trim();
+					
+					xmlHttp.send("id_loja="+id_loja+"&titulo="+titulo+"&mensagem="+mensagem+"");
+					
+			
+		
+			}
+
+			
+			function handleStateChange_enviar_notificacao() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				var str = xmlHttp.responseText.trim();
+				
+				alert('Notificações foram enviadas com sucesso para todos os clientes usuários do seu App!');
+				
+				location.reload();
+				
+				
+			}
+			}
+			}		
+			
+
+</script>
 
  
 
