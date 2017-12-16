@@ -439,7 +439,7 @@ function abrir_info(){
 								if(data_ultima_visualizacao_msgs_usuario >= data_horas_msg_enviada){
 									string_msg_lida =  '<span style="color: blue;">✓✓</span>';
 								}else{
-									string_msg_lida =  '<span class ="msg_so_enviada" style="color: black;">✓</span>';
+									string_msg_lida =  '<span class="msg_so_enviada" style="color: black;">✓</span>';
 								}//fim do else
 								
 								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+horas_msg_enviada+'  '+string_msg_lida+'</span></span>';
@@ -497,7 +497,7 @@ function abrir_info(){
 
 <!-- Inserir novas msg online -->	
 <script type="text/javascript">
-			var indice_msg_so_enviada;
+			var indice_msg_so_enviadas;
 			
 			var msg_so_enviadas;
 			
@@ -588,7 +588,7 @@ function abrir_info(){
 								if(data_ultima_visualizacao_msgs_usuario >= data_horas_msg_enviada){
 									string_msg_lida =  '<span style="color: blue;">✓✓</span>';
 								}else{
-									string_msg_lida =  '<span class ="msg_so_enviada" style="color: black;">✓</span>';
+									string_msg_lida =  '<span class="msg_so_enviada" style="color: black;">✓</span>';
 								}//fim do else
 								
 								span = '<span class="msg" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:1em; color: black; line-height:1em;  text-align: left; padding: 10px 10px 10px 10px; " >'+msg+'</br><span style=" position: absolute; font-size: 0.5em; right:2%; ;" >'+horas_msg_enviada+'  '+string_msg_lida+'</span></span>';
@@ -600,8 +600,8 @@ function abrir_info(){
 								msg_so_enviadas = document.getElementsByClassName("msg_so_enviada");
 								
 								for (indice_msg_so_enviadas = 0; indice_msg_so_enviadas < msg_so_enviadas.length; indice_msg_so_enviadas++) {
-									msg_so_enviadas[indice_msg_so_enviada].style.color = "blue";
-									msg_so_enviadas[indice_msg_so_enviada].innerHTML  = "✓✓";
+									msg_so_enviadas[indice_msg_so_enviadas].style.color = "blue";
+									msg_so_enviadas[indice_msg_so_enviadas].innerHTML  = "✓✓";
 								}
 							}//fim do else	
 								
