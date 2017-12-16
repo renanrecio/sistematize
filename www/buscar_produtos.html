@@ -127,6 +127,8 @@ var id_loja = '87';
 			var cidade;
 			var cep_bairro;
 			var str;
+			
+			var primeira_vez = "sim";
 
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
@@ -198,7 +200,10 @@ var id_loja = '87';
 				
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
-				desaparecer_buscar_produto();
+				if(primeira_vez == "nao"){
+					desaparecer_buscar_produto();
+					primeira_vez = "nao";
+				}//fim do if
 				
 			}
 			}
