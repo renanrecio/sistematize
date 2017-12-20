@@ -5,6 +5,11 @@ var habilitar_scroll = true;
 </script>
 
 <script>
+var id_loja = "87";
+</script>
+
+
+<script>
 //verificar se não identificar nenhum usuario
 
 if(localStorage.id_usuario == ""){
@@ -31,16 +36,74 @@ if(localStorage.id_usuario == ""){
 	
 
 <!-- <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> --> 
+<!--
 <div style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  ></div> 
 
 <a href="vitrine_virtual.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
 
 <a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
 
+<a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
+
 <a href="promocoes.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
 
 <a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
+-->
 
+<!-- <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> --> 
+<!--
+<div style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  ></div> 
+
+<a href="vitrine_virtual.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:16%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="chat.html"><img src="fotos/chat.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:48%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="promocoes.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
+
+<a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:16%; width:2.8em; height:2.8em;" /> </a>
+-->
+
+
+<table style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  >
+
+	<tr>
+
+		<td style="text-align:center; width:20%;">
+			<a href="vitrine_virtual.html"><img id="menu_home" src="fotos/casa.png" width="100%" style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="buscar_produtos.html"><img id="menu_busca" src="fotos/lupa.png" width="100%"  style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="chat.html" id="chat_link" ><img id="menu_chat" src="fotos/chat.png" width="100%"  style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="promocoes.html"><img id="menu_promocoes" src="fotos/estrela.png" width="100%" style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="pessoal.html"><img id="menu_pessoal" src="fotos/pessoa.png" width="100%" style=" position:relative; background-color: #0054a6;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+
+	</tr>
+
+</table>
+
+<script>
+//Se for lojista mudar link de chat para chat_lojista
+
+if( localStorage.tipo_login == 'lojista'){
+
+	document.getElementById('chat_link').setAttribute('href','lista_usuarios_do_lojista_chat.html');
+	
+}else{
+	
+	document.getElementById('chat_link').setAttribute('href','chat.html');
+
+}//fim do else
+
+</script>
 
 <script>
 
@@ -85,7 +148,10 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					createXMLHttpRequest_abrir_novidades();
 					xmlHttp2.onreadystatechange = handleStateChange_abrir_novidades;
 					
-					xmlHttp2.open("POST", "https://acheloja.com/validar/abrir_novidades.php", true);
+					//xmlHttp2.open("POST", "https://acheloja.com/validar/abrir_novidades.php", true);
+					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/abrir_novidades.php", true);
+					
+					
 					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
 					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
@@ -126,7 +192,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					
 					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
+					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"");
 					
 					
 					}
@@ -425,7 +491,9 @@ function setupPush() {
  
 	 
 	 push.on('notification', function(data) {
+	 
      console.log('notification event');
+	 
      var link = data.additionalData.link;
 	 
 	 if (link == 'home') {
@@ -440,13 +508,35 @@ function setupPush() {
 			window.location.href = "meus_cupons.html";	 
 		
 		}else{
+			
+			if (link == 'promocoes') {
 		
-		   navigator.notification.alert(
-			   data.message,         // message
-			   null,                 // callback
-			   data.title,           // title
-			   'Ok'                  // buttonName
-		   );      
+				window.location.href = "promocoes.html";	 
+		
+			}else{
+				if (link == 'chat') {
+		
+					window.location.href = "chat.html";
+					startRequest_chat();
+		
+				}else{
+					  
+					    if (link == 'chat_lojista') {
+		
+					       window.location.href = "lista_usuarios_do_lojista_chat.html";
+						   startRequest_chat();
+		
+				        }else{
+						   navigator.notification.alert(
+							   data.message,         // message
+							   null,                 // callback
+							   data.title,           // title
+							   'Ok'                  // buttonName
+						   );   
+						   
+				  		}//fim do else  
+			    }//fim do else
+		   }//fim do else
 		   
 		}//fim do else
 		
