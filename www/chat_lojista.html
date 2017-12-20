@@ -841,6 +841,8 @@ function enviar(){
 			var str2;
 			
 			var xmlHttp2;
+			
+			var nome_usuario_chat;
 
 			function createXMLHttpRequest_dados_usuario_chat() {
 			if (window.ActiveXObject) {
@@ -876,10 +878,14 @@ function enviar(){
 				str2 = xmlHttp2.responseText.trim();
 				
 				obj2 = JSON.parse(str2);
-			
-				document.getElementById("foto_usuario_chat").src = obj2[0].foto_perfil;
 				
-				document.getElementById("nome_usuario_chat").innerHTML = obj2[0].nome;
+				nome_usuario_chat = obj2[0].nome;
+				
+				if ( nome_usuario_chat.length > 12) nome_usuario_chat = nome_usuario_chat.substring(0, 12)+"...";
+				
+				document.getElementById("nome_usuario_chat").innerHTML = nome_usuario_chat;
+				
+				document.getElementById("foto_usuario_chat").src = obj2[0].foto_perfil;
 				
 				if(obj2[0].foto_perfil == '') document.getElementById("foto_usuario_chat").src = "fotos/entrar_.png";
 				
