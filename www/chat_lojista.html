@@ -732,7 +732,7 @@ function enviar(){
 
 </script>
 	
-	
+<!--	
 	<div id="menu">
 
 	</div>	
@@ -742,6 +742,7 @@ function enviar(){
 		  $("#menu").load("menu_fixo.html"); 
 		});
 	</script> 	
+-->
 	
 	<div style=" position:fixed; width: 100%; background-color: #0054a6; top:0em; left:0%; height: 3em;" ></div> 
 	<div style="width: 100%;" ><img id ="foto_usuario_chat" src="fotos/entrar_.png" style="position: fixed; left: 3%; top:0.1em; width:2.8em; height:2.8em;"/> <span id="nome_usuario_chat" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; "></span></div>
@@ -913,6 +914,214 @@ function enviar(){
 		
 			
 </script>   
+
+
+
+	<div class="app" style="visibility:hidden;">
+        <div id="deviceready" class="blink" style="visibility:hidden;">
+            <p class="event listening"></p>
+            <p class="event received"></p>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+	
+    <script type="text/javascript">
+	var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+		setupPush();
+    }
+};
+
+
+function setupPush() {
+    
+	var push = PushNotification.init({
+		 "android": {
+			 "senderID": "121897226764",
+			 "forceShow": "false"
+		 },
+		 "ios": {
+		   "sound": true,
+		   "alert": true,
+		   "badge": true,
+		   "categories": {
+			 "newmusic": {
+				 "yes": {
+					 "callback": "playMusic", "title": "Play",
+					 "foreground": true, "destructive": false
+				 },
+				 "no": {
+					 "callback": "archive", "title": "Archive",
+					 "foreground": false, "destructive": false
+				 }
+			 }
+		   }
+		 },
+		 "windows": {}
+	});
+
+   push.on('registration', function(data) {
+      // console.log("registration event: " + data.registrationId);
+       var oldRegId = localStorage.id_dispositivo;
+	   //alert('id: '+data.registrationId);
+	   //document.getElementById("email").value = data.registrationId;
+	   
+	    if( localStorage.mudou_de_usuario == "1" ){
+		   
+				localStorage.id_dispositivo = data.registrationId;
+				startRequest_id_push(data.registrationId);
+				 localStorage.mudou_de_usuario = "0";
+				 
+		}else{
+		
+			if(oldRegId !== data.registrationId) {
+			   // Save new registration ID
+			   localStorage.id_dispositivo = data.registrationId;
+			   startRequest_id_push(data.registrationId);
+			   // Post registrationId to your app server as the value has changed
+			}
+		
+		}//fim do else
+		
+   });
+
+   push.on('error', function(e) {
+       console.log("push error = " + e.message);
+   });
+   
+ 
+	 
+	 push.on('notification', function(data) {
+	 
+     console.log('notification event');
+	 
+     var link = data.additionalData.link;
+	 
+	 if (link == 'home') {
+	 
+		//window.location.href = "home.html";
+        window.location.href = "vitrine_virtual.html";		
+		
+     }else{
+		
+		if (link == 'meus_cupons') {
+		
+			window.location.href = "meus_cupons.html";	 
+		
+		}else{
+			
+			if (link == 'promocoes') {
+		
+				window.location.href = "promocoes.html";	 
+		
+			}else{
+				if (link == 'chat') {
+		
+					//window.location.href = "chat.html";
+					startRequest_chat();
+		
+				}else{
+					  
+					    if (link == 'chat_lojista') {
+		
+					       //window.location.href = "lista_usuarios_do_lojista_chat.html";
+						   startRequest_chat();
+		
+				        }else{
+						   navigator.notification.alert(
+							   data.message,         // message
+							   null,                 // callback
+							   data.title,           // title
+							   'Ok'                  // buttonName
+						   );   
+						   
+				  		}//fim do else  
+			    }//fim do else
+		   }//fim do else
+		   
+		}//fim do else
+		
+     }//fim do else
+	 
+	 /*
+     if (link) {
+       showLink(link);
+     } else {
+       navigator.notification.alert(
+           data.message,         // message
+           null,                 // callback
+           data.title,           // title
+           'Ok'                  // buttonName
+       );         
+     }
+	 */
+
+		 push.finish(function() {
+			 console.log('success');
+		 }, function() {
+			 console.log('error');
+		 });     
+	 });
+		 
+	 function playMusic() {
+	   alert("Play Music!");	
+	 }
+
+	 function archive() {
+	   alert("Archived!");
+	 }
+	 
+	 function showLink(link) {
+	   //document.getElementsByName("q")[0].value = artist;
+	   //searchSubmit(new CustomEvent("noop"));
+	   
+	   //confirm('Mt bom');
+	  //if(link == true){
+	  
+	  
+		    //window.location.href = "home.html";
+			window.location.href = "vitrine_virtual.html";
+
+			
+	   //}//fim do if
+	  
+	 }
+	 
+	 
+		
+ }
+	</script>
+    <script type="text/javascript">
+	
+        app.initialize();	
+    </script>
 
 
 
