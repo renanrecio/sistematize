@@ -8,7 +8,7 @@ var id_loja = '87';
 
  <link rel="stylesheet" href="lib/font-awesome-4.5.0/css/font-awesome.min.css" />
 
-  <title>AcheLoja</title>
+  <title>Sistematize</title>
   
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
@@ -108,7 +108,7 @@ body{
 */			
 </script>	
 
-		<title>AcheLoja</title>
+		<title>Sistematize</title>
 		</br></br>
 
 		<script>
@@ -362,7 +362,9 @@ body{
 							createXMLHttpRequest_visualizar_vitrine();
 							xmlHttp.onreadystatechange = handleStateChange_visualizar_vitrine;
 							
-							xmlHttp.open("POST", "https://acheloja.com/validar/atualizar_visualizacao_minhas_vitrine.php", true);
+							//xmlHttp.open("POST", "https://acheloja.com/validar/atualizar_visualizacao_minhas_vitrine.php", true);
+							
+							xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/atualizar_visualizacao_minhas_vitrine.php", true);
 							xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 							
 							xmlHttp.send("id_usuario="+localStorage.id_usuario+"");

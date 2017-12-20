@@ -5,6 +5,11 @@ var habilitar_scroll = true;
 </script>
 
 <script>
+var id_loja = "87";
+</script>
+
+
+<script>
 //verificar se não identificar nenhum usuario
 
 if(localStorage.id_usuario == ""){
@@ -143,7 +148,10 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					createXMLHttpRequest_abrir_novidades();
 					xmlHttp2.onreadystatechange = handleStateChange_abrir_novidades;
 					
-					xmlHttp2.open("POST", "https://acheloja.com/validar/abrir_novidades.php", true);
+					//xmlHttp2.open("POST", "https://acheloja.com/validar/abrir_novidades.php", true);
+					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/validar/abrir_novidades.php", true);
+					
+					
 					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
 					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
@@ -184,7 +192,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					
 					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
+					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"");
 					
 					
 					}
