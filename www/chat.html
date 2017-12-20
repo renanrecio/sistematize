@@ -218,6 +218,33 @@ function abrir_info(){
 			var objeto;
 			
 			var data_ultima_visualizacao_msgs_lojista;
+			
+			var eh_a_primeira_vez = 1;
+			
+			var indice_msg_so_enviadas;
+			
+			var msg_so_enviadas;
+			
+			var data_msg_mais_recente;
+			
+			var data_horas_msg_enviada;
+			
+			var data_horas_msg_enviada_anterior;
+			
+			var horas_msg_enviada;
+			
+			var dia_msg_enviada;
+			
+			var mes_msg_enviada;
+			
+			var ano_msg_enviada;
+			
+			var hora_ultima_visualizacao_msgs_lojista;
+			
+			var data_horas_msg_enviada_sem_hora;
+
+			var data_horas_msg_enviada_sem_hora_anterior;
+			
 
 			function createXMLHttpRequest_ultima_visualizacao_lojista() {
 			if (window.ActiveXObject) {
@@ -262,9 +289,24 @@ function abrir_info(){
 			   
 			   data_ultima_visualizacao_msgs_lojista = objeto[0].data_ultima_visualizacao_msgs_lojista;
 			   
+			    if(data_ultima_visualizacao_msgs_lojista >= data_horas_msg_enviada){
+			   
+					msg_so_enviadas = document.getElementsByClassName("msg_so_enviada");
+								
+					for (indice_msg_so_enviadas = 0; indice_msg_so_enviadas < msg_so_enviadas.length; indice_msg_so_enviadas++) {
+						msg_so_enviadas[indice_msg_so_enviadas].style.color = "blue";
+						msg_so_enviadas[indice_msg_so_enviadas].innerHTML  = "✓✓";
+					}
+			   
+			   }//fim do if
+			   
 			  // alert(data_ultima_visualizacao_msgs_lojista);
 			  
-			  startRequest_chat();
+			  
+			  if(eh_a_primeira_vez == 1){
+				  startRequest_chat();
+				  eh_a_primeira_vez = 0;
+			  }//fim do if
 			
 			}
 			}
@@ -303,26 +345,6 @@ function abrir_info(){
 			var ultimo_index;
 			
 			var obj;
-			
-			var data_msg_mais_recente;
-			
-			var data_horas_msg_enviada;
-			
-			var data_horas_msg_enviada_anterior;
-			
-			var horas_msg_enviada;
-			
-			var dia_msg_enviada;
-			
-			var mes_msg_enviada;
-			
-			var ano_msg_enviada;
-			
-			var hora_ultima_visualizacao_msgs_lojista;
-			
-			var data_horas_msg_enviada_sem_hora;
-
-			var data_horas_msg_enviada_sem_hora_anterior;
 			
 			var string_msg_lida;
 			
@@ -501,10 +523,7 @@ function abrir_info(){
 
 <!-- Inserir novas msg online -->	
 <script type="text/javascript">
-			
-			var indice_msg_so_enviadas;
-			
-			var msg_so_enviadas;
+
 			
 			function createXMLHttpRequest_chat_atualiza() {
 			if (window.ActiveXObject) {
@@ -762,6 +781,7 @@ function enviar(){
 		  setInterval(function(){ 
 						startRequest_chat_atualiza();
 						startRequest_atualiza_ultima_visualizacao_chat();
+						startRequest_ultima_visualizacao_lojista();
 		  }, 3000);
 		  
 		});
