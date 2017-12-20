@@ -389,10 +389,10 @@ function recarregar_iframe(){
 </script>
 
 
-		<div class="app" style="visibility:hidden;">
+	<div class="app" style="visibility:hidden;">
         <div id="deviceready" class="blink" style="visibility:hidden;">
-            <p class="event listening"></p>
-            <p class="event received"></p>
+            <p class="event listening">00</p>
+            <p class="event received">11</p>
         </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
@@ -437,7 +437,7 @@ function setupPush() {
 	var push = PushNotification.init({
 		 "android": {
 			 "senderID": "121897226764",
-			 "forceShow": "false"
+			 "forceShow": "true"
 		 },
 		 "ios": {
 		   "sound": true,
