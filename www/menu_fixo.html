@@ -389,6 +389,18 @@ function recarregar_iframe(){
 </script>
 
 
+<script>
+
+if (typeof pagina_atual_app === 'undefined') {
+    
+	var pagina_atual_app = '';
+	
+}//fim do if
+
+
+</script>
+
+
 	<div class="app" style="visibility:hidden;">
         <div id="deviceready" class="blink" style="visibility:hidden;">
             <p class="event listening"></p>
@@ -434,30 +446,62 @@ function recarregar_iframe(){
 
 function setupPush() {
     
-	var push = PushNotification.init({
-		 "android": {
-			 "senderID": "121897226764",
-			 "forceShow": "true"
-		 },
-		 "ios": {
-		   "sound": true,
-		   "alert": true,
-		   "badge": true,
-		   "categories": {
-			 "newmusic": {
-				 "yes": {
-					 "callback": "playMusic", "title": "Play",
-					 "foreground": true, "destructive": false
-				 },
-				 "no": {
-					 "callback": "archive", "title": "Archive",
-					 "foreground": false, "destructive": false
+	if( (pagina_atual_app == 'chat') || (pagina_atual_app == 'chat_lojista') ){
+	
+		var push = PushNotification.init({
+			 "android": {
+				 "senderID": "121897226764",
+				 "forceShow": "false"
+			 },
+			 "ios": {
+			   "sound": true,
+			   "alert": true,
+			   "badge": true,
+			   "categories": {
+				 "newmusic": {
+					 "yes": {
+						 "callback": "playMusic", "title": "Play",
+						 "foreground": true, "destructive": false
+					 },
+					 "no": {
+						 "callback": "archive", "title": "Archive",
+						 "foreground": false, "destructive": false
+					 }
 				 }
-			 }
-		   }
-		 },
-		 "windows": {}
-	});
+			   }
+			 },
+			 "windows": {}
+		});
+		
+	}else{
+	
+		var push = PushNotification.init({
+			 "android": {
+				 "senderID": "121897226764",
+				 "forceShow": "true"
+			 },
+			 "ios": {
+			   "sound": true,
+			   "alert": true,
+			   "badge": true,
+			   "categories": {
+				 "newmusic": {
+					 "yes": {
+						 "callback": "playMusic", "title": "Play",
+						 "foreground": true, "destructive": false
+					 },
+					 "no": {
+						 "callback": "archive", "title": "Archive",
+						 "foreground": false, "destructive": false
+					 }
+				 }
+			   }
+			 },
+			 "windows": {}
+		});
+		
+	}//fim do else
+	
 
    push.on('registration', function(data) {
       // console.log("registration event: " + data.registrationId);
@@ -516,14 +560,14 @@ function setupPush() {
 			}else{
 				if (link == 'chat') {
 		
-					window.location.href = "chat.html";
+					if( (pagina_atual_app != 'chat') && (pagina_atual_app != 'chat_lojista') ){ window.location.href = "chat.html"; }
 					startRequest_chat();
 		
 				}else{
 					  
 					    if (link == 'chat_lojista') {
 		
-					       window.location.href = "lista_usuarios_do_lojista_chat.html";
+					       if( (pagina_atual_app != 'chat') && (pagina_atual_app != 'chat_lojista') ){ window.location.href = "lista_usuarios_do_lojista_chat.html"; }
 						   startRequest_chat();
 		
 				        }else{
