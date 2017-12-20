@@ -761,12 +761,25 @@ function enviar(){
 		
 		  setInterval(function(){ 
 						startRequest_chat_atualiza();
-						startRequest_dados_usuario_chat();
 		  }, 3000);
 		  
 		});
 	</script> 		
 	
+	<script> 
+	    var uma_vez = 0;
+		$(function(){
+		
+		  var intervalo = setInterval(function(){ 
+										if(uma_vez == 0){
+											startRequest_dados_usuario_chat();
+											uma_vez = 1;
+											clearInterval(intervalo);
+										}
+					    }, 100);
+		  
+		});
+	</script>
 	
 	
 
