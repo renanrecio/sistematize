@@ -214,6 +214,8 @@ var id_loja = '87';
 					
 				}//fim do if
 				
+				 dimensionar_fotos();
+				
 			}
 			}
 			}
@@ -474,5 +476,26 @@ $(function () {
 	
 	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
 
+	<script>
+	var indice_fotos;
+	var largura_tela = screen.width;
+	var largura_foto = largura_tela*0.45;
+	
+	function dimensionar_fotos(){
+	
+		var fotos = document.getElementsByClassName("width_maior_que_height");
+		
+		for (indice_fotos = 0; indice_fotos < fotos.length; indice_fotos++) {
+			fotos[indice_fotos].style.width = largura_foto+"px";
+		}
+		
+		var fotos2 = document.getElementsByClassName("height_maior_que_width");
+		
+		for (indice_fotos = 0; indice_fotos < fotos2.length; indice_fotos++) {
+			fotos2[indice_fotos].style.height = largura_foto+"px";
+		}
+	
+	}//fim da função
+	</script>
 </body>
 </html>
