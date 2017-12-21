@@ -119,11 +119,12 @@ var id_loja = '87';
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 
+<body>
+
+<div id="div_vitrine"></div>
 
 
 
-
-	
 <!-- Validação do forumlário -->
 <script type="text/javascript">
 			var xmlHttp;
@@ -214,8 +215,6 @@ var id_loja = '87';
 					
 				}//fim do if
 				
-				 dimensionar_fotos();
-				
 			}
 			}
 			}
@@ -227,7 +226,6 @@ var id_loja = '87';
 </script>   
 
 
-<div id="div_vitrine" style="position:absolute; top:0%; width:98%; left:1%; "></div>
 	
 <!--
 <a id="botao_voltar" style="text-decoration: none;" href="javascript:window.history.go(-1)"><span style="position:fixed; top:10%	; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦</span></a>
@@ -378,6 +376,7 @@ var id_loja = '87';
 			});
 		</script>
 
+
 		
 	<div id="menu">
 
@@ -436,7 +435,7 @@ function desaparecer_buscar_produto(){
 </div>
 
 
-<div id="buscar_produto" style="visibility: visible;">
+<div id="buscar_produto" style="visibility: hidden;">
 
 	<!-- <img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" />  -->
 	
@@ -476,26 +475,5 @@ $(function () {
 	
 	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
 
-	<script>
-	var indice_fotos;
-	var largura_tela = screen.width;
-	var largura_foto = largura_tela*0.45;
-	
-	function dimensionar_fotos(){
-	
-		var fotos = document.getElementsByClassName("width_maior_que_height");
-		
-		for (indice_fotos = 0; indice_fotos < fotos.length; indice_fotos++) {
-			fotos[indice_fotos].style.width = largura_foto+"px";
-		}
-		
-		var fotos2 = document.getElementsByClassName("height_maior_que_width");
-		
-		for (indice_fotos = 0; indice_fotos < fotos2.length; indice_fotos++) {
-			fotos2[indice_fotos].style.height = largura_foto+"px";
-		}
-	
-	}//fim da função
-	</script>
 </body>
 </html>
