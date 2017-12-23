@@ -107,7 +107,7 @@ if( localStorage.tipo_login == 'lojista'){
 
 <script>
 
-
+/*
 if( ( (localStorage.foto_usuario) != '') && (typeof (localStorage.foto_usuario) !== "undefined") ) document.getElementById("foto_perfil_menu").src = localStorage.foto_usuario;
 
 var nome_menu = localStorage.nome_usuario;
@@ -120,13 +120,13 @@ if(nome_menu.length > 12){
 }
 
 document.getElementById("nome_usuario").innerHTML = nome_menu;
-
+*/
 </script>		
 
 
 
 
-<div id="novidades" style="z-index:10;">
+<div id="novidades" >
 </div>
 
 <!-- Quando a notificação for aberta alterar a data de vizualização -->
@@ -208,10 +208,10 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 						
 						document.getElementById("novidades").innerHTML = document.getElementById("novidades").innerHTML + str.substring(0, marcador_novidades);;
 						
-						var novidades = str.substring((marcador_novidades+2), str.length);
+						//var novidades = str.substring((marcador_novidades+2), str.length);
 						
 						
-						document.getElementById("n_produtos_novos").innerHTML = novidades;
+						//document.getElementById("n_produtos_novos").innerHTML = novidades;
 						
 						
 						//if(novidades != '0') document.title = "(" + novidades.trim() + ") "+document.title;
