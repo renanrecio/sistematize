@@ -426,9 +426,14 @@ function desaparecer_buscar_produto(){
  
  </script>
  
+ <div style=" position:fixed; width: 100%; background-color: #0054a6; top:0em; left:0%; height: 3em;" ></div> 
+
+ <div style="width: 100%;" ><form onsubmit="busca_produto()"><input type="text" id="nome_produto" name="nome_produto" value="" placeholder="Escreva o Nome do Produto ou Serviço"  style=" position:fixed; font-size:1em; top:0.325em; left:3%; height: 2em; width: 90%; "/></form> <img id ="lupa" onclick="busca_produto()" src="fotos/lupa.png" style="position: fixed; right: 2%; top:0.1em; width:2.8em; height:2.8em;"/></div>
+
+ 
+ <!--
 <div onclick="aparecer_buscar_produto()">
 
-	<!-- <img  src="" width="55%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" /> -->
 	<div  style=" position:fixed; width: 55%; background-color: #0054a6; top:0em; left:0%; height: 3em; opacity:1; filter:alpha(opacity=100);" > </div> 
 	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:0.6em; left:4%;  width:1.8em; height:1.8em; " /><span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:1em; left:1.2em; width:50%; color: white;"> Achar Produto </span> 
 
@@ -437,7 +442,6 @@ function desaparecer_buscar_produto(){
 
 <div id="buscar_produto" style="visibility: visible;">
 
-	<!-- <img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" />  -->
 	
 	<div  style="position:fixed; width: 100%; background-color: #0054a6; top:3em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);"></div>  
 	 
@@ -446,6 +450,7 @@ function desaparecer_buscar_produto(){
 	 
 </div>
 
+-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 

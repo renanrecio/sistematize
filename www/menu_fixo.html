@@ -16,7 +16,7 @@ var habilitar_scroll = true;
 
 if(localStorage.id_usuario == ""){
 
-	window.location.href="index.html";
+	//window.location.href="index.html";
 		
 }
 </script>
@@ -29,45 +29,14 @@ if(localStorage.id_usuario == ""){
 <div style=" position:fixed; width: 100%; background-color: #0054a6; top:0em; left:0%; height: 3em;" ></div> 
 
 
-<!--
-<span id="acheloja_menu" name="acheloja_menu" style=" font-family: Montserrat; position: fixed; font-size: 1.3em; font-weight:bold; top:0.6em; right:2%; color: white;"> AcheLoja </span> 
- -->
- 
+<!-- 
  <a href="pessoal.html" style="text-decoration: none;"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar_.png" style="position: fixed; left: 3%; top:0.1em; width:2.8em; height:2.8em;"/> <span id="nome_usuario" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; "></span></div></a>
+-->
+
+<div style="width: 100%;" ><span id="nome_loja" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; ">Nome da Loja</span><a href="buscar_produtos.html" style="text-decoration: none;"><img id ="lupa" src="fotos/lupa.png" style="position: fixed; right: 3%; top:0.1em; width:2.8em; height:2.8em;"/></a></div>
 
 	
-
-<!-- <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> --> 
 <!--
-<div style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  ></div> 
-
-<a href="vitrine_virtual.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="promocoes.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
--->
-
-<!-- <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> --> 
-<!--
-<div style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  ></div> 
-
-<a href="vitrine_virtual.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:16%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="buscar_produtos.html"><img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="chat.html"><img src="fotos/chat.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:48%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="promocoes.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
-
-<a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:16%; width:2.8em; height:2.8em;" /> </a>
--->
-
-
 <table style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  >
 
 
@@ -92,6 +61,33 @@ if(localStorage.id_usuario == ""){
 	</tr>
 
 </table>
+-->
+
+<table style=" position:fixed; width: 100%; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;"  >
+
+
+	<tr>
+
+		<td style="text-align:center; width:20%;">
+			<a href="vitrine_virtual.html"><img id="menu_home" src="fotos/casa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="meus_cupons.html"><img id="menu_busca" src="fotos/cupom.png" width="100%"  style=" position:relative; width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="chat.html" id="chat_link" ><img id="menu_chat" src="fotos/chat.png" width="100%"  style=" position:relative;9;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="promocoes.html"><img id="menu_promocoes" src="fotos/avisos.png" width="100%" style=" position:relative;  width:2.8em; height:2.8em;" /> </a>
+		</td>
+		<td style="text-align:center; width:20%;">
+			<a href="pessoal.html"><img id="menu_pessoal" src="fotos/pessoa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /> </a>
+		</td>
+
+	</tr>
+
+</table>
+
 
 <script>
 //Se for lojista mudar link de chat para chat_lojista
