@@ -274,8 +274,19 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 
 					///Executar função para ver se tem novidades
 					startRequest_novas_msgs_chat();
+					
+						
 </script>
 
+				<script> 
+						$(function(){
+						
+						  setInterval(function(){ 
+										startRequest_novas_msgs_chat();
+						  }, 2000);
+						  
+						});
+					</script> 
 
 
 <script type="text/javascript">
