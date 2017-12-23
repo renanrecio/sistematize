@@ -69,7 +69,7 @@ if(localStorage.id_usuario == ""){
 	<tr>
 
 		<td style="text-align:center; width:20%;">
-			<a href="vitrine_virtual.html"><img id="menu_home" src="fotos/casa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /> </a>
+			<a href="vitrine_virtual.html"><img id="menu_home" src="fotos/casa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /><span id="n_produtos_novos" style="position:relative; font-size:12px; text-weight:bold; top:-5px; left:-5px; color:white;"></span></a>
 		</td>
 		<td style="text-align:center; width:20%;">
 			<a href="meus_cupons.html"><img id="menu_busca" src="fotos/cupom.png" width="100%"  style=" position:relative; width:2.8em; height:2.8em;" /> </a>
@@ -87,6 +87,7 @@ if(localStorage.id_usuario == ""){
 	</tr>
 
 </table>
+
 
 
 <script>
@@ -207,7 +208,11 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 						
 						document.getElementById("novidades").innerHTML = document.getElementById("novidades").innerHTML + str.substring(0, marcador_novidades);;
 						
-						//var novidades = str.substring((marcador_novidades+2), str.length);
+						var novidades = str.substring((marcador_novidades+2), str.length);
+						
+						
+						document.getElementById("n_produtos_novos").innerHTML = novidades;
+						
 						
 						//if(novidades != '0') document.title = "(" + novidades.trim() + ") "+document.title;
 							
