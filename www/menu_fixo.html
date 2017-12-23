@@ -72,7 +72,7 @@ if(localStorage.id_usuario == ""){
 			<a href="vitrine_virtual.html"><img id="menu_home" src="fotos/casa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /><span id="n_produtos_novos" style="position:relative; font-size:12px; text-weight:bold; top:-5px; left:-5px; color:white;"></span></a>
 		</td>
 		<td style="text-align:center; width:20%;">
-			<a href="meus_cupons.html"><img id="menu_busca" src="fotos/cupom.png" width="100%"  style=" position:relative; width:2.8em; height:2.8em;" /> </a>
+			<a href="meus_cupons.html"><img id="menu_busca" src="fotos/cupom.png" width="100%"  style=" position:relative; width:2.8em; height:2.8em;" /> <span id="novas_mensagens" style="position:relative; font-size:12px; text-weight:bold; top:-5px; left:-5px; color:white;"></span></a>
 		</td>
 		<td style="text-align:center; width:20%;">
 			<a href="chat.html" id="chat_link" ><img id="menu_chat" src="fotos/chat.png" width="100%"  style=" position:relative;9;  width:2.8em; height:2.8em;" /> </a>
@@ -224,6 +224,58 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 
 					//Executar função para ver se tem novidades
 					startRequest_novidades();
+</script>
+
+
+
+<!-- Quando a notificação for aberta alterar a data de vizualização -->
+<script type="text/javascript">
+//Carregar Lampada de novidades
+					
+					
+					
+					function createXMLHttpRequest_novas_msgs_chat() {
+					if (window.ActiveXObject) {
+					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp2 = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_novas_msgs_chat() {
+					createXMLHttpRequest_novas_msgs_chat();
+					xmlHttp2.onreadystatechange = handleStateChange_novas_msgs_chat;
+					
+					//xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					//xmlHttp2.open("POST", "https://acheloja.com/sistematize/ajax_novidades_usuario_app.php", true);
+					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_novas_msgs_chat.php", true);
+					
+					
+					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"");
+					
+					
+					}
+
+					
+					function handleStateChange_novas_msgs_chat() {
+					if(xmlHttp2.readyState == 4) {
+					if(xmlHttp2.status == 200) {
+					
+						var str = xmlHttp2.responseText.trim();
+						
+						document.getElementById("novas_mensagens").innerHTML = str;
+						
+						
+						
+					}
+					}
+					}		
+
+					//Executar função para ver se tem novidades
+					startRequest_novas_msgs_chat();
 </script>
 
 
