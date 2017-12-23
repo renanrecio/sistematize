@@ -232,39 +232,39 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 <script type="text/javascript">
 //Carregar Lampada de novidades
 					
-					
+					var xmlHttp3; 
 					
 					function createXMLHttpRequest_novas_msgs_chat() {
 					if (window.ActiveXObject) {
-					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
 					}
 					else if (window.XMLHttpRequest) {
-					xmlHttp2 = new XMLHttpRequest();
+					xmlHttp3 = new XMLHttpRequest();
 					}
 					}
 
 					function startRequest_novas_msgs_chat() {
 					createXMLHttpRequest_novas_msgs_chat();
-					xmlHttp2.onreadystatechange = handleStateChange_novas_msgs_chat;
+					xmlHttp3.onreadystatechange = handleStateChange_novas_msgs_chat;
 					
-					//xmlHttp2.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
-					//xmlHttp2.open("POST", "https://acheloja.com/sistematize/ajax_novidades_usuario_app.php", true);
-					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_novas_msgs_chat.php", true);
+					//xmlHttp3.open("POST", "https://acheloja.com/m/ajax_novidades_usuario_app.php", true);
+					//xmlHttp3.open("POST", "https://acheloja.com/sistematize/ajax_novidades_usuario_app.php", true);
+					xmlHttp3.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_novas_msgs_chat.php", true);
 					
 					
-					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"");
+					xmlHttp3.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"");
 					
 					
 					}
 
 					
 					function handleStateChange_novas_msgs_chat() {
-					if(xmlHttp2.readyState == 4) {
-					if(xmlHttp2.status == 200) {
+					if(xmlHttp3.readyState == 4) {
+					if(xmlHttp3.status == 200) {
 					
-						var str = xmlHttp2.responseText.trim();
+						var str = xmlHttp3.responseText.trim();
 						
 						document.getElementById("novas_mensagens").innerHTML = str;
 						
