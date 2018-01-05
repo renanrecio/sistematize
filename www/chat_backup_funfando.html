@@ -73,18 +73,6 @@ body{
 	left:2%;
 }
 
-.msg_espaco{
-    background: #e6e6e6;
-    border-radius: 10px;
-    max-width: 60%;
-	min-width: 30%;	
-	min-height: 25px;
-    height: auto;
-	width: auto;
-	
-	left:2%;
-}
-
 .data{
 
     background: #f2f2f2;
@@ -349,7 +337,7 @@ function abrir_info(){
 
 			var height_antigo;
 
-			var top_ = 150;
+			var top_ = 100;
 
 			var top2;
 
@@ -365,15 +353,6 @@ function abrir_info(){
 			
 			var j;
 			
-			var limit_max = 30;
-			
-			var constante_limit_max = 30;
-			
-			var numero_de_msgs;
-			var id_scroll;
-			
-			var tamanho_objeto_anterior = 0;
-			
 			function createXMLHttpRequest() {
 			if (window.ActiveXObject) {
 			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
@@ -387,7 +366,6 @@ function abrir_info(){
 			createXMLHttpRequest();
 			xmlHttp.onreadystatechange = handleStateChange;
 			
-			document.getElementById("img_carregando_produtos").style.visibility = "visible";
 			
 			//xmlHttp.open("POST", "https://acheloja.com/m/ajax_vitrine_app.php", true);
 			//xmlHttp.open("POST", "http://52.67.44.156/m/ajax_vitrine_app.php", true);
@@ -397,13 +375,13 @@ function abrir_info(){
 			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_chat_app.php", true);
 			
 			
+			
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
-			//xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&limit_max="+limit_max+"");
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
 			
-			
+			document.getElementById("img_carregando_produtos").style.visibility = "visible";
 			
 			
 			}
@@ -415,12 +393,6 @@ function abrir_info(){
 			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
 			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
 			
-				if(limit_max > constante_limit_max){ 
-					document.getElementById("div_chat").innerHTML = '';
-					id = 0;
-					top_ = 150;
-				}
-				
 				str = xmlHttp.responseText.trim();
 				
 				
@@ -428,22 +400,12 @@ function abrir_info(){
 			
 				
 				//document.getElementById("div_chat").innerHTML = obj[1].id + ", " + obj[1].mensagem;
-				
-				
 
 				ultimo_index = (obj.length) - 1;
 				
 				data_msg_mais_recente = obj[0].data_envio;
 				
 				hora_ultima_visualizacao_msgs_lojista = data_ultima_visualizacao_msgs_lojista.substr(11, 5);
-				
-				//para carregar mensagens anteriores
-				if(obj.length != tamanho_objeto_anterior ){
-					span = '<center><span  onclick="startRequest_chat()" style=" position:absolute; top: 100px; font-size:0.8em; color: blue; line-height:1em; width:50%; left:25%; " >Carregar mensagens anteriores</span></center>';
-					$('#div_chat').append( span );
-					tamanho_objeto_anterior = obj.length;
-				}//fim do if
-				
 				
 				//for (i = 0; i < obj.length; i++) { 
 				for (i = ultimo_index; i >= 0; i--) { 
@@ -482,7 +444,7 @@ function abrir_info(){
 							//Caso entre uma mensagem e outra mude a data colocar no meio do chat qual é a nova data
 							if(data_horas_msg_enviada_sem_hora_anterior != data_horas_msg_enviada_sem_hora){
 							
-								span = '<center><span class="data" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:0.8em; color: black; line-height:1em; width:50%; left:25%;" >'+dia_msg_enviada+'/'+mes_msg_enviada+'/'+ano_msg_enviada+'</span></center>';
+								span = '<center><span class="data" id="msg'+id+'" style=" position:absolute; top: '+top_+'px; font-size:0.8em; color: black; line-height:1em; " >'+dia_msg_enviada+'/'+mes_msg_enviada+'/'+ano_msg_enviada+'</span></center>';
 							
 								$('#div_chat').append( span );
 							
@@ -490,7 +452,7 @@ function abrir_info(){
 									
 								top2 = 	top_ + height_antigo;
 								
-								span_espaco = '<span class="msg_espaco" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+								span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
 
 								$('#div_chat').append( span_espaco );
 								
@@ -524,7 +486,7 @@ function abrir_info(){
 								
 							top2 = 	top_ + height_antigo;
 							
-							span_espaco = '<span class="msg_espaco" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+							span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
 
 							$('#div_chat').append( span_espaco );
 							
@@ -537,38 +499,9 @@ function abrir_info(){
 				//document.getElementById("div_chat").innerHTML = document.getElementById("div_chat").innerHTML + str;
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
-				if(limit_max > constante_limit_max){ 
-					numero_de_msgs = $('.msg').length +  $('.msg2').length;
-					
-					id_scroll = numero_de_msgs - constante_limit_max;
-					
-					
-					(function($) {
-						$('#msg'+id_scroll).goTo = function() {
-							$('html, body').animate({
-								scrollTop: $(this).offset().top + 'px'
-							}, 'fast');
-							return this; // for chaining...
-						}
-					})(jQuery);
-				
-				}else{
-					document.body.scrollTop = document.body.scrollHeight;
-					/*
-					(function($) {
-						$('#msg'+numero_de_msgs).goTo = function() {
-							$('html, body').animate({
-								scrollTop: $(this).offset().top + 'px'
-							}, 'fast');
-							return this; // for chaining...
-						}
-					})(jQuery);
-				    */
-				
-				}//fim do else
+				document.body.scrollTop = document.body.scrollHeight;
 							
-				limit_max = limit_max + constante_limit_max;
-				
+
 				
 			}
 			}
@@ -706,7 +639,7 @@ function abrir_info(){
 								
 							top2 = 	top_ + height_antigo;
 							
-							span_espaco = '<span class="msg_espaco" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
+							span_espaco = '<span class="msg2" id="espaco" style=" position:absolute; top: '+top2+'px; font-size:2em; color: black; line-height:1em; height:2.5em; background:transparent;  text-align: left; padding: 20px 20px 20px 20px; " ></span>';
 
 							$('#div_chat').append( span_espaco );
 							
@@ -914,7 +847,7 @@ function enviar(){
 
 	
 			
-	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:10em;" />
+	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
 	
 	
 
