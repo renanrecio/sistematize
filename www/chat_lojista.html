@@ -398,7 +398,7 @@ function abrir_info(){
 			
 			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
 			//xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido);
-			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario+"&limit_max="+limit_max+"");
+			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+id_usuario_escolhido+"&limit_max="+limit_max+"");
 			
 			document.getElementById("img_carregando_produtos").style.visibility = "visible";
 			
@@ -929,7 +929,7 @@ function enviar(){
 
 	
 			
-	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:5em;" />
+	<img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; visibility: hidden; width:40%; position: fixed; left:30%; bottom:10em;" />
 	
 	
 
