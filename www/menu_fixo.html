@@ -233,6 +233,8 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					
 					var xmlHttp3; 
 					
+					var str;
+					
 					function createXMLHttpRequest_novas_msgs_chat() {
 					if (window.ActiveXObject) {
 					xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
@@ -263,7 +265,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					if(xmlHttp3.readyState == 4) {
 					if(xmlHttp3.status == 200) {
 					
-						var str = xmlHttp3.responseText.trim();
+						str = xmlHttp3.responseText.trim();
 						
 						document.getElementById("novas_mensagens").innerHTML = str;
 						
@@ -630,7 +632,7 @@ function setupPush() {
 		
 					if( (pagina_atual_app != 'chat') && (pagina_atual_app != 'chat_lojista') ){ window.location.href = "chat.html"; }
 					//startRequest_chat();
-					startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
+					
 		
 				}else{
 					  
@@ -638,7 +640,6 @@ function setupPush() {
 		
 					       if( (pagina_atual_app != 'chat') && (pagina_atual_app != 'chat_lojista') ){ window.location.href = "lista_usuarios_do_lojista_chat.html"; }
 						   //startRequest_chat();
-						   startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
 		
 				        }else{
 						 /*  navigator.notification.alert(
@@ -701,9 +702,10 @@ function setupPush() {
 	  
 	 }
 	 
-	 
+	 startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
 		
- }
+ } //fim da function
+ 
 	</script>
     <script type="text/javascript">
 	
