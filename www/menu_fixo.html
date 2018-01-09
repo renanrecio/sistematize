@@ -518,6 +518,8 @@ function setupPush() {
 	
 	if( (pagina_atual_app == 'chat') || (pagina_atual_app == 'chat_lojista') ){
 	
+		startRequest_chat_atualiza(); //Se recebeu alguma mensagem nova, recebeu um push então assim mostra nova mensagem (essa função está no chat.html e no chat_lojista.html)
+		
 		var push = PushNotification.init({
 			 "android": {
 				 "senderID": "299367865586",
