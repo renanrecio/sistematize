@@ -537,7 +537,7 @@ function abrir_info(){
 				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
 				if(limit_max > constante_limit_max){ 
-					numero_de_msgs = $('.msg').length +  $('.msg2').length;
+					/*numero_de_msgs = $('.msg').length +  $('.msg2').length;
 					
 					id_scroll = numero_de_msgs - constante_limit_max;
 					
@@ -550,7 +550,10 @@ function abrir_info(){
 							return this; // for chaining...
 						}
 					})(jQuery);
+					*/
 				
+					document.body.scrollTop = document.body.scrollHeight;
+					
 				}else{
 					document.body.scrollTop = document.body.scrollHeight;
 					/*
@@ -826,6 +829,44 @@ function enviar(){
 
 </script>
 
+   
+
+	
+	
+	
+	<div id="menu">
+
+	</div>	
+			
+	<script> 
+		$(function(){
+		  $("#menu").load("menu_fixo.html"); 
+		});
+	</script> 	
+<!--	
+  <div style=" position:fixed; width: 100%; background-color: #0054a6; top:0em; left:0%; height: 3em;" ></div> 
+  <div style="width: 100%;" ><img id ="foto_perfil_chat" src="https://s3-sa-east-1.amazonaws.com/figuras-acheloja-site/pessoal_old.png" style="position: fixed; left: 3%; top:0.1em; width:2.8em; height:2.8em;"/> <span id="nome_usuario_chat" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; "></span></div>
+-->
+
+
+	
+
+	
+	<script> 
+	
+		$(function(){
+		
+		  setInterval(function(){ 
+						startRequest_chat_atualiza();
+						startRequest_atualiza_ultima_visualizacao_chat();
+						startRequest_ultima_visualizacao_lojista();
+		  }, 3000);
+		  
+		});
+	</script> 		
+	
+	
+
 <script type="text/javascript">
 			var xmlHttp4;
 			
@@ -875,44 +916,7 @@ function enviar(){
 			startRequest_atualiza_ultima_visualizacao_chat();
 		
 			
-</script>   
-
-	
-	
-	
-	<div id="menu">
-
-	</div>	
-			
-	<script> 
-		$(function(){
-		  $("#menu").load("menu_fixo.html"); 
-		});
-	</script> 	
-<!--	
-  <div style=" position:fixed; width: 100%; background-color: #0054a6; top:0em; left:0%; height: 3em;" ></div> 
-  <div style="width: 100%;" ><img id ="foto_perfil_chat" src="https://s3-sa-east-1.amazonaws.com/figuras-acheloja-site/pessoal_old.png" style="position: fixed; left: 3%; top:0.1em; width:2.8em; height:2.8em;"/> <span id="nome_usuario_chat" style="font-family: Montserrat;  position: fixed; font-size: 1.2em; left: 3.3em; top:0.75em; color: white; font-weight: bold; "></span></div>
--->
-
-
-	
-
-	
-	<script> 
-	
-		$(function(){
-		
-		  setInterval(function(){ 
-						startRequest_chat_atualiza();
-						startRequest_atualiza_ultima_visualizacao_chat();
-						startRequest_ultima_visualizacao_lojista();
-		  }, 3000);
-		  
-		});
-	</script> 		
-	
-	
-	
+</script>
 
 
 

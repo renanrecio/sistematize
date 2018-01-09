@@ -533,6 +533,7 @@ function abrir_info(){
 				
 				
 				if(limit_max > constante_limit_max){ 
+					/*
 					numero_de_msgs = $('.msg').length +  $('.msg2').length;
 					
 					id_scroll = numero_de_msgs - constante_limit_max;
@@ -546,6 +547,8 @@ function abrir_info(){
 							return this; // for chaining...
 						}
 					})(jQuery);
+					*/
+					document.body.scrollTop = document.body.scrollHeight;
 				
 				}else{
 					document.body.scrollTop = document.body.scrollHeight;
