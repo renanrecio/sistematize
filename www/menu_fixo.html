@@ -508,6 +508,8 @@ if (typeof pagina_atual_app === 'undefined') {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+		startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
+		alert('entrou');
 		setupPush();
     }
 };
@@ -702,7 +704,7 @@ function setupPush() {
 	  
 	 }
 	 
-	 startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
+	 
 		
  } //fim da function
  
