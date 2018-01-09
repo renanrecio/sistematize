@@ -516,8 +516,6 @@ if (typeof pagina_atual_app === 'undefined') {
 
 function setupPush() {
     
-	 startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
-	 alert('entrou');
 	
 	if( (pagina_atual_app == 'chat') || (pagina_atual_app == 'chat_lojista') ){
 		
@@ -674,7 +672,9 @@ function setupPush() {
      }
 	 */
 
-		 push.finish(function() {
+	push.finish(function() {
+			 startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
+			 alert('entrou');
 			 console.log('success');
 		 }, function() {
 			 console.log('error');
