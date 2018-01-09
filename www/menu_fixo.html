@@ -255,7 +255,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					
 					xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp3.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"");
+					xmlHttp3.send("id_usuario="+localStorage.id_usuario+"&id_loja="+id_loja+"&tipo_login="+localStorage.tipo_login+"");
 					
 					
 					}
@@ -281,7 +281,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 </script>
 
 				<script> 
-				/*
+				
 						$(function(){
 						
 						  setInterval(function(){ 
@@ -289,7 +289,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 						  }, 2000);
 						  
 						});
-				*/
+				
 					</script> 
 
 
@@ -673,8 +673,6 @@ function setupPush() {
 	 */
 
 	push.finish(function() {
-			 startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
-			 alert('entrou');
 			 console.log('success');
 		 }, function() {
 			 console.log('error');
