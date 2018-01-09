@@ -514,7 +514,6 @@ if (typeof pagina_atual_app === 'undefined') {
 
 function setupPush() {
     
-	startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
 	
 	if( (pagina_atual_app == 'chat') || (pagina_atual_app == 'chat_lojista') ){
 		
@@ -631,6 +630,7 @@ function setupPush() {
 		
 					if( (pagina_atual_app != 'chat') && (pagina_atual_app != 'chat_lojista') ){ window.location.href = "chat.html"; }
 					//startRequest_chat();
+					startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
 		
 				}else{
 					  
@@ -638,6 +638,7 @@ function setupPush() {
 		
 					       if( (pagina_atual_app != 'chat') && (pagina_atual_app != 'chat_lojista') ){ window.location.href = "lista_usuarios_do_lojista_chat.html"; }
 						   //startRequest_chat();
+						   startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
 		
 				        }else{
 						 /*  navigator.notification.alert(
