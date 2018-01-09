@@ -279,6 +279,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 </script>
 
 				<script> 
+				/*
 						$(function(){
 						
 						  setInterval(function(){ 
@@ -286,6 +287,7 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 						  }, 2000);
 						  
 						});
+				*/
 					</script> 
 
 
@@ -512,6 +514,8 @@ if (typeof pagina_atual_app === 'undefined') {
 
 function setupPush() {
     
+	startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
+	
 	if( (pagina_atual_app == 'chat') || (pagina_atual_app == 'chat_lojista') ){
 	
 		var push = PushNotification.init({
