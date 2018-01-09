@@ -508,8 +508,6 @@ if (typeof pagina_atual_app === 'undefined') {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-		startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
-		alert('entrou');
 		setupPush();
     }
 };
@@ -609,6 +607,9 @@ function setupPush() {
 	 push.on('notification', function(data) {
 	 
      console.log('notification event');
+	 
+	 startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
+	 alert('entrou');
 	 
      var link = data.additionalData.link;
 	 
