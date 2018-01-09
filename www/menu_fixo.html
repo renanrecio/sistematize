@@ -517,8 +517,6 @@ function setupPush() {
 	startRequest_novas_msgs_chat(); //toda vez que um push aparece ele procura por novas msgs
 	
 	if( (pagina_atual_app == 'chat') || (pagina_atual_app == 'chat_lojista') ){
-	
-		startRequest_chat_atualiza(); //Se recebeu alguma mensagem nova, recebeu um push então assim mostra nova mensagem (essa função está no chat.html e no chat_lojista.html)
 		
 		var push = PushNotification.init({
 			 "android": {
