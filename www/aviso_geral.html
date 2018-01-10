@@ -17,7 +17,7 @@
 
 
 
-<div id="div_vitrine"></div>
+<div id="div_aviso_geral"></div>
 
 	
 <!-- Validação do forumlário -->
@@ -37,7 +37,7 @@
 			}
 			}
 
-			function startRequest_vitrine_virtual() {
+			function startRequest_aviso_geral() {
 			createXMLHttpRequest();
 			xmlHttp.onreadystatechange = handleStateChange;
 			
@@ -47,7 +47,7 @@
 			//xmlHttp.open("POST", "https://acheloja.com/sistematize/ajax_vitrine_app.php", true);
 			
 			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_vitrine_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_aviso_geral_app.php", true);
 			
 			
 			
@@ -56,7 +56,6 @@
 			//xmlHttp.send("nick_site="+localStorage.nick_site+"&id_usuario="+localStorage.id_usuario);
 			xmlHttp.send("id_loja="+id_loja+"&id_usuario="+localStorage.id_usuario);
 			
-			document.getElementById("img_carregando_produtos").style.visibility = "visible";
 			
 			
 			}
@@ -71,9 +70,8 @@
 				str = xmlHttp.responseText.trim();
 				
 				
-				document.getElementById("div_vitrine").innerHTML = document.getElementById("div_vitrine").innerHTML + str;
+				document.getElementById("div_aviso_geral").innerHTML = document.getElementById("div_aviso_geral").innerHTML + str;
 				
-				document.getElementById("img_carregando_produtos").style.visibility = "hidden";
 				
 			}
 			}
@@ -81,7 +79,7 @@
 			
 		
 			
-		startRequest_vitrine_virtual();
+		startRequest_aviso_geral();
 			
 </script>   
 

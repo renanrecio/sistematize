@@ -1,3 +1,3 @@
 var id_loja = '87';
 
-var versao_app = 'v1.0_01_2018';
+var versao_app = 'v1.0_10_01_2018';
