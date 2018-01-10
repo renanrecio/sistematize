@@ -719,7 +719,55 @@ function setupPush() {
     </script>
 
 
-   		
+   	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+
+			var xmlHttp3;
+			
+			function createXMLHttpRequest_versao_app() {
+			if (window.ActiveXObject) {
+			xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp3 = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_versao_app(){
+			createXMLHttpRequest_versao_app();
+			xmlHttp3.onreadystatechange = handleStateChange_versao_app;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/login_app.php", true);
+			xmlHttp3.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_versao_app.php", true);
+			
+			
+			xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp3.send("reg_id="+localStorage.id_dispositivo+"&versao_app="+versao_app+"");
+			
+			
+			}
+
+			
+			function handleStateChange_versao_app() {
+			if(xmlHttp3.readyState == 4) {
+			if(xmlHttp3.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				localStorage.versao_app = versao_app;
+				
+			}
+			}
+			}
+			
+		if(localStorage.versao_app != versao_app) startRequest_versao_app();
+			
+			
+			
+</script> 	
 			
 	
 <div id="img_carregando" style=" position: fixed; visibility: hidden; top:0em; left:-1%; height:100%; width:102%; opacity: 0.8; filter: alpha(opacity=80); background-color: white;">
