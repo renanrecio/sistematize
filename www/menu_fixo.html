@@ -81,7 +81,8 @@ if(localStorage.id_usuario == ""){
 			<a href="promocoes.html"><img id="menu_promocoes" src="fotos/avisos.png" width="100%" style=" position:relative;  width:2.8em; height:2.8em;" /> </a>
 		</td>
 		<td style="text-align:center; width:20%;">
-			<a href="pessoal.html"><img id="menu_pessoal" src="fotos/pessoa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /> </a>
+			<!--<a href="pessoal.html"><img id="menu_pessoal" src="fotos/pessoa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /> </a>-->
+			<a href="aviso_geral.html"><img id="menu_pessoal" src="fotos/pessoa.png" width="100%" style=" position:relative;   width:2.8em; height:2.8em;" /> </a>
 		</td>
 
 	</tr>
@@ -643,14 +644,19 @@ function setupPush() {
 						   //startRequest_chat();
 		
 				        }else{
-						 /*  navigator.notification.alert(
-							   data.message,         // message
-							   null,                 // callback
-							   data.title,           // title
-							   'Ok'                  // buttonName
-						   );   
-						  */
-						   
+							   if (link == 'aviso_geral') {
+		
+									window.location.href = "aviso_geral.html";	
+					      
+								}else{
+								 /*  navigator.notification.alert(
+									   data.message,         // message
+									   null,                 // callback
+									   data.title,           // title
+									   'Ok'                  // buttonName
+								   );   
+								  */
+								}//fim do else
 				  		}//fim do else  
 			    }//fim do else
 		   }//fim do else
@@ -714,6 +720,9 @@ function setupPush() {
     </script>
 
 
+   		
+			
+	
 <div id="img_carregando" style=" position: fixed; visibility: hidden; top:0em; left:-1%; height:100%; width:102%; opacity: 0.8; filter: alpha(opacity=80); background-color: white;">
 	 <center>
 		<img  src="fotos/carregando_produtos.gif" style="border-radius:25px; position: relative; top:17em;  width:70%;" />

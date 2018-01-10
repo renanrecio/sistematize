@@ -117,8 +117,10 @@ var nome_usuario_guardado = localStorage.nome_usuario;
 
 if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefined") ){
 
+	startRequest_versao_app(); // atualiza versao do app e em seguida redireciona para a vitrine virtual do app no retorno dessa função
+	
 	//window.location.href="home.html";
-	window.location.href="vitrine_virtual.html";
+	//window.location.href="vitrine_virtual.html";
 	
 	exit();
 	
@@ -294,7 +296,60 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 			
 			
 </script>    		
+
+
+
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+
+			var xmlHttp3;
+			
+			function createXMLHttpRequest_versao_app() {
+			if (window.ActiveXObject) {
+			xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp3 = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_versao_app() {
+			createXMLHttpRequest_versao_app();
+			xmlHttp3.onreadystatechange = handleStateChange_versao_app;
+			
+			
+			//xmlHttp.open("POST", "https://acheloja.com/m/login_app.php", true);
+			xmlHttp3.open("POST", "http://54.207.38.125/AcheLoja2.0/sistematize/ajax_versao_app.php", true);
+			
+			
+			xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp3.send("reg_id=" + localStorage.id_dispositivo + "&versao_app=" + versao_app  + "");
+			
+			
+			
+			
+			}
+
+			
+			function handleStateChange_versao_app() {
+			if(xmlHttp3.readyState == 4) {
+			if(xmlHttp3.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText.trim();
+			//document.getElementById("verifica_login").value = xmlHttp.responseText.trim();
+			
+				window.location.href="vitrine_virtual.html"; //apos alterar versão do app redireciona para vitrine virtual do app
+				
+			}
+			}
+			}
+			
 		
+			
+			
+			
+</script> 
+
 
 
 <!--
