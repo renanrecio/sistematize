@@ -324,9 +324,9 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 			
 			xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp3.send("reg_id=" + localStorage.id_dispositivo + "&versao_app=" + versao_app  + "");
+			xmlHttp3.send("reg_id="+localStorage.id_dispositivo+"&versao_app="+versao_app+"");
 			
-			
+			alert("reg_id="+localStorage.id_dispositivo+"&versao_app="+versao_app+"");
 			
 			
 			}
